@@ -52,12 +52,12 @@
 			<?php //echo h($institution['Institution']['age_range']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Public Type'); ?></dt>
+		<dt><?php echo __('Rango de Edad:'); ?></dt>
 		<dd>
 			<?php echo h($institution['PublicType']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Institution Type'); ?></dt>
+		<dt><?php echo __('Tipo Institución:'); ?></dt>
 		<dd>
 			<?php echo h($institution['Institution']['institution_type']); ?>
 			&nbsp;

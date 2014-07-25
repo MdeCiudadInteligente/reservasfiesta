@@ -7,7 +7,7 @@
 			<?php //echo h($specificCondition['SpecificCondition']['id_specific_condition']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($specificCondition['SpecificCondition']['name']); ?>
 			&nbsp;

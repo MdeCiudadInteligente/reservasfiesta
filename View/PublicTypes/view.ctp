@@ -7,7 +7,7 @@
 			<?php //echo h($publicType['PublicType']['id_public_type']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($publicType['PublicType']['name']); ?>
 			&nbsp;

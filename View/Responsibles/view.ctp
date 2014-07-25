@@ -2,27 +2,27 @@
 <?php $this->set('title_for_layout' , 'Ver responsable' );?>
 <h2><?php echo __('Responsible'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Responsible'); ?></dt>
+		<dt><?php echo __('Id Responsable:'); ?></dt>
 		<dd>
 			<?php echo h($responsible['Responsible']['id_responsible']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($responsible['Responsible']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Celular'); ?></dt>
+		<dt><?php echo __('Celular:'); ?></dt>
 		<dd>
 			<?php echo h($responsible['Responsible']['celular']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Mail'); ?></dt>
+		<dt><?php echo __('Correo:'); ?></dt>
 		<dd>
 			<?php echo h($responsible['Responsible']['mail']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Educational Institution'); ?></dt>
+		<dt><?php echo __('Institución Educativa:'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($responsible['Institution']['id_institution'], array('controller' => 'institutions', 'action' => 'view', $responsible['Institution']['id_institution'])); ?>
 			&nbsp;

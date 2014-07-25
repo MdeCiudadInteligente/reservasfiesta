@@ -7,20 +7,21 @@
 			<?php //echo h($workshop['Workshop']['id_workshop']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($workshop['Workshop']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Description'); ?></dt>
+		<dt><?php echo __('Descripción:'); ?></dt>
 		<dd>
 			<?php echo h($workshop['Workshop']['description']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Entity'); ?></dt>
+		<dt><?php echo __('Entidad:'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($workshop['Entity']['name'], array('controller' => 'entities', 'action' => 'view', $workshop['Entity']['id_entity'])); ?>
 			&nbsp;
+		
 		</dd>
 		</dl>
 		<?php  $usuario_level= $this->Session->read('Auth.User.permission_level');

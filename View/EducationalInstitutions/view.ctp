@@ -17,7 +17,7 @@
 			<?php //echo h($educationalInstitution['EducationalInstitution']['grade']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Institution'); ?></dt>
+		<dt><?php echo __('Grupo:'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($educationalInstitution['Institution']['name'], array('controller' => 'institutions', 'action' => 'view', $educationalInstitution['Institution']['id_institution'])); ?>
 			&nbsp;

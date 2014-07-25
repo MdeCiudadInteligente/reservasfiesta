@@ -4,8 +4,8 @@
 	<h2><?php echo __('Educational Institutions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('code'); ?></th>
-			<th><?php echo $this->Paginator->sort('type'); ?></th>
+			<th><?php echo $this->Paginator->sort('Código'); ?></th>
+			<th><?php echo $this->Paginator->sort('Tipo de institución educativa'); ?></th>
 			<th><?php //echo $this->Paginator->sort('grade'); ?></th>
 			<th><?php echo $this->Paginator->sort('institution_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>

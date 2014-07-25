@@ -173,13 +173,13 @@ div.form,
 div.index,
 div.view {
 	float:right;
-	width:76%;
+	width:74%;
 	border-left:1px solid #666;
 	padding:10px 2%;
 }
 div.actions {
 	float:left;
-	width:16%;
+	width:18%;
 	padding:10px 1.5%;
 }
 div.actions h3 {
@@ -294,9 +294,10 @@ dl {
 	margin: 0em 0em;
 	width: 60%;
 }
+/*fondo de las vistas*/
 dl dd:nth-child(4n+2),
 dl dt:nth-child(4n+1) {
-	background: #f4f4f4;
+	background: #ffffff;
 }
 
 dt {
