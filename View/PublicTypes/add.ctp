@@ -1,4 +1,5 @@
 <div class="publicTypes form">
+<?php $this->set('title_for_layout' , 'Agregar tipo de público' );?>
 <?php echo $this->Form->create('PublicType'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Public Type'); ?></legend>

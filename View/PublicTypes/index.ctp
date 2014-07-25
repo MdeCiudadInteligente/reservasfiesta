@@ -1,4 +1,5 @@
 <div class="publicTypes index">
+<?php $this->set('title_for_layout' , 'Lista tipo de público' );?>
 	<h2><?php echo __('Public Types'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

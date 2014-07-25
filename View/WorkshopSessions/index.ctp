@@ -1,4 +1,5 @@
 ﻿<div class="workshopSessions index">
+<?php $this->set('title_for_layout' , 'Ver sessión de carpa' );?>
 	<h2><?php echo __('Workshop Sessions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -7,7 +8,7 @@
 			<th><?php echo $this->Paginator->sort('workshop_time'); ?></th>
 			<th><?php echo $this->Paginator->sort('travel_time'); ?></th>
 			<th><?php //echo $this->Paginator->sort('state'); ?></th>
-			<th><?php echo $this->Paginator->sort('workshop_id'); ?></th>
+			<th><?php //echo $this->Paginator->sort('workshop_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('institution_id'); ?></th>
 			<th class="actions"><?php echo __('Opciones'); ?></th>
 			
@@ -19,8 +20,7 @@
 		<td><?php echo h($workshopSession['WorkshopSession']['workshop_time']); ?>&nbsp;</td>
 		<td><?php echo h($workshopSession['WorkshopSession']['travel_time']); ?>&nbsp;</td>
 		<td><?php //echo h($workshopSession['WorkshopSession']['state']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($workshopSession['Workshop']['name'], array('controller' => 'workshops', 'action' => 'view', $workshopSession['Workshop']['id_workshop'])); ?>
+		<td><?php //echo $this->Html->link($workshopSession['Workshop']['name'], array('controller' => 'workshops', 'action' => 'view', $workshopSession['Workshop']['id_workshop'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($workshopSession['Institution']['name'], array('controller' => 'institutions', 'action' => 'view', $workshopSession['Institution']['id_institution'])); ?>

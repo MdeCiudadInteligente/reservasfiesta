@@ -1,4 +1,5 @@
 ﻿<div class="workshops form">
+<?php $this->set('title_for_layout' , 'Editar carpa' );?>
 <?php echo $this->Form->create('Workshop'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Workshop'); ?></legend>

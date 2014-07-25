@@ -1,4 +1,5 @@
 ﻿<div class="workshopSessions form">
+<?php $this->set('title_for_layout' , 'Agregar sessión de carpa' );?>
 <?php echo $this->Form->create('WorkshopSession'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Workshop Session'); ?></legend>

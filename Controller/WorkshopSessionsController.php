@@ -108,13 +108,20 @@ class WorkshopSessionsController extends AppController {
 		$tallerescumplencondiciones=array();
 		$talleres2=array();
 		//1.1. Se busca por cada condición específica los talleres que cumplen con esa condición
+		
+		if ($specific_condition!=array()){
 		foreach ($specific_condition as $condition){
 			$talleresconcondicion=$this->Workshop->SpecificCondition->find('all', array('conditions'=>array('SpecificCondition.name'=>$condition['specific_condition']['name'])));
 			array_push($talleres2,$talleresconcondicion[0]['Workshop']);
 		}
+		}
+		else{
+			$talleresconcondicion=$this->Workshop->SpecificCondition->find('all');
+			array_push($talleres2,$talleresconcondicion[0]['Workshop']);
+		}
 		//1.2. Se busca la intersección de todos los conjuntos de talleres obtenidos anteriormente (Un conjunto por cada condición)
 		$i=0;
-		$resultado=null;
+		$resultado=array();
 		foreach($talleres2 as $taller2){
 			if ($i==0)
 				$resultado=$taller2;
@@ -207,6 +214,9 @@ class WorkshopSessionsController extends AppController {
 		$tallerescumplencondiciones=array();
 		$talleres2=array();
 		//1.1. Se busca por cada condición específica las fechas en las que existen talleres que cumplen con esa condición
+		
+		//Se verifica si existen condiciones.
+		if ($specific_condition!=array()){
 		foreach ($specific_condition as $condition){
 			$condicion=$condition['specific_condition']['name'];
 			$querya="select distinct workshop_session.workshop_day from specific_condition inner join (specific_condition_workshop inner join (public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id) on specific_condition_workshop.workshop_id = workshop.id_workshop) on  specific_condition.id_specific_condition = specific_condition_workshop.specific_condition_id where workshop_session.institution_id = '0' and public_type.name = '$public_typep' and (specific_condition.name = '$condicion')";
@@ -215,9 +225,16 @@ class WorkshopSessionsController extends AppController {
 			array_push($talleres2,$talleresconcondicion);
 			//debug($talleresconcondicion);
 		}
+		}
+		//si no existen condiciones la consulta se hace sin tenerlas en cuenta
+		else{
+			$querya="select distinct workshop_session.workshop_day from specific_condition inner join (specific_condition_workshop inner join (public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id) on specific_condition_workshop.workshop_id = workshop.id_workshop) on  specific_condition.id_specific_condition = specific_condition_workshop.specific_condition_id where workshop_session.institution_id = '0' and public_type.name = '$public_typep'";
+			$talleresconcondicion=$this->WorkshopSession->query($querya);
+			array_push($talleres2,$talleresconcondicion);
+		}
 		//1.2. Se busca la intersección de todos los conjuntos de fechas de talleres obtenidos anteriormente (Un conjunto por cada condición)
 		$i=0;
-		$resultado=null;
+		$resultado=array();
 		foreach($talleres2 as $taller2){
 			if ($i==0)
 				$resultado=$taller2;
@@ -248,9 +265,7 @@ class WorkshopSessionsController extends AppController {
 		//5. Se pasa el resultado de la intersección a la vista
 		$taller=$resultado;
 		
-		//***************DFGA
-		
-		
+		//***************DFGA		
 		
 		$listadohorario=$taller;
 		//$listadohorario2=$this->WorkshopSession->find('all', array('conditions'=>array('WorkshopSession.institution_id'=>'0','Institution.public_type_id'=>'1')));

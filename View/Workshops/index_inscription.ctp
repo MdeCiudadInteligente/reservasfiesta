@@ -1,4 +1,5 @@
 ﻿<script language="JavaScript">
+<?php $this->set('title_for_layout' , 'Inscripción carpa' );?>
 function doPrint(){
 document.all.item("noprint").style.visibility='hidden';
 document.getElementById("btnImprimir").style.display='none';

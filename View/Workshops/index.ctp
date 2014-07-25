@@ -1,4 +1,5 @@
 ﻿<div class="workshops index">
+<?php $this->set('title_for_layout' , 'Lista carpa' );?>
 	<h2><?php echo __('Workshops'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

@@ -1,4 +1,5 @@
 ﻿<div class="institutions form">
+<?php $this->set('title_for_layout' , 'Editar grupo' );?>
 <?php echo $this->Form->create('Institution'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Institution'); ?></legend>

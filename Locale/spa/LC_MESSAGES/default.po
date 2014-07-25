@@ -112,19 +112,19 @@ msgid "Mail"
 msgstr "Correo"
 
 msgid "Address"
-msgstr "Dirección"
+msgstr "Dirección:"
 
 msgid "Comune"
-msgstr "Comuna"
+msgstr "Comuna:"
 
 msgid "City"
-msgstr "Ciudad"
+msgstr "Ciudad:"
 
 msgid "Members Number"
-msgstr "Número de Integrantes"
+msgstr "Número de Integrantes:"
 
 msgid "Age Range"
-msgstr "Rango de Edad"
+msgstr "Rango de Edad:"
 
 msgid "Public Type"
 msgstr "Rango de Edad"
@@ -533,7 +533,7 @@ msgid "Neighborhoods"
 msgstr "Barrios"
 
 msgid "Neighborhood"
-msgstr "Barrio"
+msgstr "Barrio:"
 
 msgid "The commune has been saved."
 msgstr "La comuna ha sido guardada."
@@ -581,13 +581,13 @@ msgid "The entity has been deleted."
 msgstr "La entidad ha sido eliminada."
 
 msgid "Phone"
-msgstr "Teléfono"
+msgstr "Teléfono:"
 
 msgid "Type"
-msgstr "Tipo de institución educativa"
+msgstr "Tipo de institución educativa:"
 
 msgid "Code"
-msgstr "Código"
+msgstr "Código:"
 
 msgid "Grade"
 msgstr "Grado"
@@ -605,7 +605,7 @@ msgid "The educational institution has been saved."
 msgstr "La institución educativa ha sido guardada"
 
 msgid "Educational Institution"
-msgstr "Institución Educativa"
+msgstr "Institución Educativa:"
 
 msgid "Edit Educational Institution"
 msgstr "Editar Institución Educativa"

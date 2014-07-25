@@ -1,4 +1,5 @@
 ﻿<div class="entities form">
+<?php $this->set('title_for_layout' , 'Agregar entidad' );?>
 <?php echo $this->Form->create('Entity'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Entity'); ?></legend>
