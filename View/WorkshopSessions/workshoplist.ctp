@@ -33,9 +33,9 @@
 
 		 foreach ($taller as $taller): ?>		
 			<tr>
-				<td><?php echo h($taller['workshop']['name']); ?>&nbsp;</td>
+				<td><?php echo h($taller['name']); ?>&nbsp;</td>
 				<td class="actions">
-					<?php echo $this->Html->link(__('Ver Horarios'), array('controller' => 'workshops','action' => 'workshop_inscription',$taller['workshop']['id_workshop'],$datework,$institutionidp)); ?>			
+					<?php echo $this->Html->link(__('Ver Horarios'), array('controller' => 'workshops','action' => 'workshop_inscription',$taller['id_workshop'],$datework,$institutionidp)); ?>			
 				</td>
 			</tr>
 		<?php endforeach;?>	
