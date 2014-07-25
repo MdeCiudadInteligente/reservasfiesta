@@ -70,10 +70,10 @@
 	<ul>		
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Institution'), array('action' => 'add')); ?></li>		
-		<li><?php echo $this->Html->link(__('Nueva Institución Educativa'), array('controller' => 'educational_institutions','action' => 'add')); ?></li>		
+		<li><?php echo $this->Html->link(__('Lista Institución Educativa'), array('controller' => 'educational_institutions','action' => 'index')); ?></li>		
 		<li><?php echo $this->Html->link(__('Nueva Entidad'), array('controller' => 'entities','action' => 'add')); ?></li>	
-		<li><?php echo $this->Html->link(__('Nuevo Responsable'), array('controller' => 'responsibles','action' => 'add')); ?></li>	
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>			
+		<li><?php echo $this->Html->link(__('Lista Responsables'), array('controller' => 'responsibles','action' => 'index')); ?></li>	
+		<li><?php //echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>			
 		<li><?php echo $this->Html->link(__('New Public Type'), array('controller' => 'public_types', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Specific Condition'), array('controller' => 'specific_conditions', 'action' => 'add')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Nueva Carpa'), array('controller' => 'workshops','action' => 'add')); ?></li>		
