@@ -1,4 +1,5 @@
 ﻿<div class="institutions index">
+	<?php $this->set('title_for_layout' , 'Inicio' );?>
 	<h2><?php echo __('Institutions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

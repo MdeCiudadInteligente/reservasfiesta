@@ -1,4 +1,5 @@
 ﻿<div class="workshopSessions view">
+<?php $this->set('title_for_layout' , 'Ver sessión de carpa' );?>
 <h2><?php echo __('Workshop Session'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Workshop Session'); ?></dt>

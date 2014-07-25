@@ -1,4 +1,5 @@
 ﻿<div class="entities view">
+<?php $this->set('title_for_layout' , 'Ver entidad' );?>
 <h2><?php echo __('Entity'); ?></h2>
 	<dl>
 		<dt><?php //echo __('Id Entity'); ?></dt>

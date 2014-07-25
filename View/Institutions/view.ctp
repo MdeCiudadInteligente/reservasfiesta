@@ -1,4 +1,5 @@
 ﻿<div class="institutions view">
+<?php $this->set('title_for_layout' , 'Ver grupo' );?>
 <h2><?php echo __('Institution'); ?></h2>
 	<dl>
 		<dt><?php //echo __('Id Institution'); ?></dt>

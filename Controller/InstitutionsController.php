@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class InstitutionsController extends AppController {
 	
 	var $uses = array('Workshop','User','Institution','WorkshopSession');
-	var $helpers = array('Html','Form','Csv','Js');
+	var $helpers = array('Html','Form','Csv','Js');	
 	
 	
 	public function getbycity() {

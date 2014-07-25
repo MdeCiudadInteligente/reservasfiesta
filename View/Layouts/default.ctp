@@ -7,7 +7,7 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  */
 
-$cakeDescription = __d('cake_dev', '');
+$cakeDescription = __d('cake_dev','');
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,10 +15,17 @@ $cakeDescription = __d('cake_dev', '');
 	<?php echo $this->Html->charset(); ?>
 	<title>
 		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+		<?php echo 'Fiesta del libro';?>-<?php echo $title_for_layout; ?>
 	</title>
+	<?php 
+	/*function titulos(){
+		$this->layout='prueba';
+		$this->set('$title_for_layout','prueba');
+	} */
+	?>
 	<?php
 		echo $this->Html->meta('icon');
+	    //echo $html->meta('icon', $html->url('/favicon.ico'));//icono  
 
 		echo $this->Html->css('cake.generic');
 

@@ -1,5 +1,5 @@
-﻿
-<?php echo $institution; ?>
+﻿<?php $this->set('title_for_layout' , 'Lista institución educativa' );?>
+<?php //echo $institution; ?>
 <div class="educationalInstitutions index">
 	<h2><?php echo __('Educational Institutions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">

@@ -1,4 +1,5 @@
 ﻿<div class="workshops view">
+<?php $this->set('title_for_layout' , 'Ver carpa' );?>
 <h2><?php echo __('Workshop'); ?></h2>
 	<dl>
 		<dt><?php //echo __('Id Workshop'); ?></dt>

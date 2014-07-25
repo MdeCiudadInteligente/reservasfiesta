@@ -1,4 +1,5 @@
 ﻿<div class="responsibles view">
+<?php $this->set('title_for_layout' , 'Ver responsable' );?>
 <h2><?php echo __('Responsible'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id Responsible'); ?></dt>

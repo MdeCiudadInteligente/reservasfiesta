@@ -1,4 +1,5 @@
-﻿<div class="workshops view">
+﻿<?php $this->set('title_for_layout' , 'Ver horarios' );?>
+<div class="workshops view">
 <?php echo $this->Form->create('Workshop'); ?>
 <h2><?php echo __('Workshop'); ?></h2>
 <span>Si este taller es de tu agrado, haz click en hacer inscripción. Si quieres más opciones por favor vuelve atrás.</span>

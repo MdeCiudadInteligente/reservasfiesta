@@ -1,4 +1,5 @@
 ﻿<div class="educationalInstitutions view">
+<?php $this->set('title_for_layout' , 'Ver institución Educativa' );?>
 <h2><?php echo __('Educational Institution'); ?></h2>
 	<dl>
 		<dt><?php echo __('Code'); ?></dt>

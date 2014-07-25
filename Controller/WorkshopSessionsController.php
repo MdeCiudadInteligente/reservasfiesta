@@ -248,9 +248,7 @@ class WorkshopSessionsController extends AppController {
 		//5. Se pasa el resultado de la intersección a la vista
 		$taller=$resultado;
 		
-		//***************DFGA
-		
-		
+		//***************DFGA		
 		
 		$listadohorario=$taller;
 		//$listadohorario2=$this->WorkshopSession->find('all', array('conditions'=>array('WorkshopSession.institution_id'=>'0','Institution.public_type_id'=>'1')));
