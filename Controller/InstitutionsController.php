@@ -8,14 +8,9 @@ App::uses('AppController', 'Controller');
  */
 class InstitutionsController extends AppController {
 	
-<<<<<<< HEAD
 	var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','EducationalInstitution','InstitutionSpecificCondition','SpecificCondition');
 	var $helpers = array('Html','Form','Csv','Js');
-=======
-	var $uses = array('Workshop','User','Institution','WorkshopSession');
-	var $helpers = array('Html','Form','Csv','Js');	
->>>>>>> 1c13158fe4b1f763416bb01231ced1e8c05ac050
-	
+
 	
 	public function getbycity() {
 		$ciudad = $this->request->data['Institution']['city'];

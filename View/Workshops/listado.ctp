@@ -56,6 +56,9 @@
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
+	
+	<?php echo $this->Form->create('Exportar'); ?>
+	<?php echo $this->Form->end(__('Exportar a excel')); ?>
 	</div>
 		
 	</fieldset>

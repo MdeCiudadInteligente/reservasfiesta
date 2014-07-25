@@ -397,6 +397,19 @@ class WorkshopsController extends AppController {
 		$this->set('datos_list',$datos_list);	
 		$this->Register->recursive = 0;
 		$this->set('registers', $this->Paginator->paginate('Register'));
+		
+		if ($this->request->is('post')) {
+			return $this->redirect(array('action' => 'download'));
+		}
+	}
+	
+	public function download()
+	{
+		$this->Register->recursive = 0;
+		$this->set('registers', $this->Register->find('all'));
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
 	}
 	
 	public function index() {
