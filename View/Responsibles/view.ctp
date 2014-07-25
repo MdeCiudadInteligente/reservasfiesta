@@ -32,12 +32,12 @@
 	<h3><?php echo __('Opciones'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit Responsible'), array('action' => 'edit', $responsible['Responsible']['id_responsible'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Responsible'), array('action' => 'delete', $responsible['Responsible']['id_responsible']), null, __('Are you sure you want to delete # %s?', $responsible['Responsible']['id_responsible'])); ?> </li>
+		<li><?php //echo $this->Html->link(__('Edit Responsible'), array('action' => 'edit', $responsible['Responsible']['id_responsible'])); ?> </li>
+		<li><?php //echo $this->Form->postLink(__('Delete Responsible'), array('action' => 'delete', $responsible['Responsible']['id_responsible']), null, __('Are you sure you want to delete # %s?', $responsible['Responsible']['id_responsible'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Responsibles'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Responsible'), array('action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Responsible'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Educational Institutions'), array('controller' => 'educational_institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Educational Institution'), array('controller' => 'educational_institutions', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Educational Institution'), array('controller' => 'educational_institutions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
