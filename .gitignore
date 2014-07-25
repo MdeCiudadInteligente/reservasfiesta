@@ -1,0 +1,14 @@
+app/config/database.php
+app/Config/core.php
+app/Config/email.php
+*.swp
+app/tmp/cache/*
+app/tmp/logs/*
+app/tmp/sessions/*
+app/tmp/tests/*
+app/webroot/tmp/*
+/app/webroot/assets
+config/*
+.buildpath
+.project
+.settings
