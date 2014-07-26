@@ -1,4 +1,5 @@
 ﻿<div class="workshopSessions form">
+<?php $this->set('title_for_layout' , 'Cargar sessión carpas' );?>
 <?php echo $this->Form->create('WorkshopSession',array('type'=>'file')); ?>
 	<fieldset>
 	<td>
@@ -6,9 +7,8 @@
 
 	</td>
 	<td>
-		<p>Suba el archivo en formato de texto <strong>csv separado por comas</strong> como el siguiente:
-		<?php echo $this->Html->link('Ejemplo',array('controller' => 'webroot',
-		'action' =>'img\ejemplocsv.jpg'),array('target'=>'_blank'));?>&nbsp;
+		<p>Suba el archivo en formato de texto <strong>csv separado por comas</strong><?php //echo $this->Html->link('Ejemplo',array('controller' => 'webroot',
+		//'action' =>'img\ejemplocsv.jpg'),array('target'=>'_blank'));?>&nbsp;
 		</p>
 	</td>
 		<?php 

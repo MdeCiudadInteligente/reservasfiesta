@@ -271,13 +271,19 @@ class WorkshopsController extends AppController {
 			
 			//$correoi=$this->User->query("select distinct mail from responsible inner join (insitution inner join user on institution.id_institution=user.institution_id)on responsible.institution_id=institution.id_institution where id_responsible = '$crcedula'");
 			$correoi=$this->Responsible->find('all', array('conditions'=>array('institution_id'=>$condicionp)));
+			$correoi2=$this->Institution->find('all', array('conditions'=>array('id_institution'=>$condicionp)));
 			$this->set('correoi',$correoi);
+			$this->set('correoi2',$correoi2);
 			$Email = new CakeEmail('gmail');
 			$Email->from(array('publicos@fiestadellibroylacultura.com' => 'Fiesta del Libro y la Cultura'));
 			foreach ($correoi as $correoi):
-			$email_c = $correoi['Responsible']['mail'];
+			$email_c = $correoi['Responsible']['mail'];			
+			endforeach;
+			foreach ($correoi2 as $correoi2):			
+			$email_c2 = $correoi2['Institution']['mail'];
 			endforeach;
 			$Email->to($email_c);
+			$Email->cc($email_c2);
 			$Email->subject('Inscripción exitosa!!!');
 			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
 			$mensaje1="\n\nQue bien!!! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes "; 
@@ -391,6 +397,19 @@ class WorkshopsController extends AppController {
 		$this->set('datos_list',$datos_list);	
 		$this->Register->recursive = 0;
 		$this->set('registers', $this->Paginator->paginate('Register'));
+		
+		if ($this->request->is('post')) {
+			return $this->redirect(array('action' => 'download'));
+		}
+	}
+	
+	public function download()
+	{
+		$this->Register->recursive = 0;
+		$this->set('registers', $this->Register->find('all'));
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
 	}
 	
 	public function index() {

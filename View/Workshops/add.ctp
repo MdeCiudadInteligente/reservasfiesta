@@ -1,4 +1,5 @@
 ﻿<div class="workshops form">
+<?php $this->set('title_for_layout' , 'Agregar carpa' );?>
 <?php echo $this->Form->create('Workshop'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Workshop'); ?></legend>

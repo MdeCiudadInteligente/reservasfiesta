@@ -1,16 +1,17 @@
 ﻿<div class="institutions index">
+	<?php $this->set('title_for_layout' , 'Inicio' );?>
 	<h2><?php echo __('Institutions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php //echo $this->Paginator->sort('id_institution'); ?></th>
-			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('mail'); ?></th>
+			<th><?php echo $this->Paginator->sort('Nombre'); ?></th>
+			<th><?php echo $this->Paginator->sort('Correo'); ?></th>
 			<th><?php //echo $this->Paginator->sort('address'); ?></th>
 			<th><?php //echo $this->Paginator->sort('phone'); ?></th>
 			<th><?php //echo $this->Paginator->sort('neighborhood'); ?></th>
-			<th><?php echo $this->Paginator->sort('comune'); ?></th>
+			<th><?php echo $this->Paginator->sort('Comuna'); ?></th>
 			<th><?php //echo $this->Paginator->sort('city'); ?></th>
-			<th><?php echo $this->Paginator->sort('members_number'); ?></th>
+			<th><?php echo $this->Paginator->sort('Número de Integrantes'); ?></th>
 			<th><?php //echo $this->Paginator->sort('age_range'); ?></th>
 			<th><?php echo $this->Paginator->sort('public_type_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('institution_type'); ?></th>

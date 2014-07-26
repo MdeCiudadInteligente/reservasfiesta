@@ -1,4 +1,5 @@
 ﻿<div class="explanation">
+<?php $this->set('title_for_layout' , 'Ingreso' );?>
 Bienvenidos
 </br></br>
 Este es un portal para cambiarte la vida a través de la lectura.

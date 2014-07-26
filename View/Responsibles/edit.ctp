@@ -1,4 +1,5 @@
 ﻿<div class="responsibles form">
+<?php $this->set('title_for_layout' , 'Editar responsable' );?>
 <?php echo $this->Form->create('Responsible'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Responsible'); ?></legend>

@@ -1,4 +1,5 @@
 <div class="specificConditions form">
+<?php $this->set('title_for_layout' , 'Agregar condición específica' );?>
 <?php echo $this->Form->create('SpecificCondition'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Specific Condition'); ?></legend>

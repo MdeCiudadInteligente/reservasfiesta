@@ -1,4 +1,5 @@
 ﻿<script type="text/javascript">
+<?php $this->set('title_for_layout' , 'Agregar grupo' );?>
 function goBack()
   {
   		window.history.back()

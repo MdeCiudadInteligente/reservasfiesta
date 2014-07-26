@@ -1,4 +1,5 @@
 <div class="specificConditions index">
+<?php $this->set('title_for_layout' , 'Lista condición específica' );?>
 	<h2><?php echo __('Specific Conditions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

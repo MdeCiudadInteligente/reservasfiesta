@@ -1,4 +1,5 @@
 ﻿<div class="entities view">
+<?php $this->set('title_for_layout' , 'Ver entidad' );?>
 <h2><?php echo __('Entity'); ?></h2>
 	<dl>
 		<dt><?php //echo __('Id Entity'); ?></dt>
@@ -6,12 +7,12 @@
 			<?php //echo h($entity['Entity']['id_entity']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($entity['Entity']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('URL de la Entidad'); ?></dt>
+		<dt><?php echo __('URL de la Entidad:'); ?></dt>
 		<dd>
 			<?php //echo h($entity['Entity']['description']); ?>
 			

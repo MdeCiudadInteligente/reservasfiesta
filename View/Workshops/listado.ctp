@@ -1,4 +1,5 @@
-﻿<!-- Scripts para el calendario -->
+﻿<?php $this->set('title_for_layout' , 'Listado de registros' );?>
+<!-- Scripts para el calendario -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
@@ -55,6 +56,9 @@
 		echo $this->Paginator->numbers(array('separator' => ''));
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
+	
+	<?php echo $this->Form->create('Exportar'); ?>
+	<?php echo $this->Form->end(__('Exportar a excel')); ?>
 	</div>
 		
 	</fieldset>

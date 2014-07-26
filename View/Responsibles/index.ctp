@@ -1,4 +1,5 @@
 ﻿<div class="responsibles index">
+<?php $this->set('title_for_layout' , 'Lista responsable' );?>
 	<h2><?php echo __('Responsibles'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

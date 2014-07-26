@@ -8,9 +8,9 @@ App::uses('AppController', 'Controller');
  */
 class InstitutionsController extends AppController {
 	
-	var $uses = array('Workshop','User','Institution','WorkshopSession');
+	var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','EducationalInstitution','InstitutionSpecificCondition','SpecificCondition');
 	var $helpers = array('Html','Form','Csv','Js');
-	
+
 	
 	public function getbycity() {
 		$ciudad = $this->request->data['Institution']['city'];
@@ -67,9 +67,13 @@ class InstitutionsController extends AppController {
 	
 	public function download()
 	{
-		$this->Institution->recursive = 2;
+		$this->Institution->recursive = 0;
 		$this->set('institutions', $this->Institution->find('all'));
 		$this->set('workshopSessions',$this->WorkshopSession->find('all'));
+		$this->set('responsibles',$this->Responsible->find('all'));
+		$this->set('educationalInstitutions',$this->EducationalInstitution->find('all'));
+		$this->set('institutionspecificConditions',$this->InstitutionSpecificCondition->find('all'));
+		$this->set('specificConditions',$this->SpecificCondition->find('all'));
 		$this->layout = null;
 		//$this->autoLayout = false;
 		//Configure::write('debug', '0');
