@@ -319,6 +319,7 @@ class WorkshopsController extends AppController {
 			$recomendacion54="\n\n 4448691 ext 109";
 			$recomendacion55="\n\n 3147984567";
 			$recomendacion56="\n\n inscripcionespublicos@fiestadellibroylacultura.com";
+			$norespuesta="\n\n Este correo es informativo, favor no responder a esta dirección de correo, ya que no se encuentra habilitada para recibir mensajes.";
 			$dia_taller= date('d M Y', strtotime($condiciond));
 			$hora_taller= date('h i a', strtotime($condiciont));
 			$hora_recorrido= date('h i a', strtotime($condiciontra));
@@ -328,7 +329,7 @@ class WorkshopsController extends AppController {
 			$institutionnumber.$recomendaciones.$recomendacion10.$recomendacion1.$recomendacion11.$recomendacion12.$recomendacion21.
 			$recomendacion32.$recomendacion41.$recomendacion42.$recomendacion43.$recomendacion44.$recomendacion45.$recomendacion46.
 			$recomendacion47.$recomendacion48.$recomendacion49.$recomendacion40.$recomendacion50.$recomendacion51.$recomendacion52.
-			$recomendacion53.$recomendacion54.$recomendacion55.$recomendacion56);
+			$recomendacion53.$recomendacion54.$recomendacion55.$recomendacion56.$norespuesta);
 
 		}
 	}
