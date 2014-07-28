@@ -287,7 +287,7 @@ class WorkshopsController extends AppController {
 			$Email->subject('Inscripción exitosa!!!');
 			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
 			$mensaje1="\n\nQue bien!!! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes "; 
-			$mensaje12="hacer click en imprimir para generar la hoja de registro, la cual debes presentar en  el ingreso el día que tengas tu taller y recorrido. (si no tienes disponible impresora en el momento, puedes volver a ingresar en cualquier momento con tu usuario y contraseña e imprimir tu hoja.) \n\n";
+			$mensaje12="hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (si no tienes disponible impresora en el momento, puedes volver a ingresar en cualquier momento con tu usuario y contraseña para imprimirla,además te llegará una copia a tu correo electrónico) \n\n";
 			$mensaje11="El Día: ";			
 			$mensaje2="\nNombre Taller: ";			
 			$mensaje3="\nHora Taller: ";		
@@ -296,21 +296,39 @@ class WorkshopsController extends AppController {
 			$mensaje6="\nCelular del Encargado: ";
 			$mensaje7="\nCantidad de Inscritos: ";
 			$recomendaciones="\n\nRecomendaciones:";
-			$recomendacion1="\n\n- Recuerde que la duración de la actividad es de dos (2) horas para cada uno de los grupos, es importante tener en cuenta que esta programación se hace con el fin"; 
-			$recomendacion11=" de atender a todo el público que desee asistir a la Fiesta, por lo tanto es indispensable respetar las actividades programadas para los demás grupos y no ingresar a las"; 
-			$recomendacion12="carpas de promoción de lectura sin autorización.";
-			$recomendacion2="\n\n- Durante la visita el grupo contará con el acompañamiento de un guía, pero es indispensable que el responsable del grupo esté permanentemente con él.";
-			$recomendacion3="\n\n- Es necesario que los grupos de primera infancia y hasta los 8 años estén identificados con escarapela.";
-			$recomendacion4="\n\n- La entrada y participación en el evento es libre gracias al pago oportuno de sus impuestos.";
-			//echo $institutionidp;
-			//echo "id de la institucion";
-			//echo  $condicionp;
-			//echo  $condiciond;			
-			$Email->send($mensaje1.$mensaje12.$mensaje11.$condiciond.
-			$mensaje2.$condicionnom.$mensaje3.$condiciont.$mensaje4.
-			$condiciontra.$mensaje5.$rname.$mensaje6.$rcelular.$mensaje7.
-			$institutionnumber.$recomendaciones.$recomendacion1.$recomendacion11.$recomendacion12.$recomendacion2.
-			$recomendacion3.$recomendacion4);
+			$recomendacion10="\n\n • Todos los talleres se realizan en el Jardín Botánico de Medellín."; 
+			$recomendacion1="\n\n• El ingreso de los grupos será por la entrada peatonal del Jardín Botánico. (Cerca de la estación Universidad del Metro, Calle 73)"; 
+			$recomendacion11="\n\n • Es necesario que su grupo llegue con 30 minutos de antelación para hacer el registro y que no se retrase la actividad."; 
+			$recomendacion12="\n\n • Recuerde que la duración  de la actividad es de dos (2) horas para cada uno de los grupos, es importante tener en cuenta que esta programación se hace con el fin de atender a todo el público que quiera asistir a la Fiesta, por lo tanto es indispensable respetar las actividades programadas para los demás grupos y no ingresar a las carpas de promoción de lectura sin autorización.";
+			$recomendacion21="\n\n• Durante la actividad el grupo contará con el acompañamiento de un guía, pero es indispensable que el responsable del grupo esté permanentemente.";
+			$recomendacion32="\n\n• Su institución es responsable del transporte y la alimentación de los grupos. Se puede ingresar alimentos a las instalaciones del Jardín Botánico.";
+			$recomendacion41="\n\n• Es necesario que los grupos de primera infancia y hasta los 8 años estén identificados con escarapela.";
+			$recomendacion42="\n\n• Es importante llevar hidratación.";
+			$recomendacion43="\n\n• La entrada y participación en el evento no tienen costo, la ciudadanía de Medellín ya pagó con sus impuestos.";
+			$recomendacion44="\n\n Gracias por hacer parte de esta gran fiesta de ciudad que durante diez días nos recordará";
+			$recomendacion45="\n\n que Medellín es Lectura Viva";
+			$recomendacion46="\n\n ES INDISPENSABLE PRESENTAR ESTE FORMATO AL INGRESO DEL JARDÍN BOTÁNICO";
+			$recomendacion47="\n\n Mayores informes:";
+			$recomendacion48="\n\n Alejandra Gallo López";
+			$recomendacion49="\n\n Líder Jardín Lectura Viva";
+			$recomendacion40="\n\n 4448691 ext 111";
+			$recomendacion50="\n\n 3012169301";
+			$recomendacion51="\n\ninscripciones@fiestadellibroylacultura.com";
+			$recomendacion52="\n\n Pablo López Londoño";
+			$recomendacion53="\n\n Líder Públicos Dirigidos";
+			$recomendacion54="\n\n 4448691 ext 109";
+			$recomendacion55="\n\n 3147984567";
+			$recomendacion56="\n\n inscripcionespublicos@fiestadellibroylacultura.com";
+			$dia_taller= date('d M Y', strtotime($condiciond));
+			$hora_taller= date('h i a', strtotime($condiciont));
+			$hora_recorrido= date('h i a', strtotime($condiciontra));
+			$Email->send($mensaje1.$mensaje12.$mensaje11.$dia_taller.
+			$mensaje2.$condicionnom.$mensaje3.$hora_taller.$mensaje4.
+			$hora_recorrido.$mensaje5.$rname.$mensaje6.$rcelular.$mensaje7.
+			$institutionnumber.$recomendaciones.$recomendacion10.$recomendacion1.$recomendacion11.$recomendacion12.$recomendacion21.
+			$recomendacion32.$recomendacion41.$recomendacion42.$recomendacion43.$recomendacion44.$recomendacion45.$recomendacion46.
+			$recomendacion47.$recomendacion48.$recomendacion49.$recomendacion40.$recomendacion50.$recomendacion51.$recomendacion52.
+			$recomendacion53.$recomendacion54.$recomendacion55.$recomendacion56);
 
 		}
 	}
