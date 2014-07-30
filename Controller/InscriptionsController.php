@@ -389,11 +389,9 @@ class InscriptionsController extends AppController {
 			if ($this->Inscription->save($this->request->data)) {
 				$nitn=$this->Inscription->query("update inscriptions set nit ='$nitc' where nit='$nit'");
 				$this->Session->setFlash(__('The inscription has been saved.'));
-				//$nit= $this->request->data['Inscription']['nit'];
 				$ciudad= $this->request->data['Inscription']['representative_city'];
 				$razon_social= $this->request->data['Inscription']['company_name'];
 				//enviar información del correo...
-				//$correoi=$this->User->query("select distinct mail from responsible inner join (insitution inner join user on institution.id_institution=user.institution_id)on responsible.institution_id=institution.id_institution where id_responsible = '$crcedula'");
 				$citacion=$this->Inscription->query("select distinct date_name from date where inscription_id='$nitc'");
 					
 				$citacionn = '';

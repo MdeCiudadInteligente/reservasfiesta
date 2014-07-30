@@ -1,10 +1,11 @@
 ﻿<?php if ($ciudad == "Medellin"){ ?>
 <script language="javascript">
 document.getElementById('comuna').style.visibility = 'visible';
+document.getElementById('neighborhood').style.visibility = 'visible';
 </script>
 <B><label>Comuna Grupo</label></B>
-<select name="data[Institution][comune]" id="InstitutionComune">
-<option value="Selecione la comuna">Selecione la comuna</option>
+<select name="data[Institution][comune]" id="InstitutionComune" required="required">
+<option value="">Selecione la comuna</option>
 <option value="Comuna 1 - Popular">Comuna 1 - Popular</option>
 <option value="Comuna 2 - Santa Cruz">Comuna 2 - Santa Cruz</option>
 <option value="Comuna 3 - Manrique">Comuna 3 - Manrique</option>
@@ -27,6 +28,10 @@ document.getElementById('comuna').style.visibility = 'visible';
 <option value="Comuna 80 - San Antonio de Prado">Comuna - San Antonio de Prado </option>
 <option value="Comuna 90 - Santa Elena">Comuna - Santa Elena</option>
 </select>
+<br>
+<br>
+<B><label for="InstitutionNeighborhood">Barrio</label></B>
+<input id="InstitutionNeighborhood" required="required" maxlength="45" name="data[Institution][neighborhood]">
 <?php 
 }
 
@@ -35,10 +40,17 @@ else{
 <script language="javascript">
 document.getElementById("InstitutionComune").options[0].selected = true;
 </script>
+<br>
+<br>
+<?php if ($ciudad == "Otras"){?>
+<B><label for="InstitutionCity2">Nombre de la ciudad o municipio</label></B>
+<input id="InstitutionCity2" required="required" maxlength="45" name="data[Institution][city2]">
 <div></div>
 <?php 
 }
-
+?>
+<?php 
+}
 ?>
 
 	

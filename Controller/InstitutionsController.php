@@ -112,6 +112,9 @@ class InstitutionsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			
+			if ($this->request->data['Institution']['city']=="Otras")
+				$this->request->data['Institution']['city']=$this->request->data['Institution']['city2'];
 			$this->Institution->create();
 			if ($this->Institution->save($this->request->data)) {
 				$this->Session->setFlash(__('The institution has been saved.'));

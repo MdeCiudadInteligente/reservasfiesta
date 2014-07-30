@@ -87,13 +87,27 @@ class ResponsiblesController extends AppController {
 				//return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
 			//}
 			//else
-				
-			if ($this->Responsible->save($this->request->data)) {
-				$this->Session->setFlash(__('El responsable ha sido guardado.'));
-				//return $this->redirect(array('action' => 'index'));
-				return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
-			} else {
-				$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+			
+			//Verificación por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma institución.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podría limpiar.
+			$existeinstitucion=$this->Responsible->find('first', array('conditions'=>array('Responsible.institution_id' => $institutionid)));
+			if ($existeinstitucion==array()){
+				if ($this->Responsible->save($this->request->data)) {
+					$this->Session->setFlash(__('El responsable ha sido guardado.'));
+					//return $this->redirect(array('action' => 'index'));
+					return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
+				} else {
+					$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+				}
+			}
+			else{
+				//Si se devolvió, pero quiere volver a avanzar utilizando la misma cédula, se puede permitir que vaya a crear el usuario.  Sino tiene la misma cédula se devuelve al formulario de institución.  Esta operación puede generar basura, pero se puede limpiar.
+				if ($existeinstitucion['Responsible']['identity']!=$this->request->data['Responsible']['identity']){
+					$this->Session->setFlash(__('El responsable con su institución no pudieron ser guardados. Por favor, inténtelo de nuevo.'));
+					return $this->redirect(array('controller' => 'institutions', 'action' => 'add'));
+				}
+				else{
+					return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
+				}
 			}
 		}		
 		$institutions = $this->Responsible->Institution->find('list',array('order'=>array('Institution.name ASC')));

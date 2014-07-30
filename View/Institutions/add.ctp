@@ -68,15 +68,19 @@ function checkSubmit()
 		echo $this->Form->input('mail',array('label'=>'Correo Grupo','maxLength'=>'80','type'=>'email','onchange'=>'validarEmail(this.value)'));
 		echo $this->Form->input('address',array('label'=>'Dirección Grupo','maxLength'=>'80'));
 		echo $this->Form->input('phone',array('label'=>'Teléfono Grupo','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('city',array ('id' => 'city','type'=>'select','options' => array ('Medellin'=>'Medellin','Otras'=>'Otras'),'label'=>'Ciudad Grupo','empty'=>'Seleccione ciudad del grupo'));
+		echo $this->Form->input('city',array ('id' => 'city','type'=>'select','options' => array ('Medellin'=>'Medellin','Otras'=>'Otra ciudad o municipio'),'label'=>'Ciudad Grupo','empty'=>'Seleccione ciudad del grupo'));
 				
 	?>
-		<div id="hola" class="input select">
-		<?php echo $this->Form->input('comune',array('type'=>'hidden','label'=>'Comuna Grupo'));?>
+		<div id="hola" class="input select required">
+		<?php 
+			echo $this->Form->input('comune',array('type'=>'hidden','label'=>'Comuna Grupo'));
+			echo $this->Form->input('neighborhood',array('type'=>'hidden','label'=>'Barrio Grupo'));
+		
+		?>
 		</div>
 	<?php 
-		echo $this->Form->input('neighborhood',array('label'=>'Barrio Grupo'));
-		echo $this->Form->input('members_number',array('label'=>'Número de integrantes Grupo','options' => array ('5'=>'5',
+		
+		echo $this->Form->input('members_number',array('label'=>'Número de integrantes Grupo','empty'=>'Seleccione','options' => array ('5'=>'5',
 		        '6'=>'6',
 				'7'=>'7',
 				'8'=>'8',
@@ -123,7 +127,7 @@ function checkSubmit()
 										
 																		'41 - 65 Adultos'=>'41 - 65 Adultos',
 																		'66 - ... Adultos mayores'=>'66 - ... Adultos mayores')));*/
-		echo $this->Form->input('public_type_id');		
+		echo $this->Form->input('public_type_id', array('empty'=>'Seleccione'));		
 		?>
 		<tr><td><p><b>Marque las condiciones específicas, si tiene alguna de estas.</b></p></td></tr>
 		<b><?php echo $this->Form->input('SpecificCondition', array('type' => 'select', 'multiple' => 'checkbox'));?></b>
