@@ -21,6 +21,7 @@ class Responsible extends AppModel {
  */
 	public $primaryKey = 'id_responsible';
 
+	
 /**
  * Display field
  *
@@ -28,13 +29,16 @@ class Responsible extends AppModel {
  */
 	public $displayField = 'name';
 
+	
+	
+	
 /**
  * Validation rules
  *
  * @var array
  */
 	public $validate = array(
-		'id_responsible' => array(
+		'identity' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',

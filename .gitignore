@@ -11,7 +11,7 @@ tmp/tests/*
 webroot/tmp/*
 webroot/assets
 webroot/index.php
-config/*
 .buildpath
 .project
 .settings
+index.php

@@ -3,7 +3,7 @@
  //Se obtienen los nombres que están dentro del array de Institución
  $line= $institutions[0]['Institution'];
  //Se mezclan los encabezados obtenidos más otros adicionales.
- $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'id_responsible'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
+ $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'identity'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
  //Se adiciona la linea de encabezados.
  $this->Csv->addRow(array_keys($line));
  
@@ -15,7 +15,7 @@
 	  //Se define la linea que se creará creando primero el array con los datos de la isntitución de la iteración actual
  	  $line = $institution['Institution'];
  	  //Se mezcla el array obtenido anteriormente con un nuevo array que contiene los demás campos, los cuales por ahora se ponen vacios.
-      $line = array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'id_responsible'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
+      $line = array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'identity'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
       
       $public_type_name=$institution['PublicType']['name'];
       
@@ -44,12 +44,12 @@
       //Se busca la información del responsable asociado a la Institución de la iteración actual.
       foreach ($responsibles as $responsible){
       	if ($responsible['Responsible']['institution_id']==$institution['Institution']['id_institution']){
-      	$id_responsible=$responsible['Responsible']['id_responsible'];
+      	$id_responsible=$responsible['Responsible']['identity'];
       	$responsible_name=$responsible['Responsible']['name'];
       	$responsible_celular=$responsible['Responsible']['celular'];
       	$responsible_mail=$responsible['Responsible']['mail'];
       	
-        $line['id_responsible']=$id_responsible;
+        $line['identity']=$id_responsible;
       	$line['responsible_name']=$responsible_name;
       	$line['responsible_celular']=$responsible_celular;
       	$line['responsible_mail']=$responsible_mail;

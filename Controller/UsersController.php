@@ -82,7 +82,7 @@ class UsersController extends AppController {
 	
 	public function userlist($cedresponsable=null) {
 		$this->set('cedresponsable',$cedresponsable);
-		$allusers=$this->User->query("select distinct user.id_user,user.username from responsible inner join (user inner join institution on institution.id_institution=user.institution_id) on  responsible.institution_id= institution.id_institution where responsible.id_responsible = '$cedresponsable'");
+		$allusers=$this->User->query("select distinct user.id_user,user.username from responsible inner join (user inner join institution on institution.id_institution=user.institution_id) on  responsible.institution_id= institution.id_institution where responsible.identity = '$cedresponsable'");
 		$this->set(compact('allusers'));
 		
 		$this->User->recursive = 0;
@@ -124,10 +124,12 @@ class UsersController extends AppController {
 		$this->set('cedresponsable',$cedresponsable);	
 				
 		//$correo = $this->request->data['Responsible']['mail'];
-		$correo=$this->User->query("select mail from responsible where id_responsible = '$cedresponsable'");
+		$correo=$this->User->query("select mail from responsible where identity = '$cedresponsable'");
 		$this->set('correo',$correo);		
 		$Email = new CakeEmail('gmail');
 		$Email->from(array('yypv27@hotmail.com' => 'Fiesta del Libro y la Cultura'));
+		
+		//Se busca el último registro correspondiente a la cédula del responsable.  Esto funciona porque el último debió ser justo el que acabó de entrar.  Pero es poco elegante.  Debería cambiarse para recupere por el id del responsable actual.
 		foreach ($correo as $correo):
 		$email_c = $correo['responsible']['mail'];
 		endforeach;

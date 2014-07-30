@@ -79,14 +79,15 @@ class ResponsiblesController extends AppController {
 		$this->set('institutionid',$institutionid);
 		if ($this->request->is('post')) {
 			$this->Responsible->create();
-			$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
-			$responsable_adduser_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_respons_adduser)));
-			if($responsable_adduser_id != array())
-			{
-				$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
-				return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
-			}
-			else
+			//$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
+			//$responsable_adduser_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_respons_adduser)));
+			//if($responsable_adduser_id != array())
+			//{
+				//$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
+				//return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
+			//}
+			//else
+				
 			if ($this->Responsible->save($this->request->data)) {
 				$this->Session->setFlash(__('El responsable ha sido guardado.'));
 				//return $this->redirect(array('action' => 'index'));
@@ -103,13 +104,13 @@ class ResponsiblesController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Responsible->create();
-			$id_responsable = $this->request->data['Responsible']['id_responsible'];
-			$responsable_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_responsable)));
-			if($responsable_id != array())
-			{
-				$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
-			}
-			else 
+			//$id_responsable = $this->request->data['Responsible']['id_responsible'];
+			//$responsable_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_responsable)));
+			//if($responsable_id != array())
+			//{
+				//$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
+			//}
+			//else 
 			if ($this->Responsible->save($this->request->data)) {			
 				$this->Session->setFlash(__('El responsable ha sido guardado.'));
 				

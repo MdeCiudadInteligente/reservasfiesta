@@ -122,7 +122,7 @@ function validar() {
 
 		<?php 
 		//echo $this->Form->input('institution_id');
-		echo $this->Form->input('id_responsible',array('type'=>'text','label'=>'Cédula Responsable','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('identity',array('label'=>'Cédula Responsable','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('name',array('label'=>'Nombre Responsable','maxLength'=>'256'));
 		echo $this->Form->input('celular',array('label'=>'Celular Responsable','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('mail',array('label'=>'Correo Responsable','maxLength'=>'80','type'=>'email','onchange'=>'validarCorreo(this.value)'));

@@ -3,7 +3,7 @@
 	<h2><?php echo __('Responsibles'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_responsible'); ?></th>
+			<th><?php echo $this->Paginator->sort('identity'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('celular'); ?></th>
 			<th><?php echo $this->Paginator->sort('mail'); ?></th>
@@ -12,7 +12,7 @@
 	</tr>
 	<?php foreach ($responsibles as $responsible): ?>
 	<tr>
-		<td><?php echo h($responsible['Responsible']['id_responsible']); ?>&nbsp;</td>
+		<td><?php echo h($responsible['Responsible']['identity']); ?>&nbsp;</td>
 		<td><?php echo h($responsible['Responsible']['name']); ?>&nbsp;</td>
 		<td><?php echo h($responsible['Responsible']['celular']); ?>&nbsp;</td>
 		<td><?php echo h($responsible['Responsible']['mail']); ?>&nbsp;</td>
