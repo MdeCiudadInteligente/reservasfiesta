@@ -41,7 +41,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $institution['Institution']['id_institution'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $institution['Institution']['id_institution'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $institution['Institution']['id_institution']), null, __('Are you sure you want to delete # %s?', $institution['Institution']['id_institution'])); ?>
+			<?php //No se debe permitir borrar// echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $institution['Institution']['id_institution']), null, __('Are you sure you want to delete # %s?', $institution['Institution']['id_institution'])); ?>
 		</td>
 	</tr><?php }?>
 <?php endforeach; ?>
