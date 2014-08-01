@@ -286,8 +286,8 @@ class WorkshopsController extends AppController {
 			$Email->cc($email_c2);
 			$Email->subject('Inscripción exitosa!!!');
 			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
-			$mensaje1="\n\nQue bien!!! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes "; 
-			$mensaje12="hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (si no tienes disponible impresora en el momento, puedes volver a ingresar en cualquier momento con tu usuario y contraseña para imprimirla,además te llegará una copia a tu correo electrónico) \n\n";
+			$mensaje1="\n\nQué bien!!! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes "; 
+			$mensaje12="hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (si no tienes disponible impresora en el momento, puedes volver a ingresar en cualquier momento con tu usuario y contraseña para imprimirla, además te llegará una copia a tu correo electrónico) \n\n";
 			$mensaje11="El Día: ";			
 			$mensaje2="\nNombre Taller: ";			
 			$mensaje3="\nHora Taller: ";		

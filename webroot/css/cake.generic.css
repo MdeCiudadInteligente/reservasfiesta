@@ -85,7 +85,7 @@ float: left;
 }
 
 #header {
-background: url('../img/banner-aplicativo.jpg') no-repeat;
+background: url('../img/banner-aplicativon.jpg') no-repeat;
 height: 107px;
 width: 1022px;
 /* width: 75%; */
@@ -107,7 +107,7 @@ width: 50%;
 }
 
 #containerheader{
-	width: 100%;
+	width: 102%;
 	height: 1px;
 }
 

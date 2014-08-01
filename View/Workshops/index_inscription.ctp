@@ -20,7 +20,7 @@ window.print();
 			if ($condicionp != 0)
 			{			
 
-					echo "¡Qué bien! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (Si no tienes disponible impresora en el momento puedes volver a ingresar con tu usuario y contraseña para imprimirla,además te llegará una copia a tu correo electrónico). </br></br></br>";
+					echo "¡Qué bien! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (Si no tienes disponible impresora en el momento puedes volver a ingresar con tu usuario y contraseña para imprimirla, además te llegará una copia a tu correo electrónico). </br></br></br>";
 					echo "El Día:\n";
 					
 					//echo $institutionidp;
