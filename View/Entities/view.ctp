@@ -12,12 +12,13 @@
 			<?php echo h($entity['Entity']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('URL de la Entidad:'); ?></dt>
+		<dt><?php echo __('URL de la Entidad: '); ?></dt>
 		<dd>
 			<?php //echo h($entity['Entity']['description']); ?>
 			
-			<?php $link='https://'.$urls;?>
+			<?php $link='http://'.$urls;?>
 			<?php echo $this->Html->link($urls,$link,array('target' => '_blank', 'escape' => false)); ?>
+
 			&nbsp;
 			
 		</dd>
