@@ -28,7 +28,7 @@ function goBack()
 	<?php
 	//echo $institutionid;
 		//echo $this->Form->input('institution_id');
-		echo $this->Form->input('code',array('type'=>'text','label'=>'Código DANE','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('code',array('type'=>'text','label'=>'Código DANE','maxLength'=>'12','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('type',array ('options' => array ('Institución Educativa Pública'=>'Institución Educativa Pública',
 																  'Institución Educativa Privada'=>'Institución Educativa Privada'),'label'=>'Tipo Institución Educativa'));
 		//echo $this->Form->input('grade');
