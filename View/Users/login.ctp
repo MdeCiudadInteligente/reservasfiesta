@@ -2,14 +2,13 @@
 <?php $this->set('title_for_layout' , 'Ingreso' );?>
 Bienvenidos
 </br></br>
-Este es un portal para cambiarte la vida a través de la lectura.
+Este es un portal en el que hemos trabajado fuertemente con el fin de facilitar las inscripciones para participar en los talleres de fomento de lectura de la Fiesta del Libro y la Cultura.
 </br></br>
-Inscríbete a nuestras visitas guiadas y talleres de promoción. Tú mismo podrás decidir la fecha, la hora y el taller en el que participarás.
-Para iniciar el proceso debes registrarte y  crear un usuario. Si ya lo creaste, ingresa tus datos y separa tu participación.
+Inscríbete, tú mismo podrás decidir la fecha, la hora y el taller en el que participarás. Para iniciar el proceso debes registrarte y crear un usuario. Si ya lo creaste, ingresa tus datos y separa tu participación. 
 </br></br>
-Un abrazo.
+En la zona de Jardín Lectura Viva podrán descubrir desde el arte, la música, la ciencia, la literatura, los juegos y la pintura  las diversas formas de leer. 
 </br></br>
-8a. Fiesta del Libro y la Cultura.
+¡Déjate sorprender!
 </div>
 <!--  <div class="inscription">
 

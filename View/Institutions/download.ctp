@@ -2,7 +2,7 @@
  //Se crea la linea de encabezado
  //Se obtienen los nombres que están dentro del array de Institución
  //$line= $institutions[0]['Institution'];
- $line=(array('id_institution'=>"",array('label' => __('User')),'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'members_number'=>"",'institution_type'=>"",'creation_timestamp'=>""));
+ $line=(array('id_institution'=>"",'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'members_number'=>"",'institution_type'=>"",'creation_timestamp'=>""));
  //Se mezclan los encabezados obtenidos más otros adicionales.
  $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'identity'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
  //Se adiciona la linea de encabezados.

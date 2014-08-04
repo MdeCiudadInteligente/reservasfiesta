@@ -369,6 +369,7 @@ class InscriptionsController extends AppController {
 			$nit= $this->request->data['Inscription']['nit'];
 			$digitover= $this->request->data['Inscription']['digitoverificacion'];
 			
+			
 			$this->set('digitover',$digitover);
 			$nitc=$nit.'-'.$digitover;
 			
