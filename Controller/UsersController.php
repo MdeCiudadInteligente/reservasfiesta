@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 App::uses('AppController', 'Controller');
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 App::uses('CakeEmail', 'Network/Email');
@@ -47,7 +47,7 @@ class UsersController extends AppController {
 	public function login($newpassword=null) {
 		/*if($newpassword!='')
 		{
-			$this->Session->setFlash(__('La contrase�a se ha modificado exitosamente'));
+			$this->Session->setFlash(__('La contraseña se ha modificado exitosamente'));
 		}*/
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
@@ -129,12 +129,12 @@ class UsersController extends AppController {
 		$Email = new CakeEmail('gmail');
 		$Email->from(array('yypv27@hotmail.com' => 'Fiesta del Libro y la Cultura'));
 		
-		//Se busca el �ltimo registro correspondiente a la c�dula del responsable.  Esto funciona porque el �ltimo debi� ser justo el que acab� de entrar.  Pero es poco elegante.  Deber�a cambiarse para recupere por el id del responsable actual.
+		//Se busca el último registro correspondiente a la cédula del responsable.  Esto funciona porque el último debió ser justo el que acabó de entrar.  Pero es poco elegante.  Debería cambiarse para recupere por el id del responsable actual.
 		foreach ($correo as $correo):
 		$email_c = $correo['responsible']['mail'];
 		endforeach;
 		$Email->to($email_c);
-		$Email->subject('Link para recuperaci�n de contrase�a');
+		$Email->subject('Link para recuperación de contraseña');
 		$link='http://aplicaciones.medellin.co/reservasfiestadellibro/users/updateuserlogin/'.$userupd;
 		$mensaje= "\n\nBIENVENIDO A LA INSCRIPCIÓN DE VISITAS GUIADAS PARA LA FIESTA DEL LIBRO Y LA CULTURA 
 \nJardín Lectura Viva es una estrategia de divulgación artística, académica y cultural que tiene en su corazón la promoción de lectura entre el público más joven. Aquí, instituciones educativas, fundaciones y corporaciones que trabajan por el fomento de la literatura se reúnen para acoger a toda la ciudadanía con actividades que incluyen la música, la pintura y la ciencia como recursos para dar a conocer libros y escritores de todas las culturas y regiones. 
@@ -142,7 +142,7 @@ class UsersController extends AppController {
 		$Email->send("Por favor de clic en el siguiente link o copielo y peguelo en su navegador ".$link.$mensaje);		
 	}
 	
-	//Creacion de funcion para recuperar el usuario y su contrase�a...
+	//Creacion de funcion para recuperar el usuario y su contraseña...
 	public function updateuserlogin($userupd = null) 
 	{					
 		$this->set('userupd',$userupd);	
@@ -163,11 +163,11 @@ class UsersController extends AppController {
 			$update_usuarios=$this->User->query("UPDATE user SET password = '$clavencriptada' where username = '$userupd'");
 			$this->set(compact('update_usuarios'));	
 			
-			$this->Session->setFlash(__('La contrase�a se ha modificado exitosamente'));
+			$this->Session->setFlash(__('La contraseña se ha modificado exitosamente'));
 			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
 			}
 			else{
-			$this->Session->setFlash(__('Las contrase�as no coinciden, por favor ingreselas nuevamente'));
+			$this->Session->setFlash(__('Las contraseñas no coinciden, por favor ingreselas nuevamente'));
 			return $this->redirect(array('controller' => 'users', 'action' => 'updateuserlogin',$userupd));	
 			}
 		}		
@@ -199,7 +199,7 @@ class UsersController extends AppController {
 		  }
 		  
 		  else {
-		  	$this->Session->setFlash(__('El nombre de usuario no est� disponible, por favor ingrese uno nuevo.'));
+		  	$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
 		  }
 		  
 		}
@@ -236,7 +236,7 @@ class UsersController extends AppController {
 			}
 		  }
 		  else {
-		  	$this->Session->setFlash(__('El nombre de usuario no est� disponible, por favor ingrese uno nuevo.'));
+		  	$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
 		  }	
 		}
 		$institutions = $this->User->Institution->find('list');

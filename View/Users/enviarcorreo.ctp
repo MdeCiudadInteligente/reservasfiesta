@@ -11,8 +11,8 @@
 	</table>
 </div>
 <div class="actions">
-	<h3><?php echo __('Opciones'); ?></h3>
+	<h3><?php //echo __('Opciones'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 	</ul>
 </div>

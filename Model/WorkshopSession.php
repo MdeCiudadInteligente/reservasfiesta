@@ -25,7 +25,7 @@ class WorkshopSession extends AppModel {
 		// set the filename to read CSV from
 		//$filename = 'file\\uploads\\'.$filename;
 		
-		$filename = 'C:/xampp/htdocs/fiestadellibro/webroot/file/uploads/workshop_session/'.$filename;
+		$filename = '/opt/lampp/htdocs/reservasfiestadellibro/webroot/file/uploads/workshop_session/'.$filename;
 		//$filename = 'file' . DS . 'uploads' . DS . 'workshopsession' . DS .$filename;
 		//debug($filename);
 		// open the file
