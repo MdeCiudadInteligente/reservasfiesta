@@ -65,19 +65,6 @@ class SpecificCondition extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-		'Institution' => array(
-			'className' => 'Institution',
-			'joinTable' => 'institution_specific_condition',
-			'foreignKey' => 'specific_condition_id',
-			'associationForeignKey' => 'institution_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-		),
 		'Workshop' => array(
 			'className' => 'Workshop',
 			'joinTable' => 'specific_condition_workshop',
