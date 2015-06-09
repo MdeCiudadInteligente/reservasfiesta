@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Institution $Institution
  * @property SpecificCondition $SpecificCondition
  */
-class GroupsSpecificConditionextends AppModel {
+class GroupSpecificCondition extends AppModel {
 
 /**
  * Use table

@@ -1,9 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * InstitutionSpecificConditions Controller
+ * GroupSpecificConditions Controller
  *
- * @property InstitutionSpecificCondition $InstitutionSpecificCondition
+ * @property GroupSpecificCondition $GroupSpecificCondition
  * @property PaginatorComponent $Paginator
  */
 class GroupSpecificConditionsController extends AppController {
@@ -21,8 +21,9 @@ class GroupSpecificConditionsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->GrouppecificCondition->recursive = 0;
-		$this->set('institutionSpecificConditions', $this->Paginator->paginate());
+		
+		$this->GroupSpecificCondition->recursive = 0;
+		$this->set('groupSpecificConditions', $this->Paginator->paginate());
 	}
 
 /**
@@ -33,11 +34,11 @@ class GroupSpecificConditionsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->InstitutionSpecificCondition->exists($id)) {
-			throw new NotFoundException(__('Invalid institution specific condition'));
+		if (!$this->GroupSpecificCondition->exists($id)) {
+			throw new NotFoundException(__('Invalid group specific condition'));
 		}
-		$options = array('conditions' => array('InstitutionSpecificCondition.' . $this->InstitutionSpecificCondition->primaryKey => $id));
-		$this->set('institutionSpecificCondition', $this->InstitutionSpecificCondition->find('first', $options));
+		$options = array('conditions' => array('GroupSpecificCondition.' . $this->GroupSpecificCondition->primaryKey => $id));
+		$this->set('groupSpecificConditions', $this->GroupSpecificCondition->find('first', $options));
 	}
 
 /**
@@ -47,12 +48,12 @@ class GroupSpecificConditionsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->InstitutionSpecificCondition->create();
-			if ($this->InstitutionSpecificCondition->save($this->request->data)) {
-				$this->Session->setFlash(__('The institution specific condition has been saved.'));
+			$this->GroupSpecificCondition->create();
+			if ($this->GroupSpecificCondition->save($this->request->data)) {
+				$this->Session->setFlash(__('The group specific condition has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The institution specific condition could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The group specific condition could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -65,19 +66,19 @@ class GroupSpecificConditionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->InstitutionSpecificCondition->exists($id)) {
-			throw new NotFoundException(__('Invalid institution specific condition'));
+		if (!$this->GroupSpecificCondition->exists($id)) {
+			throw new NotFoundException(__('Invalid group specific condition'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->InstitutionSpecificCondition->save($this->request->data)) {
-				$this->Session->setFlash(__('The institution specific condition has been saved.'));
+			if ($this->GroupSpecificCondition->save($this->request->data)) {
+				$this->Session->setFlash(__('The group specific condition has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The institution specific condition could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The group specific condition could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('InstitutionSpecificCondition.' . $this->InstitutionSpecificCondition->primaryKey => $id));
-			$this->request->data = $this->InstitutionSpecificCondition->find('first', $options);
+			$options = array('conditions' => array('GroupSpecificCondition.' . $this->GroupSpecificCondition->primaryKey => $id));
+			$this->request->data = $this->GroupSpecificCondition->find('first', $options);
 		}
 	}
 
@@ -89,15 +90,15 @@ class GroupSpecificConditionsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->InstitutionSpecificCondition->id = $id;
-		if (!$this->InstitutionSpecificCondition->exists()) {
-			throw new NotFoundException(__('Invalid institution specific condition'));
+		$this->GroupSpecificCondition->id = $id;
+		if (!$this->GroupSpecificCondition->exists()) {
+			throw new NotFoundException(__('Invalid group specific condition'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->InstitutionSpecificCondition->delete()) {
-			$this->Session->setFlash(__('The institution specific condition has been deleted.'));
+		if ($this->GroupSpecificCondition->delete()) {
+			$this->Session->setFlash(__('The group specific condition has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The institution specific condition could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The group specific condition could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}}
