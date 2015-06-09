@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property InstitutionSpecificCondition $InstitutionSpecificCondition
  * @property PaginatorComponent $Paginator
  */
-class InstitutionSpecificConditionsController extends AppController {
+class GroupSpecificConditionsController extends AppController {
 
 /**
  * Components

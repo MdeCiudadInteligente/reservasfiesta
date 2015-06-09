@@ -1,5 +1,5 @@
 ﻿<script type="text/javascript">
-<?php $this->set('title_for_layout' , 'Agregar grupo' );?>
+<?php $this->set('title_for_layout' , 'Agregar Institucion' );?>
 function goBack()
   {
   		window.history.back()
@@ -64,86 +64,29 @@ function checkSubmit()
 		<legend><?php //echo __('Add Institution'); ?></legend>
 	<?php
 		//echo $this->Form->input('id_institution',array('type'=>'text'));
-		echo $this->Form->input('name',array('label'=>'Nombre Grupo','maxLength'=>'256'));
-		echo $this->Form->input('mail',array('label'=>'Correo Grupo','maxLength'=>'80','type'=>'email','onchange'=>'validarEmail(this.value)'));
-		echo $this->Form->input('address',array('label'=>'Dirección Grupo','maxLength'=>'80'));
-		echo $this->Form->input('phone',array('label'=>'Teléfono Grupo','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('name',array('label'=>'Nombre Institución','maxLength'=>'256'));
+		echo $this->Form->input('mail',array('label'=>'Correo Institución','maxLength'=>'80','type'=>'email','onchange'=>'validarEmail(this.value)'));
+		echo $this->Form->input('address',array('label'=>'Dirección Institución','maxLength'=>'80'));
+		echo $this->Form->input('phone',array('label'=>'Teléfono Institución','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
 		echo $this->Form->input('city',array ('id' => 'city','type'=>'select','options' => array ('Medellin'=>'Medellin','Otras'=>'Otra ciudad o municipio'),'label'=>'Ciudad Grupo','empty'=>'Seleccione ciudad del grupo'));
-				
 	?>
-		<div id="hola" class="input select required">
+	
+	<div id="hola" class="input select required">
 		<?php 
 			echo $this->Form->input('comune',array('type'=>'hidden','label'=>'Comuna Grupo'));
 			echo $this->Form->input('neighborhood',array('type'=>'hidden','label'=>'Barrio Grupo'));
 		
 		?>
+	</div>
+	<br><br>
+		
+	<?php echo $this->Form->input('inst_type',array ('id' => 'inst_type_id','type'=>'select','options' => array ('Institucion Educativa'=>'Institucion Educativa','Institucion Independiente'=>'Institucion Independiente'),'label'=>'Tipo de Grupo','empty'=>'Seleccione tipo de grupo'));?>
+	<div id="hola2" class="input select required">
+			<?php 
+				echo $this->Form->input('educational_inst_type',array('type'=>'hidden','label'=>'Tipo Institución educativa'));
+				echo $this->Form->input('code_education',array('type'=>'hidden','label'=>'Código DANE'));		
+			?>
 		</div>
-	<?php 
-		
-		echo $this->Form->input('members_number',array('label'=>'Número de integrantes Grupo','empty'=>'Seleccione','options' => array ('5'=>'5',
-		        '6'=>'6',
-				'7'=>'7',
-				'8'=>'8',
-				'9'=>'9',
-				'10'=>'10',
-				'11'=>'11',
-				'12'=>'12',
-				'13'=>'13',
-				'14'=>'14',
-				'15'=>'15',
-				'16'=>'16',
-				'17'=>'17',
-				'18'=>'18',
-				'19'=>'19',
-				'20'=>'20',
-				'21'=>'21',
-				'22'=>'22',
-				'23'=>'23',
-				'24'=>'24',
-				'25'=>'25',
-				'26'=>'26',
-				'27'=>'27',
-				'28'=>'28',
-				'29'=>'29',
-				'30'=>'30',
-				'31'=>'31',
-				'32'=>'32',
-				'33'=>'33',
-				'34'=>'34',
-				'35'=>'35',
-				'36'=>'36',
-				'37'=>'37',
-				'38'=>'38',
-				'39'=>'39',
-				'40'=>'40',
-				
-		
-		)));	
-		/*echo $this->Form->input('age_range',array ('options' => array ('0 - 6 Primera infancia'=>'0 - 6 Primera infancia',
-																		'7 - 12 Niños'=>'7 - 12 Niños',
-																		'13 - 18 Jóvenes'=>'13 - 18 Jóvenes',
-																		'19 - 26 Jóvenes'=>'19 - 26 Jóvenes',
-																		'27 - 40 Adultos'=>'27 - 40 Adultos',
-										
-																		'41 - 65 Adultos'=>'41 - 65 Adultos',
-																		'66 - ... Adultos mayores'=>'66 - ... Adultos mayores')));*/
-		echo $this->Form->input('public_type_id', array('empty'=>'Seleccione'));		
-		?>
-		<tr><td><p><b>Marque las condiciones específicas, si tiene alguna de estas.</b></p></td></tr>
-		<b><?php echo $this->Form->input('SpecificCondition', array('type' => 'select', 'multiple' => 'checkbox'));?></b>
-		<?php echo $this->Form->input('institution_type',array ('label'=>'Tipo de grupo','id' => 'institution_type','type'=>'select','options' => array ('Grupo'=>'Grupo','Institución Educativa'=>'Institución Educativa'),'empty'=>'Seleccione'));
-
-
-		//echo $this->Form->input('workshop_session_id');
-
-		?>
-		 <!--  <input name="data[Institution][workshop_session_id]" value="1" id="WorkshopSessionId" type="hidden"/>-->
-	    <?php 
-		//echo $this->Form->input('workshop_session_id');
-
-		//echo $this->Form->input('SpecificCondition');
-
-	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Continuar')); ?>
 </div>
@@ -183,6 +126,22 @@ $this->Js->get('#city')->event('change',
 			))
 		))
 	);
+
+$this->Js->get('#inst_type_id')->event('change',
+		$this->Js->request(array(
+				'controller'=>'institutions',
+				'action'=>'getbytype'
+		), array(
+				'update'=>'#hola2',
+				'async' => true,
+				'method' => 'post',
+				'dataExpression'=>true,
+				'data'=> $this->Js->serializeForm(array(
+						'isForm' => true,
+						'inline' => true
+				))
+		))
+);
 
 $this->Js->get('#institution_type')->event('change',
 		$this->Js->request(array(

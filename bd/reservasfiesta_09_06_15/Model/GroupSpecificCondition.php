@@ -1,33 +1,33 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * EducationalInstitution Model
+ * InstitutionSpecificCondition Model
  *
- * @property Responsible $Responsible
  * @property Institution $Institution
+ * @property SpecificCondition $SpecificCondition
  */
-class EducationalInstitution extends AppModel {
+class GroupSpecificConditionextends AppModel {
 
 /**
  * Use table
  *
  * @var mixed False or table name
  */
-	public $useTable = 'educational_institution';
+	public $useTable = 'institution_specific_condition';
 
 /**
  * Primary key field
  *
  * @var string
  */
-	public $primaryKey = 'code';
+	public $primaryKey = 'specific_condition_id';
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'code';
+	public $displayField = 'institution_id';
 
 /**
  * Validation rules
@@ -35,37 +35,17 @@ class EducationalInstitution extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'code' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'type' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		/*'grade' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),*/
 		'institution_id' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'specific_condition_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -80,13 +60,6 @@ class EducationalInstitution extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * hasOne associations
- *
- * @var array
- */
-
-
-/**
  * belongsTo associations
  *
  * @var array
@@ -95,6 +68,13 @@ class EducationalInstitution extends AppModel {
 		'Institution' => array(
 			'className' => 'Institution',
 			'foreignKey' => 'institution_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'SpecificCondition' => array(
+			'className' => 'SpecificCondition',
+			'foreignKey' => 'specific_condition_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
