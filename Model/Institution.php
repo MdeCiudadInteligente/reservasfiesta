@@ -105,7 +105,7 @@ class Institution extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		/*'comune' => array(
+		'inst_type' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
@@ -114,7 +114,7 @@ class Institution extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),*/
+		),
 		'city' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),

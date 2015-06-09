@@ -143,11 +143,11 @@ $this->Js->get('#inst_type_id')->event('change',
 		))
 );
 
-$this->Js->get('#institution_type')->event('change',
+/*$this->Js->get('#institution_type')->event('change',
 		$this->Js->request(array(
 				'controller'=>'institutions',
 				'action'=>'options'
 		))
-);
+);*/
 
 ?>

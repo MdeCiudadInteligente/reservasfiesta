@@ -8,16 +8,21 @@ App::uses('AppController', 'Controller');
  */
 class InstitutionsController extends AppController {
 	
-	var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','EducationalInstitution','InstitutionSpecificCondition','SpecificCondition');
+var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','GroupSpecificCondition','SpecificCondition');
 	var $helpers = array('Html','Form','Csv','Js');
 
 	
 	public function getbycity() {
 		$ciudad = $this->request->data['Institution']['city'];
 		$this->set('ciudad',$ciudad);
-		$this->layout = 'ajax';
+		$this->layout = 'ajax';		
 	}
 	
+	public function getbytype() {
+		$type = $this->request->data['Institution']['inst_type'];
+		$this->set('type',$type);
+		$this->layout = 'ajax';
+	}
 	
 /**
  * Components
@@ -48,8 +53,13 @@ class InstitutionsController extends AppController {
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('add','getbycity');
+		$this->Auth->allow('add','getbycity','findinstitucion','getbytype');
 	}
+	
+	public function findinstitucion(){
+	
+	}
+	
 	
 	public function index() {
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
@@ -110,7 +120,7 @@ class InstitutionsController extends AppController {
  *
  * @return void
  */
-	public function add() {
+public function add() {
 		if ($this->request->is('post')) {
 			
 			if ($this->request->data['Institution']['city']=="Otras")
@@ -118,28 +128,20 @@ class InstitutionsController extends AppController {
 			$this->Institution->create();
 			if ($this->Institution->save($this->request->data)) {
 				$this->Session->setFlash(__('The institution has been saved.'));
-				$institution= $this->request->data['Institution']['name'];
-				$institutionid = $this->Institution->id;
+				//$institution= $this->request->data['Institution']['name'];
+				//$institutionid = $this->Institution->id;
 				//$institutionid= $this->request->data['Institution']['id_institution'];
-				$institutiontype= $this->request->data['Institution']['institution_type'];
+				//$institutiontype= $this->request->data['Institution']['institution_type'];
 				
-				if($institutiontype=='Grupo')
-				{
-					return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
-				
-				}
-				else{
-					return $this->redirect(array('controller' => 'EducationalInstitutions', 'action' => 'adduser',$institution,$institutionid));
-				}
 			} else {
 				$this->Session->setFlash(__('The institution could not be saved. Please, try again.'));
 			}
 		}
-		$publicTypes = $this->Institution->PublicType->find('list');
+		//$publicTypes = $this->Institution->PublicType->find('list');
 		//$workshopSessions = $this->Institution->WorkshopSession->find('list');
-		$specificConditions = $this->Institution->SpecificCondition->find('list');
+		//$specificConditions = $this->Institution->SpecificCondition->find('list');
 		//$this->set(compact('publicTypes', 'workshopSessions', 'specificConditions'));
-		$this->set(compact('publicTypes', 'specificConditions'));
+		//$this->set(compact('publicTypes', 'specificConditions'));
 	}
 
 /**

@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class InstitutionsController extends AppController {
 	
-	var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','InstitutionSpecificCondition','SpecificCondition');
+	var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','GroupSpecificCondition','SpecificCondition');
 	var $helpers = array('Html','Form','Csv','Js');
 
 	
