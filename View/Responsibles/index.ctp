@@ -1,28 +1,31 @@
-﻿<div class="responsibles index">
-<?php $this->set('title_for_layout' , 'Lista responsable' );?>
+<div class="responsibles index">
 	<h2><?php echo __('Responsibles'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('identity'); ?></th>
+			<th><?php echo $this->Paginator->sort('id_responsible'); ?></th>
+			<th><?php echo $this->Paginator->sort('username'); ?></th>
+			<th><?php echo $this->Paginator->sort('password'); ?></th>
+			<th><?php echo $this->Paginator->sort('permission_level'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('identity'); ?></th>
 			<th><?php echo $this->Paginator->sort('celular'); ?></th>
 			<th><?php echo $this->Paginator->sort('mail'); ?></th>
-			<th><?php echo $this->Paginator->sort('institution_id'); ?></th>
-			<th class="actions"><?php echo __('Opciones'); ?></th>
+			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($responsibles as $responsible): ?>
 	<tr>
-		<td><?php echo h($responsible['Responsible']['identity']); ?>&nbsp;</td>
+		<td><?php echo h($responsible['Responsible']['id_responsible']); ?>&nbsp;</td>
+		<td><?php echo h($responsible['Responsible']['username']); ?>&nbsp;</td>
+		<td><?php echo h($responsible['Responsible']['password']); ?>&nbsp;</td>
+		<td><?php echo h($responsible['Responsible']['permission_level']); ?>&nbsp;</td>
 		<td><?php echo h($responsible['Responsible']['name']); ?>&nbsp;</td>
+		<td><?php echo h($responsible['Responsible']['identity']); ?>&nbsp;</td>
 		<td><?php echo h($responsible['Responsible']['celular']); ?>&nbsp;</td>
 		<td><?php echo h($responsible['Responsible']['mail']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($responsible['Institution']['id_institution'], array('controller' => 'institutions', 'action' => 'view', $responsible['Institution']['id_institution'])); ?>
-		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $responsible['Responsible']['id_responsible'])); ?>
-			<?php //echo $this->Html->link(__('Edit'), array('action' => 'edit', $responsible['Responsible']['id_responsible'])); ?>
-			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $responsible['Responsible']['id_responsible']), null, __('Are you sure you want to delete # %s?', $responsible['Responsible']['id_responsible'])); ?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $responsible['Responsible']['id_responsible'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $responsible['Responsible']['id_responsible']), null, __('Are you sure you want to delete # %s?', $responsible['Responsible']['id_responsible'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -42,12 +45,8 @@
 	</div>
 </div>
 <div class="actions">
-	<h3><?php echo __('Opciones'); ?></h3>
+	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Responsible'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Educational Institutions'), array('controller' => 'educational_institutions', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Educational Institution'), array('controller' => 'educational_institutions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Responsible'), array('action' => 'add')); ?></li>
 	</ul>
 </div>

@@ -13,11 +13,7 @@ class ResponsibleTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.responsible',
-		'app.educational_institution',
-		'app.institution',
-		'app.workshop_session',
-		'app.user'
+		'app.responsible'
 	);
 
 /**

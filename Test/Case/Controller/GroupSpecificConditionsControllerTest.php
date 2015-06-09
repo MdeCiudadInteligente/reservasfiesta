@@ -1,11 +1,11 @@
 <?php
-App::uses('ResponsiblesController', 'Controller');
+App::uses('GroupSpecificConditionsController', 'Controller');
 
 /**
- * ResponsiblesController Test Case
+ * GroupSpecificConditionsController Test Case
  *
  */
-class ResponsiblesControllerTest extends ControllerTestCase {
+class GroupSpecificConditionsControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -13,7 +13,7 @@ class ResponsiblesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.responsible'
+		'app.group_specific_condition'
 	);
 
 /**

@@ -1,10 +1,8 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * InstitutionSpecificCondition Model
+ * GroupSpecificCondition Model
  *
- * @property Institution $Institution
- * @property SpecificCondition $SpecificCondition
  */
 class GroupSpecificCondition extends AppModel {
 
@@ -21,13 +19,6 @@ class GroupSpecificCondition extends AppModel {
  * @var string
  */
 	public $primaryKey = 'specific_condition_id';
-
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'group_id';
 
 /**
  * Validation rules
@@ -55,29 +46,5 @@ class GroupSpecificCondition extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-	);
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'Institution' => array(
-			'className' => 'Institution',
-			'foreignKey' => 'institution_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'SpecificCondition' => array(
-			'className' => 'SpecificCondition',
-			'foreignKey' => 'specific_condition_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
 	);
 }
