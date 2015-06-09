@@ -3,7 +3,7 @@
 document.getElementById('comuna').style.visibility = 'visible';
 document.getElementById('neighborhood').style.visibility = 'visible';
 </script>
-<B><label>Comuna Grupo</label></B>
+<B><label>Comuna Institución</label></B>
 <select name="data[Institution][comune]" id="InstitutionComune" required="required">
 <option value="">Selecione la comuna</option>
 <option value="Comuna 1 - Popular">Comuna 1 - Popular</option>

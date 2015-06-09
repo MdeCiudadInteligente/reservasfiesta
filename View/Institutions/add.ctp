@@ -64,23 +64,23 @@ function checkSubmit()
 		<legend><?php //echo __('Add Institution'); ?></legend>
 	<?php
 		//echo $this->Form->input('id_institution',array('type'=>'text'));
-		echo $this->Form->input('name',array('label'=>'Nombre Grupo','maxLength'=>'256'));
-		echo $this->Form->input('mail',array('label'=>'Correo Grupo','maxLength'=>'80','type'=>'email','onchange'=>'validarEmail(this.value)'));
-		echo $this->Form->input('address',array('label'=>'Dirección Grupo','maxLength'=>'80'));
-		echo $this->Form->input('phone',array('label'=>'Teléfono Grupo','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('city',array ('id' => 'city','type'=>'select','options' => array ('Medellin'=>'Medellin','Otras'=>'Otra ciudad o municipio'),'label'=>'Ciudad Grupo','empty'=>'Seleccione ciudad del grupo'));
+		echo $this->Form->input('name',array('label'=>'Nombre Institución','maxLength'=>'256'));
+		echo $this->Form->input('mail',array('label'=>'Correo Institución','maxLength'=>'80','type'=>'email','onchange'=>'validarEmail(this.value)'));
+		echo $this->Form->input('address',array('label'=>'Dirección Institución','maxLength'=>'80'));
+		echo $this->Form->input('phone',array('label'=>'Teléfono Institución','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
+		echo $this->Form->input('city',array ('id' => 'city','type'=>'select','options' => array ('Medellin'=>'Medellin','Otras'=>'Otra ciudad o municipio'),'label'=>'Ciudad Institución','empty'=>'Seleccione ciudad de la Institución'));
 				
 	?>
 		<div id="hola" class="input select required">
 		<?php 
-			echo $this->Form->input('comune',array('type'=>'hidden','label'=>'Comuna Grupo'));
-			echo $this->Form->input('neighborhood',array('type'=>'hidden','label'=>'Barrio Grupo'));
+			echo $this->Form->input('comune',array('type'=>'hidden','label'=>'Comuna Institución'));
+			echo $this->Form->input('neighborhood',array('type'=>'hidden','label'=>'Barrio Institución'));
 		
 		?>
 		</div>	
 		<br><br>
 			
-		<?php echo $this->Form->input('inst_type',array ('id' => 'inst_type_id','type'=>'select','options' => array ('Institucion Educativa'=>'Institucion Educativa','Institucion Independiente'=>'Institucion Independiente'),'label'=>'Tipo de Grupo','empty'=>'Seleccione tipo de grupo'));?>
+		<?php echo $this->Form->input('inst_type',array ('id' => 'inst_type_id','type'=>'select','options' => array ('Institucion Educativa'=>'Institucion Educativa','Institucion Independiente'=>'Institucion Independiente'),'label'=>'Tipo de Institución','empty'=>'Seleccione tipo de Institución'));?>
 		<div id="hola2" class="input select required">
 				<?php 
 					echo $this->Form->input('educational_inst_type',array('type'=>'hidden','label'=>'Tipo Institución educativa'));
