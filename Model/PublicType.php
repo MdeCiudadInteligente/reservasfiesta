@@ -65,8 +65,8 @@ class PublicType extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Institution' => array(
-			'className' => 'Institution',
+		'Group' => array(
+			'className' => 'Group',
 			'foreignKey' => 'public_type_id',
 			'dependent' => false,
 			'conditions' => '',
