@@ -199,7 +199,6 @@ class Institution extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-
 	);
 
 /**
@@ -230,6 +229,19 @@ class Institution extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
+	   'Institution' => array(
+					'className' => 'Institution',
+					'joinTable' => 'institution_responsible',
+					'foreignKey' => 'institution_id',
+					'associationForeignKey' => 'responsible_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+		),
 		'SpecificCondition' => array(
 			'className' => 'SpecificCondition',
 			'joinTable' => 'institution_specific_condition',
@@ -244,5 +256,6 @@ class Institution extends AppModel {
 			'finderQuery' => '',
 		)
 	);
+
 
 }

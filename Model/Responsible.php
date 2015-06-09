@@ -6,6 +6,18 @@ App::uses('AppModel', 'Model');
  * @property EducationalInstitution $EducationalInstitution
  */
 class Responsible extends AppModel {
+	//Aqui inicia funciones del modelo de usuario...
+	public function beforeSave($options = array()) {
+		if (isset($this->data[$this->alias]['password'])) {
+			$passwordHasher = new SimplePasswordHasher();
+			$this->data[$this->alias]['password'] = $passwordHasher->hash(
+					$this->data[$this->alias]['password']
+			);
+		}
+		return true;
+	}
+	
+	//Aqui termina...
 
 /**
  * Use table
@@ -41,61 +53,49 @@ class Responsible extends AppModel {
 		'identity' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'name' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'celular' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'mail' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'institution_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		//Aqui incian las validaciones de usuario...
+		'username' => array(
+				'notEmpty' => array(
+						'rule' => array('notEmpty'),
+					),
+		),
+		'password' => array(
+				'notEmpty' => array(
+							'rule' => array('notEmpty'),
+					),
+		),
+		'permission_level' => array(
+					'notEmpty' => array(
+							'rule' => array('notEmpty'),
+					),
+		),
+		//Aqui terminan...			
+			
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -104,7 +104,7 @@ class Responsible extends AppModel {
  * belongsTo associations
  *
  * @var array
- */
+ *//*
 	public $belongsTo = array(
 		'Institution' => array(
 			'className' => 'Institution',
@@ -113,5 +113,21 @@ class Responsible extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
+	);*/
+	
+	public $hasAndBelongsToMany = array(
+			'Responsible' => array(
+					'className' => 'Responsible',
+					'joinTable' => 'institution_responsible',
+					'foreignKey' => 'responsible_id',
+					'associationForeignKey' => 'institution_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 }

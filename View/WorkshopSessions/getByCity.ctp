@@ -1,3 +1,1 @@
-﻿<?php echo $ciudad
-
-?>
+﻿<?php echo $ciudad ?>
