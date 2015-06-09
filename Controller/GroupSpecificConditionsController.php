@@ -1,9 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * GroupSpecificConditions Controller
+ * InstitutionSpecificConditions Controller
  *
- * @property GroupSpecificCondition $GroupSpecificCondition
+ * @property InstitutionSpecificCondition $InstitutionSpecificCondition
  * @property PaginatorComponent $Paginator
  */
 class GroupSpecificConditionsController extends AppController {
@@ -21,7 +21,6 @@ class GroupSpecificConditionsController extends AppController {
  * @return void
  */
 	public function index() {
-		
 		$this->GroupSpecificCondition->recursive = 0;
 		$this->set('groupSpecificConditions', $this->Paginator->paginate());
 	}
@@ -38,7 +37,7 @@ class GroupSpecificConditionsController extends AppController {
 			throw new NotFoundException(__('Invalid group specific condition'));
 		}
 		$options = array('conditions' => array('GroupSpecificCondition.' . $this->GroupSpecificCondition->primaryKey => $id));
-		$this->set('groupSpecificConditions', $this->GroupSpecificCondition->find('first', $options));
+		$this->set('groupSpecificCondition', $this->GroupSpecificCondition->find('first', $options));
 	}
 
 /**
