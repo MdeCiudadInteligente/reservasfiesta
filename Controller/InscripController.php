@@ -51,7 +51,7 @@ class InscripcionesController extends AppController {
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		$fields = array('week', 'away_team_id', 'home_team_id');
-		$prueba=$this->Inscripciones->query("select specific_condition.name,specific_condition.id_specific_condition from user inner join (institution inner join (institution_specific_condition inner join specific_condition on institution_specific_condition.specific_condition_id=specific_condition.id_specific_condition) on institution.id_institution=institution_specific_condition.institution_id) on user.institution_id = institution.id_institution where user.username = 'johana'");
+		$prueba=$this->Inscripciones->query("select specific_condition.name,specific_condition.id_specific_condition from user inner join (institution inner join (group_specific_condition inner join specific_condition on group_specific_condition.specific_condition_id=specific_condition.id_specific_condition) on institution.id_institution=group_specific_condition.institution_id) on user.institution_id = institution.id_institution where user.username = 'johana'");
 		$this->set('fields',$fields);
 		
 		

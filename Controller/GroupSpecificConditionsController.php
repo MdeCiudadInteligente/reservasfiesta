@@ -1,9 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * InstitutionSpecificConditions Controller
+ * GroupSpecificConditions Controller
  *
- * @property InstitutionSpecificCondition $InstitutionSpecificCondition
+ * @property GroupSpecificCondition $GroupSpecificCondition
  * @property PaginatorComponent $Paginator
  */
 class GroupSpecificConditionsController extends AppController {
