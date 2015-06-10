@@ -242,6 +242,19 @@ class Institution extends AppModel {
 			'limit' => '',
 			'offset' => '',
 			'finderQuery' => '',
+		),
+		'Responsible' => array(
+					'className' => 'Responsible',
+					'joinTable' => 'institution_responsible',
+					'foreignKey' => 'institution_id',
+					'associationForeignKey' => 'responsible_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 		)
 	);
 

@@ -53,10 +53,45 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('add','getbycity','findinstitucion','getbytype');
+		$this->Auth->allow('add','getbycity','findinstitution','getbytype');
 	}
 	
-	public function findinstitucion(){
+	public function findinstitution($institutioname=null,$institutionid= null){
+		
+		$this->set('institutioname',$institutioname);
+		$this->set('institutionid',$institutionid);
+		if ($this->request->is('post')) {
+			$this->Institution->create();
+			$data=$this->request->data;
+			
+			//$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
+			//$responsable_adduser_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_respons_adduser)));
+			//if($responsable_adduser_id != array())
+			//{
+			//$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
+			//return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
+			//}
+			//else
+				
+			//Verificación por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma institución.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podría limpiar.
+			//$existeinstitucion=$this->Institution->find('first', array('conditions'=>array('Institution.institution_id' => $institutionid)));
+			debug($data);
+				if ($this->Responsible->save($data)) 
+				{
+				
+					$this->Session->setFlash(__('El responsable ha sido guardado.'));
+					//return $this->redirect(array('action' => 'index'));
+					//return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
+				} 
+				else 
+				{
+					$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+				}
+					
+		}
+		//$institutions = $this->Responsible->Institution->find('list',array('order'=>array('Institution.name ASC')));
+		$institutions = $this->Institution->find('list',array('order'=>array('Institution.name ASC')));
+		$this->set(compact('institutions'));
 	
 	}
 	
@@ -128,10 +163,13 @@ public function add() {
 			$this->Institution->create();
 			if ($this->Institution->save($this->request->data)) {
 				$this->Session->setFlash(__('The institution has been saved.'));
-				//$institution= $this->request->data['Institution']['name'];
+				
+				$institutioname= $this->request->data['Institution']['name'];
 				//$institutionid = $this->Institution->id;
-				//$institutionid= $this->request->data['Institution']['id_institution'];
+				//$institutionid= $this->request->data['Institution']['id_institution'];				
 				//$institutiontype= $this->request->data['Institution']['institution_type'];
+				
+				return $this->redirect(array('action' => 'findinstitution'/*,$institutioname,$institutionid*/));
 				
 			} else {
 				$this->Session->setFlash(__('The institution could not be saved. Please, try again.'));
