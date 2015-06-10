@@ -288,6 +288,7 @@ class ResponsiblesController extends AppController {
 	public function adduseresp($institution=null,$institutionid= null) {
 		$this->set('institution',$institution);
 		$this->set('institutionid',$institutionid);
+		
 		if ($this->request->is('post')) {
 			$this->Responsible->create();
 			//$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
