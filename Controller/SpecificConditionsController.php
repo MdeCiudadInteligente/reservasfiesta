@@ -24,7 +24,7 @@ class SpecificConditionsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			

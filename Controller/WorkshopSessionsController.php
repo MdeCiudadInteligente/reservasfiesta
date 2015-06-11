@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class WorkshopSessionsController extends AppController {
-	var $uses = array('Workshop','Register','Responsible','Institution','WorkshopSession','PublicType');
+	var $uses = array('Workshop','Register','User','Institution','WorkshopSession','PublicType');
 /**
  * Components
  *
@@ -25,7 +25,7 @@ class WorkshopSessionsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {	
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {	
 			return true;
 		}
 			
@@ -329,7 +329,7 @@ class WorkshopSessionsController extends AppController {
 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
-			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+			return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 		}
 		$this->WorkshopSession->recursive = 0;
 		$this->set('workshopSessions', $this->Paginator->paginate('WorkshopSession'));
@@ -345,7 +345,7 @@ class WorkshopSessionsController extends AppController {
 	public function view($id = null) {
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
-			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
+			return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 		}
 		if (!$this->WorkshopSession->exists($id)) {
 			throw new NotFoundException(__('Invalid workshop session'));

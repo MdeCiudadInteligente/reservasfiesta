@@ -9,7 +9,7 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class WorkshopsController extends AppController {
 	
-	var $uses = array('Workshop','Register','Responsible','Institution','WorkshopSession','PublicType');
+	var $uses = array('Workshop','Register','User','Institution','WorkshopSession','PublicType');
 	
 /**
  * Components
@@ -30,7 +30,7 @@ class WorkshopsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			
@@ -218,14 +218,14 @@ class WorkshopsController extends AppController {
 		$this->set('institutionname',$institutionname);
 		$this->set('institutionnumber',$institutionnumber);
 		//Nombre y Celular del Responsable o Encargado...
-		$responsibles=$this->Responsible->find('all', array('conditions'=>array('institution_id'=>$institutionidp),'fields'=>array('name','celular','id_responsible')));
+		$responsibles=$this->User->find('all', array('conditions'=>array('institution_id'=>$institutionidp),'fields'=>array('name','celular','id_user')));
 		$rname=null;
 		$rcelular=null;
 		$rcedula=null;
 		foreach ($responsibles as $responsible){
-				$rname=$responsible['Responsible']['name'];
-				$rcelular=$responsible['Responsible']['celular'];	
-				$rcedula=$responsible['Responsible']['id_responsible'];
+				$rname=$responsible['User']['name'];
+				$rcelular=$responsible['User']['celular'];	
+				$rcedula=$responsible['User']['id_user'];
 		}
 		$this->set('rname',$rname);
 		$this->set('rcelular',$rcelular);
@@ -270,14 +270,14 @@ class WorkshopsController extends AppController {
 			$this->set('condicionnom',$condicionnom);
 			
 			//$correoi=$this->User->query("select distinct mail from responsible inner join (insitution inner join user on institution.id_institution=user.institution_id)on responsible.institution_id=institution.id_institution where id_responsible = '$crcedula'");
-			$correoi=$this->Responsible->find('all', array('conditions'=>array('institution_id'=>$condicionp)));
+			$correoi=$this->User->find('all', array('conditions'=>array('institution_id'=>$condicionp)));
 			$correoi2=$this->Institution->find('all', array('conditions'=>array('id_institution'=>$condicionp)));
 			$this->set('correoi',$correoi);
 			$this->set('correoi2',$correoi2);
 			$Email = new CakeEmail('gmail');
 			$Email->from(array('publicos@fiestadellibroylacultura.com' => 'Fiesta del Libro y la Cultura'));
 			foreach ($correoi as $correoi):
-			$email_c = $correoi['Responsible']['mail'];			
+			$email_c = $correoi['User']['mail'];			
 			endforeach;
 			foreach ($correoi2 as $correoi2):			
 			$email_c2 = $correoi2['Institution']['mail'];

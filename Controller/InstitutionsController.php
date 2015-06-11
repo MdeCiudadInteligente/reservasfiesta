@@ -40,7 +40,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			
@@ -141,7 +141,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		$this->Institution->recursive = 0;
 		$this->set('institutions', $this->Institution->find('all'));
 		$this->set('workshopSessions',$this->WorkshopSession->find('all'));
-		$this->set('responsibles',$this->Responsible->find('all'));
+		$this->set('users',$this->User->find('all'));
 		$this->set('educationalInstitutions',$this->EducationalInstitution->find('all'));
 		$this->set('institutionspecificConditions',$this->InstitutionSpecificCondition->find('all'));
 		$this->set('specificConditions',$this->SpecificCondition->find('all'));

@@ -33,7 +33,7 @@ class UsersController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			
@@ -80,7 +80,7 @@ class UsersController extends AppController {
 
 	public function finduser() {
 		if ($this->request->is('post')) {
-			$cedresponsable=$this->request->data['Responsible']['cedresponsable'];
+			$cedresponsable=$this->request->data['User']['cedresponsable'];
 			return $this->redirect(array('action' => 'userlist',$cedresponsable));
 		}
 	
@@ -88,7 +88,7 @@ class UsersController extends AppController {
 	
 	public function userlist($cedresponsable=null) {
 		$this->set('cedresponsable',$cedresponsable);
-		$allusers=$this->User->query("select id_responsible,username from responsible where identity = '$cedresponsable'");
+		$allusers=$this->User->query("select id_user,username from user where identity = '$cedresponsable'");
 		$this->set(compact('allusers'));
 	
 		$this->User->recursive = 0;
@@ -103,8 +103,8 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
-		$options = array('conditions' => array('Responsible.' . $this->Responsible->primaryKey => $id));
-		$this->set('responsible', $this->Responsible->find('first', $options));
+		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+		$this->set('user', $this->User->find('first', $options));
 	}
 	
 	public function enviarcorreo($userupd=null,$cedresponsable=null){	
@@ -112,14 +112,14 @@ class UsersController extends AppController {
 			$this->set('cedresponsable',$cedresponsable);	
 					
 			//$correo = $this->request->data['Responsible']['mail'];
-			$correo=$this->Responsible->query("select mail from responsible where identity = '$cedresponsable'");
+			$correo=$this->User->query("select mail from user where identity = '$cedresponsable'");
 			$this->set('correo',$correo);		
 			$Email = new CakeEmail('gmail');
 			$Email->from(array('yypv27@hotmail.com' => 'Fiesta del Libro y la Cultura'));
 			
 			//Se busca el último registro correspondiente a la cédula del responsable.  Esto funciona porque el último debió ser justo el que acabó de entrar.  Pero es poco elegante.  Debería cambiarse para recupere por el id del responsable actual.
 			foreach ($correo as $correo):
-			$email_c = $correo['responsible']['mail'];
+			$email_c = $correo['user']['mail'];
 			endforeach;
 			$Email->to($email_c);
 			$Email->subject('Link para recuperación de contraseña');
@@ -136,8 +136,8 @@ class UsersController extends AppController {
 		$this->set('userupd',$userupd);
 		if ($this->request->is('post')) {
 				
-			$newpassword = $this->request->data['Responsible']['password'];
-			$repitnewpassword= $this->request->data['Responsible']['repit_password'];
+			$newpassword = $this->request->data['User']['password'];
+			$repitnewpassword= $this->request->data['User']['repit_password'];
 				
 			if($newpassword==$repitnewpassword)
 			{
@@ -148,15 +148,15 @@ class UsersController extends AppController {
 					
 					
 				$this->set('newpassword',$newpassword);
-				$update_usuarios=$this->Responsible->query("UPDATE responsible SET password = '$clavencriptada' where username = '$userupd'");
+				$update_usuarios=$this->User->query("UPDATE user SET password = '$clavencriptada' where username = '$userupd'");
 				$this->set(compact('update_usuarios'));
 					
 				$this->Session->setFlash(__('La contraseña se ha modificado exitosamente'));
-				return $this->redirect(array('controller' => 'responsibles','action' => 'login'));
+				return $this->redirect(array('controller' => 'Users','action' => 'login'));
 			}
 			else{
 				$this->Session->setFlash(__('Las contraseñas no coinciden, por favor ingreselas nuevamente'));
-				return $this->redirect(array('controller' => 'responsibles', 'action' => 'updateuserlogin',$userupd));
+				return $this->redirect(array('controller' => 'Users', 'action' => 'updateuserlogin',$userupd));
 			}
 		}
 	}
@@ -165,8 +165,8 @@ class UsersController extends AppController {
 		$this->set('institution',$institution);
 		$this->set('institutionid',$institutionid);
 		if ($this->request->is('post')) {			
-			$username= $this->request->data['Responsible']['username'];
-			$verificar_usuario=$this->Responsible->query("select distinct username from responsible where username = '$username'");
+			$username= $this->request->data['User']['username'];
+			$verificar_usuario=$this->User->query("select distinct username from user where username = '$username'");
 			$this->set('verificar_usuario',$verificar_usuario);
 			if($verificar_usuario==Array( )){
 					
@@ -193,15 +193,15 @@ class UsersController extends AppController {
 		$this->set('institutionid',$institutionid);
 		if ($this->request->is('post')) {
 				
-			$username= $this->request->data['Responsible']['username'];
-			$pass= $this->request->data['Responsible']['password'];
+			$username= $this->request->data['User']['username'];
+			$pass= $this->request->data['User']['password'];
 				
-			$verificar_usuario=$this->Responsible->query("select distinct username from responsible where username = '$username'");
+			$verificar_usuario=$this->User->query("select distinct username from user where username = '$username'");
 			$this->set('verificar_usuario',$verificar_usuario);
 			if($verificar_usuario==Array( )){
 					
-				$this->Responsible->create();
-				if ($this->Responsible->save($this->request->data)) {
+				$this->User->create();
+				if ($this->User->save($this->request->data)) {
 					$this->Session->setFlash(__('The user has been saved.'));
 					if ($this->Auth->login()) {
 						return $this->redirect($this->Auth->redirect(array('controller' => 'workshops', 'action' => 'index_inscription',$pass)));
@@ -215,44 +215,44 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('El nombre de usuario no está disponible, por favor ingrese uno nuevo.'));
 			}
 		}
-		$institutions = $this->Responsible->Institution->find('list');
+		$institutions = $this->User->Institution->find('list');
 		$this->set(compact('institutions'));
 	}
 	
 	public function edit_user($id = null) {
-		$usuario_level= $this->Session->read('Auth.Responsible.permission_level');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
-			return $this->redirect(array('controller' => 'responsibles', 'action' => 'login'));
+			return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 		}
-		if (!$this->Responsible->exists($id)) {
+		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Responsible->save($this->request->data)) {
+			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Responsible.' . $this->Responsible->primaryKey => $id));
-			$this->request->data = $this->Responsible->find('first', $options);
+			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+			$this->request->data = $this->User->find('first', $options);
 		}
-		$institutions = $this->Responsible->Institution->find('list');
+		$institutions = $this->User->Institution->find('list');
 		$this->set(compact('institutions'));
 	}
 	
 	public function delete_user($id = null) {
-		$usuario_level= $this->Session->read('Auth.Responsible.permission_level');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
-			return $this->redirect(array('controller' => 'responsibles', 'action' => 'login'));
+			return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 		}
-		$this->Responsible->id = $id;
-		if (!$this->Responsible->exists()) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Responsible->delete()) {
+		if ($this->User->delete()) {
 			$this->Session->setFlash(__('The user has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
@@ -274,11 +274,11 @@ class UsersController extends AppController {
 		if($usuario_level=='2'){
 			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
 		}
-		if (!$this->Responsible->exists($id)) {
-			throw new NotFoundException(__('Inválido responsable'));
+		if (!$this->User->exists($id)) {
+			throw new NotFoundException(__('Inválido Usuario'));
 		}
-		$options = array('conditions' => array('Responsible.' . $this->Responsible->primaryKey => $id));
-		$this->set('responsible', $this->Responsible->find('first', $options));
+		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+		$this->set('user', $this->User->find('first', $options));
 	}
 
 /**
@@ -291,7 +291,7 @@ class UsersController extends AppController {
 		$this->set('institutionid',$institutionid);
 		
 		if ($this->request->is('post')) {
-			$this->Responsible->create();
+			$this->User->create();
 			//$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
 			//$responsable_adduser_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_respons_adduser)));
 			//if($responsable_adduser_id != array())
@@ -302,19 +302,19 @@ class UsersController extends AppController {
 			//else
 			
 			//Verificación por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma institución.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podría limpiar.
-			$existeinstitucion=$this->Responsible->find('first', array('conditions'=>array('Responsible.institution_id' => $institutionid)));
+			$existeinstitucion=$this->User->find('first', array('conditions'=>array('User.institution_id' => $institutionid)));
 			if ($existeinstitucion==array()){
-				if ($this->Responsible->save($this->request->data)) {
-					$this->Session->setFlash(__('El responsable ha sido guardado.'));
+				if ($this->User->save($this->request->data)) {
+					$this->Session->setFlash(__('El usuario ha sido guardado.'));
 					//return $this->redirect(array('action' => 'index'));
-					return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
+					return $this->redirect(array('controller' => 'Users', 'action' => 'adduser',$institution,$institutionid));
 				} else {
-					$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+					$this->Session->setFlash(__('El usuario no pudó ser guardado. Por favor, inténtelo de nuevo.'));
 				}
 			}
 			else{
 				//Si se devolvió, pero quiere volver a avanzar utilizando la misma cédula, se puede permitir que vaya a crear el usuario.  Sino tiene la misma cédula se devuelve al formulario de institución.  Esta operación puede generar basura, pero se puede limpiar.
-				if ($existeinstitucion['Responsible']['identity']!=$this->request->data['Responsible']['identity']){
+				if ($existeinstitucion['User']['identity']!=$this->request->data['User']['identity']){
 					$this->Session->setFlash(__('El responsable con su institución no pudieron ser guardados. Por favor, inténtelo de nuevo.'));
 					return $this->redirect(array('controller' => 'institutions', 'action' => 'add'));
 				}
@@ -323,14 +323,14 @@ class UsersController extends AppController {
 				}
 			}
 		}		
-		$institutions = $this->Responsible->Institution->find('list',array('order'=>array('Institution.name ASC')));
+		$institutions = $this->User->Institution->find('list',array('order'=>array('Institution.name ASC')));
 		$this->set(compact('institutions'));
 	}
 	
 	
 	public function addresp() {
 		if ($this->request->is('post')) {
-			$this->Responsible->create();
+			$this->User->create();
 			//$id_responsable = $this->request->data['Responsible']['id_responsible'];
 			//$responsable_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_responsable)));
 			//if($responsable_id != array())
@@ -338,7 +338,7 @@ class UsersController extends AppController {
 				//$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
 			//}
 			//else 
-			if ($this->Responsible->save($this->request->data)) {			
+			if ($this->User->save($this->request->data)) {			
 				$this->Session->setFlash(__('El responsable ha sido guardado.'));
 				
 				return $this->redirect(array('action' => 'index'));
@@ -346,7 +346,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
 			}
 		}
-		$institutions = $this->Responsible->Institution->find('list');
+		$institutions = $this->User->Institution->find('list');
 		$this->set(compact('institutions'));
 	}
 
@@ -362,11 +362,11 @@ class UsersController extends AppController {
 		/*if($usuario_level=='2'){
 			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
 		}*/
-		if (!$this->Responsible->exists($id)) {
+		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid responsible'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Responsible->save($this->request->data)) {
+			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The responsible has been saved.'));
 				if($usuario_level=='1')
 				{
@@ -380,10 +380,10 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The responsible could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Responsible.' . $this->Responsible->primaryKey => $id));
-			$this->request->data = $this->Responsible->find('first', $options);
+			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+			$this->request->data = $this->User->find('first', $options);
 		}
-		$educationalInstitutions = $this->Responsible->Institution->find('list');
+		$educationalInstitutions = $this->User->Institution->find('list');
 		$this->set(compact('Institutions'));
 	}
 
@@ -399,12 +399,12 @@ class UsersController extends AppController {
 		if($usuario_level=='2'){
 			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
 		}
-		$this->Responsible->id = $id;
-		if (!$this->Responsible->exists()) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid responsible'));
 		}
 		$this->request->onlyAllow('post', 'delete');
-		if ($this->Responsible->delete()) {
+		if ($this->User->delete()) {
 			$this->Session->setFlash(__('The responsible has been deleted.'));
 		} else {
 			$this->Session->setFlash(__('The responsible could not be deleted. Please, try again.'));

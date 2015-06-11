@@ -31,7 +31,7 @@ class EducationalInstitutionsController extends AppController {
 		// Any registered user can access public functions
 	
 	
-		if ((isset($user['permission_level']) && $user['permission_level'] === '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] == '1')) {
 			return true;
 		}
 			
@@ -99,7 +99,7 @@ class EducationalInstitutionsController extends AppController {
 				//return $this->redirect(array('action' => 'index',$institution));
 				//return $this->redirect(array('action' => 'index'));}
 				//$educationalcode=$this->request->data['EducationalInstitution']['code'];
-				return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
+				return $this->redirect(array('controller' => 'Users', 'action' => 'adduser',$institution,$institutionid));
 				
 			} else {
 				$this->Session->setFlash(__('The educational institution could not be saved. Please, try again.'));

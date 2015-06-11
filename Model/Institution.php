@@ -145,26 +145,6 @@ class Institution extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),*/
-		'public_type_id' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'institution_type' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),/*
 		'workshop_session_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -174,7 +154,7 @@ class Institution extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),*/
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -191,7 +171,7 @@ class Institution extends AppModel {
  *
  * @var array
  */
-	public $belongsTo = array(
+  /*public $belongsTo = array(
 		'PublicType' => array(
 			'className' => 'PublicType',
 			'foreignKey' => 'public_type_id',
@@ -200,7 +180,7 @@ class Institution extends AppModel {
 			'order' => ''
 		),
 
-	);
+	);*/
 
 
 /**
