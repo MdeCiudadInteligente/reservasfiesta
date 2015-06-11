@@ -23,12 +23,13 @@ $cakeDescription = __d('cake_dev','');
 		$this->set('$title_for_layout','prueba');
 	} */
 	?>
+	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/fiesta.css" />
 	<?php
 		echo $this->Html->meta('icon');
 	    //echo $html->meta('icon', $html->url('/favicon.ico'));//icono  
 
 		echo $this->Html->css('cake.generic');
-
+		echo $this->Html->css('fiesta');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -36,7 +37,7 @@ $cakeDescription = __d('cake_dev','');
 		echo $this->Html->script('jquery-1.8.2.min');
 	?>
 </head>
-<body>
+<body class="reservas-fiesta">
 	<div id="container">
 		<div id="containerheader">
 			<div id="pruebafdl">
@@ -66,4 +67,7 @@ $cakeDescription = __d('cake_dev','');
 	
 	<?php echo $this->Js->writeBuffer();?>
 </body>
+<footer>
+ <?php echo $this->Html->script('main');?>
+</footer>
 </html>

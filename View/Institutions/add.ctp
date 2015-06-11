@@ -28,6 +28,12 @@ function goBack()
   }
   return true;
 }
+ </script>
+ <script type="text/javascript">
+ $(document).ready(function() {	
+        
+ });    
+
  </script> 
 <script type="text/javascript">
       function isNumberKey(evt)
@@ -55,7 +61,9 @@ function checkSubmit()
         return true;
      }
 }
+
 </script>
+
 <div class="institutions form">
 <?php echo $this->Form->create('Institution',array('onsubmit'=>'return checkSubmit()')); ?>
 	<fieldset>
@@ -84,7 +92,7 @@ function checkSubmit()
 		<div id="hola2" class="input select required">
 				<?php 
 					echo $this->Form->input('educational_inst_type',array('type'=>'hidden','label'=>'Tipo Institución educativa'));
-					echo $this->Form->input('code_education',array('type'=>'hidden','label'=>'Código DANE'));		
+					echo $this->Form->input('code_education',array('id'=>'code','type'=>'hidden','label'=>'Código DANE'));		
 				?>
 		</div>
 			
