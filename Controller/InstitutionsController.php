@@ -94,6 +94,23 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 	
 	}
 	
+
+	public function find_code()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		
+		
+		
+		if(existe){
+			
+			$data['existe']=true;
+			$data['response']='<div>El codigo ya existe por favor regrese a <a href=""></a></div>';
+		}
+		
+		$this->set(compact('data'));
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	}
+	
 	
 	public function index() {
 		$usuario_level= $this->Session->read('Auth.User.permission_level');

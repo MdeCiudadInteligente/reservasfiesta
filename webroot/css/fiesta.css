@@ -1,0 +1,11 @@
+body.reservas-fiesta{
+
+}
+
+body.reservas-fiesta .hidden_book{
+	display:none;
+}
+
+body.reservas-fiesta .hidden_lista{
+	display:none;
+}
