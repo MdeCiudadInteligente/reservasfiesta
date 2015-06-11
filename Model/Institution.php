@@ -202,27 +202,6 @@ class Institution extends AppModel {
 
 	);
 
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'institution_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 
 /**
  * hasAndBelongsToMany associations
@@ -243,11 +222,11 @@ class Institution extends AppModel {
 			'offset' => '',
 			'finderQuery' => '',
 		),
-		'Responsible' => array(
-					'className' => 'Responsible',
-					'joinTable' => 'institution_responsible',
+		'User' => array(
+					'className' => 'User',
+					'joinTable' => 'institution_user',
 					'foreignKey' => 'institution_id',
-					'associationForeignKey' => 'responsible_id',
+					'associationForeignKey' => 'user_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',

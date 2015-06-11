@@ -6,7 +6,7 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
  *
  * @property EducationalInstitution $EducationalInstitution
  */
-class Responsible extends AppModel {
+class User extends AppModel {
 	//Aqui inicia funciones del modelo de usuario...
 	public function beforeSave($options = array()) {
 		if (isset($this->data[$this->alias]['password'])) {
@@ -17,7 +17,6 @@ class Responsible extends AppModel {
 		}
 		return true;
 	}
-	
 	//Aqui termina...
 
 /**
@@ -25,14 +24,14 @@ class Responsible extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'responsible';
+	public $useTable = 'user';
 
 /**
  * Primary key field
  *
  * @var string
  */
-	public $primaryKey = 'id_responsible';
+	public $primaryKey = 'id_user';
 
 	
 /**
@@ -117,10 +116,10 @@ class Responsible extends AppModel {
 	);*/
 	
 	public $hasAndBelongsToMany = array(
-			'Institution' => array(
+	 'Institution' => array(
 					'className' => 'Institution',
-					'joinTable' => 'institution_responsible',
-					'foreignKey' => 'responsible_id',
+					'joinTable' => 'institution_user',
+					'foreignKey' => 'user_id',
 					'associationForeignKey' => 'institution_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
@@ -129,6 +128,23 @@ class Responsible extends AppModel {
 					'limit' => '',
 					'offset' => '',
 					'finderQuery' => '',
-		)
+		),
+	);
+	
+	
+	public $hasMany = array(
+			'Group' => array(
+					'className' => 'Group',
+					'foreignKey' => 'responsible_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+			)
 	);
 }

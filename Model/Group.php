@@ -69,16 +69,6 @@ class Group extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'specific_condition_id' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 		'responsible_id' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
@@ -106,19 +96,28 @@ class Group extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'SpecificCondition' => array(
-			'className' => 'SpecificCondition',
-			'foreignKey' => 'specific_condition_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Responsible' => array(
-			'className' => 'Responsible',
-			'foreignKey' => 'responsible_id',
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
+	);
+	
+	public $hasAndBelongsToMany = array(
+			'SpecificCondition' => array(
+					'className' => 'SpecificCondition',
+					'joinTable' => 'group_specific_condition',
+					'foreignKey' => 'group_id',
+					'associationForeignKey' => 'specific_condition_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
+			)
 	);
 }

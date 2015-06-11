@@ -27,9 +27,9 @@ En la zona de Jardín Lectura Viva podrán descubrir desde el arte, la música, 
 		    </fieldset>
 		   
 		<?php echo $this->Form->end(__('Login')); ?>
-		<?php echo $this->Html->link(__('Recordar usuario y contraseña'), array('controller' => 'users', 'action' => 'finduser')); ?>
+		<?php echo $this->Html->link(__('Recordar usuario y contraseña'), array('controller' => 'responsibles', 'action' => 'finduser')); ?>
 		</br></br></br>
-		<?php echo $this->Html->link(__('Regístrate'), array('controller' => 'institutions', 'action' => 'add')); ?>
+		<?php echo $this->Html->link(__('Regístrate'), array('controller' => 'institutions', 'action' => 'findinstitution')); ?>
 		</n>
 	<span><?php echo 'Es gratis y nos encanta así' ?></span>
 	</div>

@@ -119,8 +119,8 @@ class Responsible extends AppModel {
 	public $hasAndBelongsToMany = array(
 			'Responsible' => array(
 					'className' => 'Responsible',
-					'joinTable' => 'institution_responsible',
-					'foreignKey' => 'responsible_id',
+					'joinTable' => 'institution_user',
+					'foreignKey' => 'user_id',
 					'associationForeignKey' => 'institution_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',

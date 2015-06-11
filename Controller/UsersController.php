@@ -8,7 +8,7 @@ App::uses('CakeEmail', 'Network/Email');
  * @property Responsible $Responsible
  * @property PaginatorComponent $Paginator
  */
-class ResponsiblesController extends AppController {
+class UsersController extends AppController {
 
 /**
  * Components
@@ -44,12 +44,12 @@ class ResponsiblesController extends AppController {
 	}
 	
 	public function index() {
-		$usuario_level= $this->Session->read('Auth.Responsible.permission_level');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
 			return $this->redirect(array('action' => 'login'));
 		}
-		$this->Responsible->recursive = 0;
-		$this->set('responsibles', $this->Paginator->paginate());
+		$this->User->recursive = 0;
+		$this->set('users', $this->Paginator->paginate());
 	}
 	
 	//Aqui inician las funciones de usuario...
@@ -66,6 +66,7 @@ class ResponsiblesController extends AppController {
 						
 					return $this->redirect(array('controller' => 'institutions', 'action' => 'index'));
 				}
+				
 				return $this->redirect(array('controller' => 'Workshops', 'action' => 'index_inscription'));
 			}
 			$this->Session->setFlash(__('Invalid username or password, try again'));
@@ -95,11 +96,11 @@ class ResponsiblesController extends AppController {
 	}
 	
 	public function view_user($id = null) {
-		$usuario_level= $this->Session->read('Auth.Responsible.permission_level');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
 			return $this->redirect(array('action' => 'login'));
 		}
-		if (!$this->Responsible->exists($id)) {
+		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		$options = array('conditions' => array('Responsible.' . $this->Responsible->primaryKey => $id));

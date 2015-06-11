@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
  */
 class InstitutionsController extends AppController {
 	
-var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible','GroupSpecificCondition','SpecificCondition');
+var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecificCondition','SpecificCondition');
 	var $helpers = array('Html','Form','Csv','Js');
 
 	
@@ -63,7 +63,6 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 		if ($this->request->is('post')) {
 			$this->Institution->create();
 			$data=$this->request->data;
-			
 			//$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
 			//$responsable_adduser_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_respons_adduser)));
 			//if($responsable_adduser_id != array())
@@ -75,8 +74,8 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 				
 			//Verificación por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma institución.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podría limpiar.
 			//$existeinstitucion=$this->Institution->find('first', array('conditions'=>array('Institution.institution_id' => $institutionid)));
-			debug($data);
-				if ($this->Responsible->save($data)) 
+			
+				if ($this->User->save($data)) 
 				{
 				
 					$this->Session->setFlash(__('El responsable ha sido guardado.'));

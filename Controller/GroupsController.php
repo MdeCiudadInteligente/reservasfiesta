@@ -15,13 +15,39 @@ class GroupsController extends AppController {
  */
 	public $components = array('Paginator');
 
+	
+	
+	public function beforeFilter() {
+		//parent::beforeFilter();
+		// Allow users to register and logout.
+		$this->Auth->allow('addresp','index','edit','view');
+	
+	}
+	
+	public function isAuthorized($user) {
+		// Any registered user can access public functions
+	
+	
+		if ((isset($user['permission_level']) && $user['permission_level'] == '2')||(isset($user['permission_level']) && $user['permission_level'] === '1')) {
+			return true;
+		}
+			
+	
+		// Default deny
+		//return false;
+			
+	}
+	
+	
+	
+	
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
-		$this->Group->recursive = 0;
+		$this->Group->recursive = 1;
 		$this->set('groups', $this->Paginator->paginate());
 	}
 
@@ -40,6 +66,26 @@ class GroupsController extends AppController {
 		$this->set('group', $this->Group->find('first', $options));
 	}
 
+	
+	
+	
+	public function addresp() {
+		if ($this->request->is('post')) {
+			$this->Group->create();
+			if ($this->Group->save($this->request->data)) {
+				$this->Session->setFlash(__('The group has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The group could not be saved. Please, try again.'));
+			}
+		}
+		
+		$publictype = $this->Group->PublicType->find('list');
+		$specificConditions = $this->Group->SpecificCondition->find('list');
+		$this->set(compact('publictype','specificConditions'));
+	}
+	
+	
 /**
  * add method
  *

@@ -77,7 +77,22 @@ class SpecificCondition extends AppModel {
 			'limit' => '',
 			'offset' => '',
 			'finderQuery' => '',
+		),
+		'Group' => array(
+					'className' => 'Group',
+					'joinTable' => 'group_specific_condition',
+					'foreignKey' => 'specific_condition_id',
+					'associationForeignKey' => 'group_id',
+					'unique' => 'keepExisting',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'finderQuery' => '',
 		)
 	);
+	
+
 
 }

@@ -1,23 +1,23 @@
-﻿<div class="users form">
-<?php echo $this->Form->create('User'); ?>
+<div class="responsibles form">
+<?php echo $this->Form->create('Responsible'); ?>
 	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
+		<legend><?php echo __('Add Responsible'); ?></legend>
 	<?php
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		echo $this->Form->input('permission_level',array ('options' => array ('1'=>'Administrador','2'=>'Usuario')));
-		echo $this->Form->input('institution_id');
+		echo $this->Form->input('permission_level');
+		echo $this->Form->input('name');
+		echo $this->Form->input('identity');
+		echo $this->Form->input('celular');
+		echo $this->Form->input('mail');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
 </div>
 <div class="actions">
-	<h3><?php echo __('Opciones'); ?></h3>
+	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Institutions'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Institution'), array('controller' => 'institutions', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+
+		<li><?php echo $this->Html->link(__('List Responsibles'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

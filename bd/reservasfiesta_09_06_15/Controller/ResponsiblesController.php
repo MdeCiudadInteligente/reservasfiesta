@@ -44,7 +44,7 @@ class ResponsiblesController extends AppController {
 	}
 	
 	public function index() {
-		$usuario_level= $this->Session->read('Auth.Responsible.permission_level');
+		$usuario_level= $this->Session->read('Auth.User.permission_level');
 		if($usuario_level=='2'){
 			return $this->redirect(array('action' => 'login'));
 		}

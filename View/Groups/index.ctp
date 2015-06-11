@@ -19,7 +19,14 @@
 			<?php echo $this->Html->link($group['PublicType']['name'], array('controller' => 'public_types', 'action' => 'view', $group['PublicType']['id_public_type'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($group['SpecificCondition']['name'], array('controller' => 'specific_conditions', 'action' => 'view', $group['SpecificCondition']['id_specific_condition'])); ?>
+			<?php 
+			$tspecificcondition='';
+			foreach ($group['SpecificCondition'] as $specificcondition):
+			$tspecificcondition=$specificcondition['name'].','.$tspecificcondition;
+			endforeach;
+			echo $tspecificcondition;
+			?>
+	
 		</td>
 		<td>
 			<?php echo $this->Html->link($group['Responsible']['name'], array('controller' => 'responsibles', 'action' => 'view', $group['Responsible']['id_responsible'])); ?>

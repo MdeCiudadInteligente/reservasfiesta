@@ -231,9 +231,9 @@ class Institution extends AppModel {
 	public $hasAndBelongsToMany = array(
 	   'Institution' => array(
 					'className' => 'Institution',
-					'joinTable' => 'institution_responsible',
+					'joinTable' => 'institution_user',
 					'foreignKey' => 'institution_id',
-					'associationForeignKey' => 'responsible_id',
+					'associationForeignKey' => 'user_id',
 					'unique' => 'keepExisting',
 					'conditions' => '',
 					'fields' => '',
