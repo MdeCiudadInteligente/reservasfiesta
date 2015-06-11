@@ -14,19 +14,21 @@ var App = function(){
 
 
 App.prototype.bind=function(){
-	$('#jcf_num_doc').blur(function(){
- 		$('#Info').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
- 		var jcf_num_doc = $(this).val();		
- 		var dataString =jcf_num_doc;
+
+	$(document).on('change','#Institutioncode_education',function(){
+		$('#Info').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
+ 		var code = $(this).val();		
+ 		var dataString =code;
  		
  		$.ajax({
              type: "POST",
-             url: "Institutions/find_code.json",
+             url: "find_code.json",
              dataType:'json',
              data: {string:dataString},
              success: function(data) {
- 				$('#Info').fadeIn(1000).html(data.response);
- 				console.log(data);
+            	 console.log(data.data.response);
+            	 console.log(data);
+ 				 $('#Info').fadeIn(1000).html(data.data.response);
              }
          });
      });    

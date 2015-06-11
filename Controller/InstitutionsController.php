@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 App::uses('AppController', 'Controller');
 /**
  * Institutions Controller
@@ -48,12 +48,12 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 		// Default deny
 		//return false;
 			
-	}
+  }
 	
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('add','getbycity','findinstitution','getbytype');
+		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code');
 	}
 	
 	public function findinstitution($institutioname=null,$institutionid= null){
@@ -73,7 +73,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 			//}
 			//else
 				
-			//VerificaciÛn por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma instituciÛn.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podrÌa limpiar.
+			//Verificaci√≥n por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma instituci√≥n.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podr√≠a limpiar.
 			//$existeinstitucion=$this->Institution->find('first', array('conditions'=>array('Institution.institution_id' => $institutionid)));
 			debug($data);
 				if ($this->Responsible->save($data)) 
@@ -85,7 +85,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 				} 
 				else 
 				{
-					$this->Session->setFlash(__('El responsable no pudÛ ser guardado. Por favor, intÈntelo de nuevo.'));
+					$this->Session->setFlash(__('El responsable no pud√≥ ser guardado. Por favor, int√©ntelo de nuevo.'));
 				}
 					
 		}
@@ -100,16 +100,26 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 	{
 		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
 		
-		
-		
-		if(existe){
+		$code_educ = $this->request->data['string'];
+		$data=$this->request->data;
+		$data['debug']['POST']=$code_educ;
+		$data['debug']['POSTCOMPLETE']=$this->request->data;
+		$verificar_code=$this->Institution->query("select distinct code_education from institution where code_education = '$code_educ'");
+		//$this->set('verificar_code',$verificar_code);
+		$this->set("message", "You are good");
+		if(!$verificar_code == array())
+		{
+				$data['existe']=true;
+				$data['response']='<div style="color:#FF0000">El c√≥digo ya existe intente con uno nuevo √≥ regrese a la p√°gina anterior.</div>';
 			
-			$data['existe']=true;
-			$data['response']='<div>El codigo ya existe por favor regrese a <a href=""></a></div>';
-		}
+		}		
+		else{
+			$data['existe']=false;
+			$data['response']='<div style="color:#088A29">El c√≥digo esta disponible, por favor continu√©.</div>';
+		}	
 		
 		$this->set(compact('data'));
-		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+		$this->set('_serialize', array('data')); // Let the JsonView class know what variable to use
 	}
 	
 	
@@ -159,7 +169,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','Responsible
 		$options = array('conditions' => array('Institution.' . $this->Institution->primaryKey => $id));
 		$this->set('institution', $this->Institution->find('first', $options));
 		
-		//Visualizar la sesiÚn de la carpa en la que est‡ inscrito el grupo cuando la da clic a ver grupo.
+		//Visualizar la sesi√≤n de la carpa en la que est√† inscrito el grupo cuando la da clic a ver grupo.
 		$this->WorkshopSession->recursive = 0;
 		$this->set('WorkshopSession', $this->Paginator->paginate());
 		//$groups = $this->Workshop->WorkshopSession->Institution->find('all', array('conditions'=>array('WorkshopSession.workshop_id'=>$id)));
@@ -261,11 +271,11 @@ public function add() {
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Institution->delete()) {
 			$this->Session->setFlash(__('The institution has been deleted.'));
-			//actulizaciÛn session de la carpa cuando se elimina un grupo o instituciÛn.
+			//actulizaci√≥n session de la carpa cuando se elimina un grupo o instituci√≥n.
 			$queryupdate="update workshop_session SET institution_id = '0' where workshop_session.institution_id = '$id'";
 			$tallerupdate=$this->Workshop->query($queryupdate);
 			$this->set(compact('tallerupdate'));
-			//fin de actualizaciÛn.
+			//fin de actualizaci√≥n.
 			
 			
 		} else {

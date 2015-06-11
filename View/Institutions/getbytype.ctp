@@ -13,9 +13,10 @@ document.getElementById('code_education').style.visibility = 'visible';
 <br>
 <B><label for="Institutioncode_education">Código DANE</label></B>
 <input id="Institutioncode_education" required="required" maxlength="45" name="data[Institution][code_education]">
+<div id="Info"></div>
+
 <?php 
 }
-
 else{
 ?>	
 <script language="javascript">
