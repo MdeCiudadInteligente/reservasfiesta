@@ -287,9 +287,9 @@ class WorkshopSession extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-			'Institution' => array(
-					'className' => 'Institution',
-					'foreignKey' => 'institution_id',
+			'Group' => array(
+					'className' => 'Group',
+					'foreignKey' => 'group_id',
 					'conditions' => '',
 					'fields' => '',
 					'order' => ''

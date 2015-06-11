@@ -189,19 +189,6 @@ class Institution extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
-		'SpecificCondition' => array(
-			'className' => 'SpecificCondition',
-			'joinTable' => 'institution_specific_condition',
-			'foreignKey' => 'institution_id',
-			'associationForeignKey' => 'specific_condition_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-		),
 		'User' => array(
 					'className' => 'User',
 					'joinTable' => 'institution_user',

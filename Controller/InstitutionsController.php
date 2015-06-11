@@ -169,11 +169,11 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		$this->set('institution', $this->Institution->find('first', $options));
 		
 		//Visualizar la sesiòn de la carpa en la que està inscrito el grupo cuando la da clic a ver grupo.
-		$this->WorkshopSession->recursive = 0;
-		$this->set('WorkshopSession', $this->Paginator->paginate());
+		//$this->WorkshopSession->recursive = 0;
+		//$this->set('WorkshopSession', $this->Paginator->paginate());
 		//$groups = $this->Workshop->WorkshopSession->Institution->find('all', array('conditions'=>array('WorkshopSession.workshop_id'=>$id)));
-		$session = $this->WorkshopSession->find('all',array('conditions'=>array('Institution.id_institution'=>$id)));
-		$this->set('session',$session);
+		//$session = $this->WorkshopSession->find('all',array('conditions'=>array('Institution.id_institution'=>$id)));
+		//$this->set('session',$session);
 	}
 	
 /**

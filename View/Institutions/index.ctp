@@ -3,38 +3,33 @@
 	<h2><?php echo __('Institutions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
+			<th><?php echo $this->Paginator->sort('Tipo Institución'); ?></th>		
 			<th><?php //echo $this->Paginator->sort('id_institution'); ?></th>
 			<th><?php echo $this->Paginator->sort('Nombre'); ?></th>
+			<th><?php echo $this->Paginator->sort('Código DANE'); ?></th>
 			<th><?php echo $this->Paginator->sort('Correo'); ?></th>
 			<th><?php //echo $this->Paginator->sort('address'); ?></th>
 			<th><?php //echo $this->Paginator->sort('phone'); ?></th>
 			<th><?php //echo $this->Paginator->sort('neighborhood'); ?></th>
-			<th><?php echo $this->Paginator->sort('Comuna'); ?></th>
-			<th><?php //echo $this->Paginator->sort('city'); ?></th>
-			<th><?php echo $this->Paginator->sort('Número de Integrantes'); ?></th>
-			<th><?php //echo $this->Paginator->sort('age_range'); ?></th>
-			<th><?php echo $this->Paginator->sort('public_type_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('institution_type'); ?></th>
+			<th><?php echo $this->Paginator->sort('Ciudad'); ?></th>
+			<th><?php echo $this->Paginator->sort('Comuna'); ?></th>		
+			
 			<!--  <th><?php //echo $this->Paginator->sort('workshop_session_id'); ?></th>-->
 			<th class="actions"><?php echo __('Opciones'); ?></th>
 	</tr>
 	<?php foreach ($institutions as $institution): ?>
 	<tr>
-		<?php if($institution['Institution']['id_institution'] != '0'){?>
+		<?php if($institution['Institution']['id_institution'] != '0'){?>		
+		<td><?php echo h($institution['Institution']['inst_type']); ?></td>
 		<td><?php //echo h($institution['Institution']['id_institution']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['name']); ?>&nbsp;</td>
+		<td><?php echo h($institution['Institution']['code_education']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['mail']); ?>&nbsp;</td>
 		<td><?php //echo h($institution['Institution']['address']); ?>&nbsp;</td>
 		<td><?php //echo h($institution['Institution']['phone']); ?>&nbsp;</td>
 		<td><?php //echo h($institution['Institution']['neighborhood']); ?>&nbsp;</td>
+		<td><?php echo h($institution['Institution']['city']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['comune']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['city']); ?>&nbsp;</td>
-		<td><?php echo h($institution['Institution']['members_number']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['age_range']); ?>&nbsp;</td>
-		<td>
-			<?php echo h($institution['PublicType']['name']); ?>
-		</td>
-		<td><?php echo h($institution['Institution']['institution_type']); ?>&nbsp;</td>
 		<!-- <td>
 			<?php //echo $this->Html->link($institution['WorkshopSession']['id_workshop_session'], array('controller' => 'workshop_sessions', 'action' => 'view', $institution['WorkshopSession']['id_workshop_session'])); ?>
 		</td>-->

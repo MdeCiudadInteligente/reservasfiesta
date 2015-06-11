@@ -94,10 +94,10 @@ msgid "The requested address %s was not found on this server."
 msgstr "La dirección solitiada %s no existe en el servidor"
 
 msgid "Institutions"
-msgstr "Grupos"
+msgstr "Instituciones Educativas ó Independientes"
 
 msgid "New Institution"
-msgstr "Nuevo Grupo"
+msgstr "Nueva Institución"
 
 msgid "New Public Type"
 msgstr "Nuevo Tipo de Público"

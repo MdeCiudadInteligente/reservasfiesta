@@ -115,8 +115,8 @@ class User extends AppModel {
 		)
 	);*/
 	
-	public $hasAndBelongsToMany = array(
-	 'Institution' => array(
+	/*public $hasAndBelongsToMany = array(
+	'Institution' => array(
 					'className' => 'Institution',
 					'joinTable' => 'institution_user',
 					'foreignKey' => 'user_id',
@@ -129,13 +129,13 @@ class User extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 		),
-	);
+	);*/
 	
 	
 	public $hasMany = array(
 			'Group' => array(
 					'className' => 'Group',
-					'foreignKey' => 'responsible_id',
+					'foreignKey' => 'user_id',
 					'dependent' => false,
 					'conditions' => '',
 					'fields' => '',

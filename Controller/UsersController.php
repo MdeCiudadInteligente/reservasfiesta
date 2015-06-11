@@ -64,7 +64,7 @@ class UsersController extends AppController {
 				$usuario_level= $this->Session->read('Auth.User.permission_level');
 				if($usuario_level=='1'){
 						
-					return $this->redirect(array('controller' => 'institutions', 'action' => 'index'));
+					return $this->redirect(array('controller' => 'Groups', 'action' => 'index'));
 				}
 				
 				return $this->redirect(array('controller' => 'Workshops', 'action' => 'index_inscription'));

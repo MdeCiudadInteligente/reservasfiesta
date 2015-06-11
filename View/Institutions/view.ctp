@@ -41,63 +41,13 @@
 		<dd>
 			<?php echo h($institution['Institution']['city']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Members Number'); ?></dt>
-		<dd>
-			<?php echo h($institution['Institution']['members_number']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php //echo __('Age Range'); ?></dt>
-		<dd>
-			<?php //echo h($institution['Institution']['age_range']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Rango de Edad:'); ?></dt>
-		<dd>
-			<?php echo h($institution['PublicType']['name']); ?>
-			&nbsp;
-		</dd>
+		</dd>	
 		<dt><?php echo __('Tipo Institución:'); ?></dt>
 		<dd>
-			<?php echo h($institution['Institution']['institution_type']); ?>
+			<?php echo h($institution['Institution']['inst_type']); ?>
 			&nbsp;
 		</dd>
-		</dl>
-		<table>
-		<tr>
-			<th><?php echo $this->Paginator->sort('Session de la carpa'); ?></th>
-			<th><?php echo $this->Paginator->sort('workshop_day'); ?></th>
-			<th><?php echo $this->Paginator->sort('workshop_time'); ?></th>
-			<th><?php echo $this->Paginator->sort('travel_time'); ?></th>
-			<th><?php echo $this->Paginator->sort('nombre carpa'); ?></th>
-			<th><?php //echo $this->Paginator->sort('public_type_id'); ?></th>
-			<th><?php //echo $this->Paginator->sort('Tipo institución'); ?></th>
-		</tr>			
-
-		<?php foreach ($session as $session): ?>
-		<tr>
-			<td><?php echo h($session['WorkshopSession']['id_workshop_session']); ?>&nbsp;</td>
-			<td><?php echo h($session['WorkshopSession']['workshop_day']); ?>&nbsp;</td>
-			<td><?php echo h($session['WorkshopSession']['workshop_time']); ?>&nbsp;</td>
-			<td><?php echo h($session['WorkshopSession']['travel_time']); ?>&nbsp;</td>
-			<td><?php echo h($session['Workshop']['name']); ?>&nbsp;</td>
-		</tr>
-			
-		<?php endforeach; ?>
-		</table>
-	<p>
-	<?php	
-	echo $this->Paginator->counter(array(
-	'format' => __('Pagina {:page} of {:pages}, resultado {:current} registros de {:count} en total, a partir del registro {:start}, que concluye en el {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+		</dl>		
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
