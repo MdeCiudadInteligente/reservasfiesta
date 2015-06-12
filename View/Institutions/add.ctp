@@ -115,7 +115,7 @@ if ($usuario_level == '1'){?>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Institutions'), array('action' => 'index')); ?></li>		
-		<li><?php echo $this->Html->link(__('New Workshop Session'), array('controller' => 'workshop_sessions', 'action' => 'add')); ?> </li>		
+		<li><?php //echo $this->Html->link(__('New Workshop Session'), array('controller' => 'workshop_sessions', 'action' => 'add')); ?> </li>		
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

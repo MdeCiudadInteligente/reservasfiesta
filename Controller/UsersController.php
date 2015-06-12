@@ -45,7 +45,9 @@ class UsersController extends AppController {
 	
 	public function index() {
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		if($usuario_level=='2'){
+		
+		if($usuario_level=='2')
+		{
 			return $this->redirect(array('action' => 'login'));
 		}
 		$this->User->recursive = 0;
@@ -184,7 +186,7 @@ class UsersController extends AppController {
 			}
 	
 		}
-		$institutions = $this->User->Institution->find('list');
+		//$institutions = $this->User->Institution->find('list');
 		$this->set(compact('institutions'));
 	}
 	
@@ -238,8 +240,8 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
-		$institutions = $this->User->Institution->find('list');
-		$this->set(compact('institutions'));
+		//$institutions = $this->User->Institution->find('list');
+		//$this->set(compact('institutions'));
 	}
 	
 	public function delete_user($id = null) {
@@ -383,8 +385,8 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
-		$educationalInstitutions = $this->User->Institution->find('list');
-		$this->set(compact('Institutions'));
+		//$educationalInstitutions = $this->User->Institution->find('list');
+		//$this->set(compact('Institutions'));
 	}
 
 /**

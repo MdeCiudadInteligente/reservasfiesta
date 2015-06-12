@@ -145,7 +145,7 @@ msgid "Delete User"
 msgstr "Eliminar Usuario"
 
 msgid "List Institutions"
-msgstr "Lista Grupos"
+msgstr "Lista Institución"
 
 msgid "List Workshop Sessions"
 msgstr "Lista de Sesiones de las carpas"
@@ -244,7 +244,7 @@ msgid "Entities"
 msgstr "Entidades"
 
 msgid "Edit Institution"
-msgstr "Editar Grupo"
+msgstr "Editar Institución"
 
 msgid "Delete Institution"
 msgstr "Eliminar Institución"
@@ -267,6 +267,15 @@ msgstr "Eliminar Carpa"
 msgid "Id Entity"
 msgstr "Id Entidad"
 
+msgid "Inst Type"
+msgstr "Tipo Institución"
+
+msgid "Educational Inst Type"
+msgstr "Tipo Institución Educativa"
+
+msgid "Code Education"
+msgstr "Código Institución"
+
 msgid "Edit Entity"
 msgstr "Editar Entidad"
 
@@ -274,10 +283,10 @@ msgid "Delete Entity"
 msgstr "Eliminar Entidad"
 
 msgid "Institution"
-msgstr "Grupo"
+msgstr "Institución"
 
 msgid "Id Institution"
-msgstr "Id Grupo"
+msgstr "Id Institución"
 
 msgid "Edit Workshop Session"
 msgstr "Editar Sessión Carpa"

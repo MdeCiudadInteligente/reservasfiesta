@@ -241,11 +241,11 @@ public function add() {
 			$options = array('conditions' => array('Institution.' . $this->Institution->primaryKey => $id));
 			$this->request->data = $this->Institution->find('first', $options);
 		}
-		$publicTypes = $this->Institution->PublicType->find('list');
+		//$publicTypes = $this->Institution->PublicType->find('list');
 		//$workshopSessions = $this->Institution->WorkshopSession->find('list');
-		$specificConditions = $this->Institution->SpecificCondition->find('list');
+		//$specificConditions = $this->Institution->SpecificCondition->find('list');
 		//$this->set(compact('publicTypes', 'workshopSessions', 'specificConditions'));
-		$this->set(compact('publicTypes', 'specificConditions'));
+		//$this->set(compact('publicTypes', 'specificConditions'));
 		/*
 		$workshops = $this->Institution->Workshop->find('list');
 		$this->set(compact('workshops'));*/

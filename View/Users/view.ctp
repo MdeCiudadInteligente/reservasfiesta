@@ -1,44 +1,29 @@
 <div class="responsibles view">
-<h2><?php echo __('Responsible'); ?></h2>
+<h2><?php echo __('Usuario'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Responsible'); ?></dt>
+		<dt><?php echo __('Nombre Usuario:'); ?></dt>
 		<dd>
-			<?php echo h($responsible['Responsible']['id_responsible']); ?>
+			<?php echo h($user['User']['username']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Username'); ?></dt>
+		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
-			<?php echo h($responsible['Responsible']['username']); ?>
+			<?php echo h($user['User']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Password'); ?></dt>
+		<dt><?php echo __('Documento Identidad:'); ?></dt>
 		<dd>
-			<?php echo h($responsible['Responsible']['password']); ?>
+			<?php echo h($user['User']['identity']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Permission Level'); ?></dt>
+		<dt><?php echo __('Celular:'); ?></dt>
 		<dd>
-			<?php echo h($responsible['Responsible']['permission_level']); ?>
+			<?php echo h($user['User']['celular']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Correo:'); ?></dt>
 		<dd>
-			<?php echo h($responsible['Responsible']['name']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Identity'); ?></dt>
-		<dd>
-			<?php echo h($responsible['Responsible']['identity']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Celular'); ?></dt>
-		<dd>
-			<?php echo h($responsible['Responsible']['celular']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Mail'); ?></dt>
-		<dd>
-			<?php echo h($responsible['Responsible']['mail']); ?>
+			<?php echo h($user['User']['mail']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -46,9 +31,9 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Responsible'), array('action' => 'edit', $responsible['Responsible']['id_responsible'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Responsible'), array('action' => 'delete', $responsible['Responsible']['id_responsible']), null, __('Are you sure you want to delete # %s?', $responsible['Responsible']['id_responsible'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Responsibles'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Responsible'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar Usuario'), array('action' => 'edit', $user['User']['id_user'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Eliminar Usuario'), array('action' => 'delete', $user['User']['id_user']), null, __('Está seguro que desea eliminar # %s?', $user['User']['id_user'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Usuario'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Usuario'), array('action' => 'add')); ?> </li>
 	</ul>
 </div>
