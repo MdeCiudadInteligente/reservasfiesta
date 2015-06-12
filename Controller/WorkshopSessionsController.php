@@ -82,7 +82,7 @@ class WorkshopSessionsController extends AppController {
 		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (institution inner join (institution_specific_condition inner join specific_condition on institution_specific_condition.specific_condition_id=specific_condition.id_specific_condition) on institution.id_institution=institution_specific_condition.institution_id) on user.institution_id = institution.id_institution where user.username = '$usuario'");
 		$this->set('specific_condition',$specific_condition);
 		
-		$public_type=$this->WorkshopSession->query("select distinct public_type.name, user.username from user inner join (institution inner join public_type on institution.public_type_id = public_type.id_public_type) on user.institution_id = institution.id_institution where user.username = '$usuario'");
+		$public_type=$this->WorkshopSession->query("select distinct public_type.name, user.username from user inner join (groups inner join public_type on groups.public_type_id = public_type.id_public_type) on groups.user_id = user.id_user where user.username = '$usuario'");
 		$this->set('public_type',$public_type);
 		
 		
@@ -92,12 +92,12 @@ class WorkshopSessionsController extends AppController {
 		}
 		$this->set('public_typep',$public_typep);
 		
-		$institutionid=$this->WorkshopSession->query("select distinct institution.id_institution from institution inner join user on institution.id_institution = user.institution_id where user.username = '$usuario'");
-		foreach ($institutionid as $institutionid){
-		$institutionidp=$institutionid['institution']['id_institution'];
+		$groupid=$this->WorkshopSession->query("select distinct groups.id_group from groups inner join user on user.id_user = groups.user_id where user.username = '$usuario'");
+		foreach ($groupid as $groupid){
+		$groupidp=$groupid['Group']['id_group'];
 		
 		}
-		$this->set('institutionidp',$institutionidp);
+		$this->set('groupidp',$groupidp);
 		
 	
 	
