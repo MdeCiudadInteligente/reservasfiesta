@@ -1,9 +1,9 @@
 <div class="groups view">
 <h2><?php echo __('Group'); ?></h2>
 	<dl>
-		<dt><?php echo __('Id Group'); ?></dt>
+		<dt><?php //echo __('Id Group'); ?></dt>
 		<dd>
-			<?php echo h($group['Group']['id_group']); ?>
+			<?php //echo h($group['Group']['id_group']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
@@ -23,12 +23,17 @@
 		</dd>
 		<dt><?php echo __('Specific Condition'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($group['SpecificCondition']['name'], array('controller' => 'specific_conditions', 'action' => 'view', $group['SpecificCondition']['id_specific_condition'])); ?>
+			<?php  
+			$tspecificcondition='';
+			foreach ($group['SpecificCondition'] as $specificcondition):
+			$tspecificcondition=$specificcondition['name'].','.$tspecificcondition;
+			endforeach;
+			echo $tspecificcondition;
+			?>
 			&nbsp;
-		</dd>
 		<dt><?php echo __('Responsible'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($group['Responsible']['name'], array('controller' => 'responsibles', 'action' => 'view', $group['Responsible']['id_responsible'])); ?>
+			<?php echo $this->Html->link($group['User']['name'], array('controller' => 'users', 'action' => 'view', $group['User']['id_user'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

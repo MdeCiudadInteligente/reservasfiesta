@@ -71,8 +71,15 @@ class GroupsController extends AppController {
 	
 	public function addresp() {
 		if ($this->request->is('post')) {
+			
 			$this->Group->create();
-			if ($this->Group->save($this->request->data)) {
+			$id_user = $this->Session->read('Auth.User.id_user');
+			$this->set('id_user',$id_user);
+			
+			$data=$this->request->data;
+			$data['Group']['user_id']=$id_user;
+			
+			if ($this->Group->save($data)) {
 				$this->Session->setFlash(__('The group has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -101,6 +108,10 @@ class GroupsController extends AppController {
 				$this->Session->setFlash(__('The group could not be saved. Please, try again.'));
 			}
 		}
+		
+		$publictype = $this->Group->PublicType->find('list');
+		$specificConditions = $this->Group->SpecificCondition->find('list');
+		$this->set(compact('publictype','specificConditions'));
 	}
 
 /**
@@ -125,6 +136,9 @@ class GroupsController extends AppController {
 			$options = array('conditions' => array('Group.' . $this->Group->primaryKey => $id));
 			$this->request->data = $this->Group->find('first', $options);
 		}
+		$publictype = $this->Group->PublicType->find('list');
+		$specificConditions = $this->Group->SpecificCondition->find('list');
+		$this->set(compact('publictype','specificConditions'));
 	}
 
 /**

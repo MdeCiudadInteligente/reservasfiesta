@@ -2,7 +2,7 @@
 	<h2><?php echo __('Groups'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id_group'); ?></th>
+			<th><?php //echo $this->Paginator->sort('id_group'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('members_number'); ?></th>
 			<th><?php echo $this->Paginator->sort('public_type_id'); ?></th>
@@ -12,7 +12,7 @@
 	</tr>
 	<?php foreach ($groups as $group): ?>
 	<tr>
-		<td><?php echo h($group['Group']['id_group']); ?>&nbsp;</td>
+		<td><?php //echo h($group['Group']['id_group']); ?>&nbsp;</td>
 		<td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
 		<td><?php echo h($group['Group']['members_number']); ?>&nbsp;</td>
 		<td>
@@ -29,7 +29,7 @@
 	
 		</td>
 		<td>
-			<?php echo $this->Html->link($group['Responsible']['name'], array('controller' => 'responsibles', 'action' => 'view', $group['Responsible']['id_responsible'])); ?>
+			<?php echo $this->Html->link($group['User']['name'], array('controller' => 'users', 'action' => 'view', $group['User']['id_user'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $group['Group']['id_group'])); ?>
