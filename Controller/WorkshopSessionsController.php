@@ -201,7 +201,7 @@ class WorkshopSessionsController extends AppController {
 		return $out;
 	}
 	
-	public function addworkshop($workshopc =  null, $id_group=null) {		
+	public function addworkshop($id_group=null,$workshopc =  null) {		
 		
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
