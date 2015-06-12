@@ -205,7 +205,7 @@ class WorkshopsController extends AppController {
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		
-		$institutionid=$this->Workshop->query("select institution.id_institution,institution.name,institution.members_number from institution inner join user on institution.id_institution = user.institution_id  where user.username = '$usuario'");
+		//$institutionid=$this->Workshop->query("select institution.id_institution,institution.name,institution.members_number from institution inner join user on institution.id_institution = user.institution_id  where user.username = '$usuario'");
 		//debug($institutionid);
 		foreach ($institutionid as $institutionid):		
 		$institutionidp=$institutionid['institution']['id_institution'];
@@ -218,7 +218,7 @@ class WorkshopsController extends AppController {
 		$this->set('institutionname',$institutionname);
 		$this->set('institutionnumber',$institutionnumber);
 		//Nombre y Celular del Responsable o Encargado...
-		$responsibles=$this->User->find('all', array('conditions'=>array('institution_id'=>$institutionidp),'fields'=>array('name','celular','id_user')));
+		//$responsibles=$this->User->find('all', array('conditions'=>array('institution_id'=>$institutionidp),'fields'=>array('name','celular','id_user')));
 		$rname=null;
 		$rcelular=null;
 		$rcedula=null;
@@ -232,7 +232,7 @@ class WorkshopsController extends AppController {
 		$this->set('rcedula',$rcedula);
 		//fin
 		//$condicion=$this->Workshop->query("select workshop_session.institution_id from workshop_session inner join institution on workshop_session.institution_id = institution.id_institution where workshop_session.institution_id = $institutionidp");
-		$condicion=$this->Workshop->query("select institution_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where institution_id = $institutionidp");
+		//$condicion=$this->Workshop->query("select institution_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where institution_id = $institutionidp");
 		
 		//$condicion=";
 		//$condicion="select user.institution_id from user inner join (institution inner join workshop_session on institution.id_institution = workshop_session.institution_id) on user.institution_id = institution.id_institution where user.username = $usuario";

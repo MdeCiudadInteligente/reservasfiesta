@@ -100,7 +100,7 @@ window.print();
 	<ul>		
 		<li><?php 
 		if (($condicionp == 0)) {
-		echo $this->Html->link(__('Inscripción carpa'), array('controller' => 'WorkshopSessions', 'action' => 'addworkshop')); 
+		echo $this->Html->link(__('Inscripción grupo'), array('controller' => 'Groups', 'action' => 'addresp')); 
 		}
 		?></li>
 		
