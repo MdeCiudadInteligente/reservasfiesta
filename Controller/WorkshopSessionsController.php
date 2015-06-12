@@ -201,12 +201,13 @@ class WorkshopSessionsController extends AppController {
 		return $out;
 	}
 	
-	public function addworkshop($workshopc =  null) {		
+	public function addworkshop($workshopc =  null, $id_group=null) {		
 		
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
+		$this->set('id_group',$id_group);
 		//$fields = array('week', 'away_team_id', 'home_team_id');
-		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (institution inner join (institution_specific_condition inner join specific_condition on institution_specific_condition.specific_condition_id=specific_condition.id_specific_condition) on institution.id_institution=institution_specific_condition.institution_id) on user.institution_id = institution.id_institution where user.username = '$usuario'");
+		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (groups inner join (group_specific_condition inner join specific_condition on group_specific_condition.specific_condition_id=specific_condition.id_specific_condition)on groups.id_group=group_specific_condition.group_id) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = $id_group");
 		$this->set('specific_condition',$specific_condition);
 		
 		$public_type=$this->WorkshopSession->query("select distinct public_type.name from user inner join (institution inner join public_type on institution.public_type_id = public_type.id_public_type) on user.institution_id = institution.id_institution where user.username = '$usuario'");

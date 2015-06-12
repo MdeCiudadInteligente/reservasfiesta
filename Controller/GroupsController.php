@@ -80,8 +80,9 @@ class GroupsController extends AppController {
 			$data['Group']['user_id']=$id_user;
 			
 			if ($this->Group->save($data)) {
+				$id_group= $data['Group']['id_group'];
 				$this->Session->setFlash(__('The group has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller' => 'WorkshopSessions', 'action' => 'addworkshop',$id_group));
 			} else {
 				$this->Session->setFlash(__('The group could not be saved. Please, try again.'));
 			}
