@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  * @property PaginatorComponent $Paginator
  */
 class WorkshopSessionsController extends AppController {
-	var $uses = array('Workshop','Register','User','Institution','WorkshopSession','PublicType');
+	var $uses = array('Workshop','Register','User','Institution','WorkshopSession','PublicType','Group');
 /**
  * Components
  *
@@ -142,7 +142,7 @@ class WorkshopSessionsController extends AppController {
 		//debug($resultado);
 		
 		//2.  Se buscan todos los talleres que cumplen con las condiciones de fecha y tipo de público
-		$queryb="select distinct workshop.id_workshop, workshop.name, workshop.description, workshop.entity_id from public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id  where workshop_session.workshop_day = '$datework' and workshop_session.institution_id = '0' and public_type.name = '$public_typep'";
+		$queryb="select distinct workshop.id_workshop, workshop.name, workshop.description, workshop.entity_id from public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id  where workshop_session.workshop_day = '$datework' and workshop_session.group_id = '0' and public_type.name = '$public_typep'";
 		$talleresotros=$this->WorkshopSession->query($queryb);
 		$talleresconlasdemascondiciones=array();
 		foreach ($talleresotros as $tallerotro){
