@@ -75,9 +75,10 @@ class GroupsController extends AppController {
 			$this->Group->create();
 			$id_user = $this->Session->read('Auth.User.id_user');
 			$this->set('id_user',$id_user);
+			$data=$this->request->data;
+			$data['Group']['user_id']=$id_user;
 			
-			
-			if ($this->Group->save($this->request->data)) {
+			if ($this->Group->save($data)) {
 				$id_group = $this->Group->id;
 				$this->Session->setFlash(__('The group has been saved.'));
 				return $this->redirect(array('controller' => 'WorkshopSessions', 'action' => 'addworkshop',$id_group));
