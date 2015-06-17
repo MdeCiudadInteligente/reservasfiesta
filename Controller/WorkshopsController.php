@@ -210,16 +210,16 @@ class WorkshopsController extends AppController {
 		
 		//$institutionid=$this->Workshop->query("select institution.id_institution,institution.name,institution.members_number from institution inner join user on institution.id_institution = user.institution_id  where user.username = '$usuario'");
 		//debug($institutionid);
-		foreach ($institutionid as $institutionid):		
-		$institutionidp=$institutionid['institution']['id_institution'];
-		$institutionname=$institutionid['institution']['name'];
-		$institutionnumber=$institutionid['institution']['members_number'];
+		foreach ($groupid as $groupid):		
+		$groupidp=$groupid['groups']['id_group'];
+		$groupname=$groupid['groups']['name'];
+		$groupnumber=$groupid['groups']['members_number'];
 		//debug($institutionname);
 		
 		endforeach;
-		$this->set('institutionidp',$institutionidp);
-		$this->set('institutionname',$institutionname);
-		$this->set('institutionnumber',$institutionnumber);
+		$this->set('groupidp',$groupidp);
+		$this->set('groupname',$groupname);
+		$this->set('groupnumber',$groupnumber);
 		//Nombre y Celular del Responsable o Encargado...
 		//$responsibles=$this->User->find('all', array('conditions'=>array('institution_id'=>$institutionidp),'fields'=>array('name','celular','id_user')));
 		$rname=null;
@@ -246,7 +246,7 @@ class WorkshopsController extends AppController {
 		$this->set('condicion',$condicion);
 		$condicionp='';
 		foreach ($condicion as $condiciones):
-		$condicionp=$condiciones['workshop_session']['institution_id'];
+		$condicionp=$condiciones['workshop_session']['group_id'];
 		
 		
 		endforeach;
@@ -273,8 +273,8 @@ class WorkshopsController extends AppController {
 			$this->set('condicionnom',$condicionnom);
 			
 			//$correoi=$this->User->query("select distinct mail from responsible inner join (insitution inner join user on institution.id_institution=user.institution_id)on responsible.institution_id=institution.id_institution where id_responsible = '$crcedula'");
-			$correoi=$this->User->find('all', array('conditions'=>array('institution_id'=>$condicionp)));
-			$correoi2=$this->Institution->find('all', array('conditions'=>array('id_institution'=>$condicionp)));
+			$correoi=$this->User->find('all', array('conditions'=>array('group_id'=>$condicionp)));
+			$correoi2=$this->Group->find('all', array('conditions'=>array('id_group'=>$condicionp)));
 			$this->set('correoi',$correoi);
 			$this->set('correoi2',$correoi2);
 			$Email = new CakeEmail('gmail');
@@ -283,7 +283,7 @@ class WorkshopsController extends AppController {
 			$email_c = $correoi['User']['mail'];			
 			endforeach;
 			foreach ($correoi2 as $correoi2):			
-			$email_c2 = $correoi2['Institution']['mail'];
+			$email_c2 = $correoi2['Group']['mail'];
 			endforeach;
 			$Email->to($email_c);
 			$Email->cc($email_c2);
