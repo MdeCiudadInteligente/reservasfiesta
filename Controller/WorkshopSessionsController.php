@@ -92,13 +92,13 @@ class WorkshopSessionsController extends AppController {
 		}
 		$this->set('public_typep',$public_typep);
 		
-		$groupid=$this->WorkshopSession->query("select distinct groups.id_group from groups inner join user on user.id_user = groups.user_id where user.username = '$usuario'");
+		/*$groupid=$this->WorkshopSession->query("select distinct groups.id_group from groups inner join user on user.id_user = groups.user_id where user.username = '$usuario'");
 		foreach ($groupid as $groupid){
 		$groupidp=$groupid['groups']['id_group'];
 		
 		}
 		$this->set('groupidp',$groupidp);
-		
+		*/
 	
 	
 		//**************DFGA
