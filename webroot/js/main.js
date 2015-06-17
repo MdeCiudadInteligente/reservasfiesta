@@ -12,7 +12,6 @@ var App = function(){
 	app.bind();
 }
 
-
 App.prototype.bind=function(){
 
 	$(document).on('change','#Institutioncode_education',function(){
@@ -33,14 +32,16 @@ App.prototype.bind=function(){
          });
      });    
 	
+	$('#lista-responsable').on('change',function(){
+		$('.desplegable').fadeIn();
+	});
 	
 	$('#boton-responsable').on('click',function(){
 		$('.responsable').fadeIn();
 	});		
 	
-	$('#lista-responsable').on('change',function(){
-		$('.desplegable').fadeIn();
-	});	
-
+	
 }
+
+
 

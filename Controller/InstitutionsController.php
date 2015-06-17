@@ -63,18 +63,6 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		if ($this->request->is('post')) {
 			$this->Institution->create();
 			$data=$this->request->data;
-			//$id_respons_adduser = $this->request->data['Responsible']['id_responsible'];
-			//$responsable_adduser_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_respons_adduser)));
-			//if($responsable_adduser_id != array())
-			//{
-			//$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
-			//return $this->redirect(array('controller' => 'responsibles', 'action' => 'adduser',$institution,$institutionid));
-			//}
-			//else
-				
-			//Verificación por si el usuario se devuelve en el navegador y vuelve a intentar crear el responsable asociado a la misma institución.  Esto igual hace que existan regstros de responsables repetidos, se genera basura, pero esa basura se podría limpiar.
-			//$existeinstitucion=$this->Institution->find('first', array('conditions'=>array('Institution.institution_id' => $institutionid)));
-			
 				if ($this->User->save($data)) 
 				{
 				
