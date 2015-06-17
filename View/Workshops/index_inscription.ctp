@@ -44,7 +44,7 @@ window.print();
 					echo  $rcelular;
 					echo "</br>";
 					echo "Cantidad de Inscritos:\n";
-					echo  $institutionnumber;
+					echo  $groupnumber;
 					echo "</br>";
 					echo "</br>";
 					echo "Recomendaciones:";
@@ -109,7 +109,7 @@ window.print();
 		echo $this->Html->link(__('Workshop Cancel'), array('controller' => 'Workshops', 'action' => 'workshop_cancel')); 		
 		}
 		?></li>
-		<li><?php echo $this->Html->link(__('Editar datos grupo'), array('controller'=>'institutions','action' => 'edit',$institutionidp)); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar datos grupo'), array('controller'=>'institutions','action' => 'edit',$groupidp)); ?> </li>
 		<li><?php echo $this->Html->link(__('Editar datos responsable'), array('controller' => 'responsibles','action' => 'edit',$rcedula)); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
