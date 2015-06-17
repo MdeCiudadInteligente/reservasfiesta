@@ -40,17 +40,17 @@ class WorkshopsController extends AppController {
 			
 	}
 	
-	public function workshop_inscription($id = NULL,$datework=null,$institutionidp=null)  {
+	public function workshop_inscription($id = NULL,$datework=null,$groupidp=null)  {
 		
 		$this->set('datework',$datework);
-		$this->set('institutionidp',$institutionidp);
+		$this->set('groupidp',$groupidp);
 		if (!$this->Workshop->exists($id)) {
 			throw new NotFoundException(__('Invalid Workshop'));
 		}
 		$options = array('conditions' => array('Workshop.' . $this->Workshop->primaryKey => $id));
 		$this->set('taller', $this->Workshop->find('first', $options));
 		
-		$queryday="select distinct workshop_session.workshop_day from workshop_session inner join workshop on  workshop.id_workshop = workshop_session.workshop_id where workshop.id_workshop = '$id' and workshop_session.workshop_day = '$datework' and workshop_session.institution_id = 0";
+		$queryday="select distinct workshop_session.workshop_day from workshop_session inner join workshop on  workshop.id_workshop = workshop_session.workshop_id where workshop.id_workshop = '$id' and workshop_session.workshop_day = '$datework' and workshop_session.group_id = 0";
 		$tallerday=$this->Workshop->query($queryday);
 		//$this->set(compact('tallerday'));
 		
@@ -69,7 +69,7 @@ class WorkshopsController extends AppController {
 		$this->set('tallerdayp',$tallerdayp);
 		
 		
-		$querytime="select distinct workshop_session.workshop_time from workshop_session inner join workshop on  workshop.id_workshop = workshop_session.workshop_id where workshop.id_workshop = '$id' and workshop_session.workshop_day = '$datework' and workshop_session.institution_id = 0";
+		$querytime="select distinct workshop_session.workshop_time from workshop_session inner join workshop on  workshop.id_workshop = workshop_session.workshop_id where workshop.id_workshop = '$id' and workshop_session.workshop_day = '$datework' and workshop_session.group_id = 0";
 		
 		$tallertime=$this->Workshop->query($querytime);
 
@@ -99,7 +99,7 @@ class WorkshopsController extends AppController {
 		$this->set('horataller',$horataller);
 		
 		$timestamp=strtotime($horataller);
-		return $this->redirect(array('controller' => 'workshops','action' => 'workshop_update',$datework,$timestamp,$institutionidp,$id));
+		return $this->redirect(array('controller' => 'workshops','action' => 'workshop_update',$datework,$timestamp,$groupidp,$id));
 		}
 	
 	}
