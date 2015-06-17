@@ -72,17 +72,17 @@ class WorkshopSessionsController extends AppController {
 	}
 
 	
-	public function workshoplist($datework=null) {
+	public function workshoplist($datework=null, $id_group=null) {
 
 		$this->set('datework',$datework);
 		
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		//$fields = array('week', 'away_team_id', 'home_team_id');
-		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (groups inner join (group_specific_condition inner join specific_condition on group_specific_condition.specific_condition_id=specific_condition.id_specific_condition) on groups.id_group=group_specific_condition.group_id) on groups.user_id = user.id_user where user.username = '$usuario'");
+		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (groups inner join (group_specific_condition inner join specific_condition on group_specific_condition.specific_condition_id=specific_condition.id_specific_condition) on groups.id_group=group_specific_condition.group_id) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = $id_group");
 		$this->set('specific_condition',$specific_condition);
 		
-		$public_type=$this->WorkshopSession->query("select distinct public_type.name, user.username from user inner join (groups inner join public_type on groups.public_type_id = public_type.id_public_type) on groups.user_id = user.id_user where user.username = '$usuario'");
+		$public_type=$this->WorkshopSession->query("select distinct public_type.name, user.username from user inner join (groups inner join public_type on groups.public_type_id = public_type.id_public_type) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = $id_group");
 		$this->set('public_type',$public_type);
 		
 		
@@ -307,7 +307,7 @@ class WorkshopSessionsController extends AppController {
 		if ($this->request->is('post')) {
 		//$datework= $this->request->data['WorkshopSession']['workshop_day'];
 		$datework= $this->request->data['WorkshopSession']['diataller'];
-		return $this->redirect(array('controller' => 'WorkshopSessions', 'action' => 'workshoplist',$datework));
+		return $this->redirect(array('controller' => 'WorkshopSessions', 'action' => 'workshoplist', $datework, $id_group));
 		}
 	}
 	/*
