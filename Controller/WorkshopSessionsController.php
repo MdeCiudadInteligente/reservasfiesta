@@ -76,6 +76,8 @@ class WorkshopSessionsController extends AppController {
 
 		$this->set('datework',$datework);
 		
+		$this->set('id_group',$id_group);
+		
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		//$fields = array('week', 'away_team_id', 'home_team_id');

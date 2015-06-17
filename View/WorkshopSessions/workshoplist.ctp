@@ -36,7 +36,7 @@
 			<tr>
 				<td><?php echo h($taller['name']); ?>&nbsp;</td>
 				<td class="actions">
-					<?php echo $this->Html->link(__('Ver Horarios'), array('controller' => 'workshops','action' => 'workshop_inscription',$taller['id_workshop'],$datework,$groupidp)); ?>			
+					<?php echo $this->Html->link(__('Ver Horarios'), array('controller' => 'workshops','action' => 'workshop_inscription',$taller['id_workshop'],$datework,$id_group)); ?>			
 				</td>
 			</tr>
 		<?php endforeach;?>	

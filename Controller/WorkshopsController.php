@@ -104,7 +104,7 @@ class WorkshopsController extends AppController {
 	
 	}
 	
-	public function workshop_update($datework=null,$timestamp=null,$institutionidp=null, $workshopid=null)  {
+	public function workshop_update($datework=null,$timestamp=null,$id_group=null, $workshopid=null)  {
 		
 		$this->set('datework',$datework);
 		//$this->set('institutionidp',$institutionidp);
@@ -114,12 +114,12 @@ class WorkshopsController extends AppController {
 		
 		$this->set('institutionidp',$institutionidp);
 		
-		$condicion=$this->Workshop->query("select institution_id from workshop_session where institution_id = '$institutionidp'");
+		$condicion=$this->Workshop->query("select group_id from workshop_session where group_id = '$id_group'");
 		$this->set('condicion',$condicion);
 		//debug($institutionidp);
 		$condicionp='';
 		foreach ($condicion as $condiciones):
-		$condicionp=$condiciones['workshop_session']['institution_id'];
+		$condicionp=$condiciones['workshop_session']['group_id'];
 		
 		
 		endforeach;
@@ -129,14 +129,14 @@ class WorkshopsController extends AppController {
 		{
 			
 			
-		$queryupdate="update workshop_session SET institution_id = '$institutionidp' where workshop_session.workshop_day = '$datework' and workshop_session.workshop_time= '$horataller' and workshop_session.workshop_id= '$workshopid'";
+		$queryupdate="update workshop_session SET group_id = '$id_group' where workshop_session.workshop_day = '$datework' and workshop_session.workshop_time= '$horataller' and workshop_session.workshop_id= '$workshopid'";
 		$tallerupdate=$this->Workshop->query($queryupdate);
 		$this->set(compact('tallerupdate'));
 		
 		//register de inscripcion...
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
-		
+		/*
 		$institutioniid=$this->Workshop->query("select institution.id_institution from institution inner join user on institution.id_institution = user.institution_id  where user.username = '$usuario'");
 		foreach ($institutioniid as $institutioniid):
 		$institutioniidp=$institutioniid['institution']['id_institution'];
@@ -145,11 +145,14 @@ class WorkshopsController extends AppController {
 		$this->set('institutionidp',$institutioniidp);
 		
 		$condicionn=$this->Workshop->query("select institution_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where institution_id = $institutioniidp");
+		*/
+		$condicionn=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $id_group");
+		
 		
 		$this->set('condicionn',$condicionn);
 		$condicionnp='';
 		foreach ($condicionn as $condicionnes):
-		$condicionnp=$condicionnes['workshop_session']['institution_id'];
+		$condicionnp=$condicionnes['workshop_session']['group_id'];
 		
 		endforeach;
 		$this->set('condicionnp',$condicionnp);
