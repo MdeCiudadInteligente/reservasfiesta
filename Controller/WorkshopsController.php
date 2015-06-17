@@ -40,10 +40,10 @@ class WorkshopsController extends AppController {
 			
 	}
 	
-	public function workshop_inscription($id = NULL,$datework=null,$groupidp=null)  {
+	public function workshop_inscription($id = NULL,$datework=null,$id_group=null)  {
 		
 		$this->set('datework',$datework);
-		$this->set('groupidp',$groupidp);
+		$this->set('id_group',$id_group);
 		if (!$this->Workshop->exists($id)) {
 			throw new NotFoundException(__('Invalid Workshop'));
 		}
@@ -99,7 +99,7 @@ class WorkshopsController extends AppController {
 		$this->set('horataller',$horataller);
 		
 		$timestamp=strtotime($horataller);
-		return $this->redirect(array('controller' => 'workshops','action' => 'workshop_update',$datework,$timestamp,$groupidp,$id));
+		return $this->redirect(array('controller' => 'workshops','action' => 'workshop_update',$datework,$timestamp,$id_group,$id));
 		}
 	
 	}
