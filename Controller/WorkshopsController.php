@@ -351,7 +351,8 @@ class WorkshopsController extends AppController {
 		$iduser = $this->Session->read('Auth.User.id_user');
 		$this->set('iduser',$iduser);
 	
-		$groups=$this->Workshop->query("SELECT  
+		$groups=$this->Workshop->query("SELECT
+		gs.id_group,		  
   		gs.name, 
   		gs.members_number, 
   		pt.name,
