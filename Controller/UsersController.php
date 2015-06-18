@@ -206,7 +206,7 @@ class UsersController extends AppController {
 				if ($this->User->save($this->request->data)) {
 					$this->Session->setFlash(__('The user has been saved.'));
 					if ($this->Auth->login()) {
-						return $this->redirect($this->Auth->redirect(array('controller' => 'workshops', 'action' => 'index_inscription',$pass)));
+						return $this->redirect($this->Auth->redirect(array('controller' => 'Workshops', 'action' => 'index_inscription',$pass)));
 					}
 	
 				} else {

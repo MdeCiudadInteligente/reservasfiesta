@@ -69,6 +69,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 					$this->Session->setFlash(__('El responsable ha sido guardado.'));
 					//return $this->redirect(array('action' => 'index'));
 					//return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
+					return $this->redirect(array('controller' => 'groups', 'action' => 'addresp'));
 				} 
 				else 
 				{

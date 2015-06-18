@@ -328,6 +328,10 @@ class WorkshopSessionsController extends AppController {
 	}
 	
 	
+	
+
+	
+	
 	public function index() {
 
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
