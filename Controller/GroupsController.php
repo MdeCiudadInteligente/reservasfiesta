@@ -69,11 +69,19 @@ class GroupsController extends AppController {
 	
 	
 	
+<<<<<<< HEAD
 	public function addresp() {
 		if ($this->request->is('post')) {			
 			$this->Group->create();
 			$id_usuario = $this->Session->read('Auth.User.id_user');
 			$this->set('id_usuario',$id_usuario);		
+=======
+	public function addresp($id_user=null) {
+		if ($this->request->is('post')) {
+			
+			$this->Group->create();
+			$this->set('id_user',$id_user);
+>>>>>>> abfaafa950ec2253340f92b36af951bf0cb226c1
 			$data=$this->request->data;
 			//$data['Group']['user_id']=$id_usuario;
 			//debug($id_user);

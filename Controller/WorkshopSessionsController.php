@@ -14,6 +14,13 @@ class WorkshopSessionsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	
+	public function beforeFilter() {
+		//parent::beforeFilter();
+		// Allow users to register and logout.
+		$this->Auth->allow('addworkshop','workshoplist');
+	
+	}
 
 /**
  * index method
@@ -203,18 +210,18 @@ class WorkshopSessionsController extends AppController {
 		return $out;
 	}
 	
-	public function addworkshop($id_group=null,$workshopc =  null) {		
+	public function addworkshop($id_group=null) {		/*,$workshopc =  null*/
 		
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		$this->set('id_group',$id_group);
 		//$fields = array('week', 'away_team_id', 'home_team_id');
-		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (groups inner join (group_specific_condition inner join specific_condition on group_specific_condition.specific_condition_id=specific_condition.id_specific_condition)on groups.id_group=group_specific_condition.group_id) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = $id_group");
+		$specific_condition=$this->WorkshopSession->query("select distinct specific_condition.name from user inner join (groups inner join (group_specific_condition inner join specific_condition on group_specific_condition.specific_condition_id=specific_condition.id_specific_condition)on groups.id_group=group_specific_condition.group_id) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = '$id_group'");
 		$this->set('specific_condition',$specific_condition);
 		
-		$public_type=$this->WorkshopSession->query("select distinct public_type.name from user inner join (groups inner join public_type on groups.public_type_id = public_type.id_public_type) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = $id_group");
+		$public_type=$this->WorkshopSession->query("select distinct public_type.name from user inner join (groups inner join public_type on groups.public_type_id = public_type.id_public_type) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = '$id_group'");
 		$this->set('public_type',$public_type);
-
+		
 		
 		foreach ($public_type as $public_type){
 			$public_typep=$public_type['public_type']['name'];
@@ -292,7 +299,7 @@ class WorkshopSessionsController extends AppController {
 		//$listadohorario2=$this->WorkshopSession->find('all', array('conditions'=>array('WorkshopSession.institution_id'=>'0','Institution.public_type_id'=>'1')));
 			
 		$this->set('listadohorario',$listadohorario);
-		$this->set('workshopc',$workshopc);
+		//$this->set('workshopc',$workshopc);
 
 		$listadohorarion = '';
 		foreach ($listadohorario as $listadohorarios):
