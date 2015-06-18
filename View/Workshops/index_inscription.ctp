@@ -1,20 +1,23 @@
 ﻿<div class="groups index">
 	<h2><?php echo __('Groups'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
-	<tr>
+		<tr>
 			<th><?php //echo $this->Paginator->sort('id_group'); ?></th>
 			<th><?php echo __('Nombre Grupo'); ?></th>
 			<th><?php echo __('Numero de integrantes'); ?></th>
-			<th><?php echo __('public_type_id');?></th>
-			<th><?php echo __('specific_condition_id'); ?></th>
-			<th><?php echo __('responsible_id'); ?></th>
+			<th><?php echo __('Rango de Edad');?></th>
+			<th><?php echo __('Condición Específica'); ?></th>
+			<th><?php echo __('Responsable'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($groups as $group): ?>
 	<tr>
 		<td><?php //echo h($group['Group']['id_group']); ?>&nbsp;</td>
-		<td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
-		<td><?php echo h($group['Group']['members_number']); ?>&nbsp;</td>
+		<td><?php echo h($group['gs']['name']); ?>&nbsp;</td>
+		<td><?php echo h($group['gs']['members_number']); ?>&nbsp;</td>
+		<td><?php echo h($group['pt']['name']); ?>&nbsp;</td>
+		<td><?php echo h($group['0']['specific_conditions']); ?>&nbsp;</td>
+		<td><?php echo h($group['us']['name']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($group['PublicType']['name'], array('controller' => 'public_types', 'action' => 'view', $group['PublicType']['id_public_type'])); ?>
 		</td>
@@ -39,24 +42,13 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+
+	
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Group'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Group'), array('controller' => 'groups', 'action' => 'addresp')); ?></li>
 		<li><?php echo $this->Html->link(__('List Public Types'), array('controller' => 'public_types', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Public Type'), array('controller' => 'public_types', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Specific Conditions'), array('controller' => 'specific_conditions', 'action' => 'index')); ?> </li>

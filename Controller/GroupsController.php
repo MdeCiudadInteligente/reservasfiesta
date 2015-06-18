@@ -69,11 +69,10 @@ class GroupsController extends AppController {
 	
 	
 	
-	public function addresp() {
+	public function addresp($id_user=null) {
 		if ($this->request->is('post')) {
 			
 			$this->Group->create();
-			$id_user = $this->Session->read('Auth.User.id_user');
 			$this->set('id_user',$id_user);
 			$data=$this->request->data;
 			$data['Group']['user_id']=$id_user;
