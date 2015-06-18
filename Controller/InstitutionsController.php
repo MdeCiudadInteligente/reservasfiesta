@@ -70,7 +70,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 					$id_user = $this->User->id;
 					//return $this->redirect(array('action' => 'index'));
 					//return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
-					return $this->redirect(array('controller' => 'groups', 'action' => 'addresp',$id_user));
+					return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 				} 
 				else 
 				{
