@@ -20,12 +20,15 @@
 			<?php
 				echo $this->Form->input('username');
 				echo $this->Form->input('password');
-				echo $this->Form->input('permission_level');
+			?>
+			<input name="data[User][permission_level]" value="2" id="UserPermissionLevel" type="hidden"/>
+			<?php 
 				echo $this->Form->input('name');
 				echo $this->Form->input('identity',array('label'=>'Documento de Identidad'));
 				echo $this->Form->input('celular');
 				echo $this->Form->input('mail');
 			?>
+			
 		</fieldset>
 	<?php echo $this->Form->end(__('Submit')); ?>
 </div>

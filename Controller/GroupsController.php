@@ -70,18 +70,18 @@ class GroupsController extends AppController {
 	
 	
 	public function addresp() {
-		if ($this->request->is('post')) {
-			
+		if ($this->request->is('post')) {			
 			$this->Group->create();
-			$id_user = $this->Session->read('Auth.User.id_user');
-			$this->set('id_user',$id_user);
+			$id_usuario = $this->Session->read('Auth.User.id_user');
+			$this->set('id_usuario',$id_usuario);		
 			$data=$this->request->data;
-			$data['Group']['user_id']=$id_user;
+			//$data['Group']['user_id']=$id_usuario;
+			//debug($id_user);
 			
 			if ($this->Group->save($data)) {
 				$id_group = $this->Group->id;
 				$this->Session->setFlash(__('The group has been saved.'));
-				return $this->redirect(array('controller' => 'WorkshopSessions', 'action' => 'addworkshop',$id_group));
+				return $this->redirect(array('controller' => 'WorkshopSessions', 'action' => 'addworkshop'));
 			} else {
 				$this->Session->setFlash(__('The group could not be saved. Please, try again.'));
 			}
