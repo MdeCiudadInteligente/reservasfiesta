@@ -222,7 +222,6 @@ class WorkshopSessionsController extends AppController {
 		$public_type=$this->WorkshopSession->query("select distinct public_type.name from user inner join (groups inner join public_type on groups.public_type_id = public_type.id_public_type) on groups.user_id = user.id_user where user.username = '$usuario' and groups.id_group = '$id_group'");
 		$this->set('public_type',$public_type);
 		
-		
 		foreach ($public_type as $public_type){
 			$public_typep=$public_type['public_type']['name'];
 		
