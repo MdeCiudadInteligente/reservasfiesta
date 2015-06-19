@@ -18,9 +18,11 @@
 		<fieldset>
 			<legend><?php echo __('Add User'); ?></legend>
 			<?php
-				echo $this->Form->input('username');
-				echo $this->Form->input('password');
+				echo $this->Form->input('username',array('id'=>'username'));
 			?>
+			<div id="Infouser"></div>
+			<?php echo $this->Form->input('password');?>
+			
 			<input name="data[User][permission_level]" value="2" id="UserPermissionLevel" type="hidden"/>
 			<?php 
 				echo $this->Form->input('name');
