@@ -15,12 +15,6 @@ class WorkshopSessionsController extends AppController {
  */
 	public $components = array('Paginator');
 	
-	public function beforeFilter() {
-		//parent::beforeFilter();
-		// Allow users to register and logout.
-		$this->Auth->allow('addworkshop','workshoplist');
-	
-	}
 
 /**
  * index method

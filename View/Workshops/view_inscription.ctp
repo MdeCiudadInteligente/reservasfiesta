@@ -97,7 +97,8 @@ window.print();
 
 <div class="actions">
 	<h3><?php echo __('Opciones'); ?></h3>
-	<ul>		
+	<ul>	
+		<li><?php echo $this->Html->link(__('Menú Principal'), array('controller' => 'workshops', 'action' => 'index_inscription')); ?> </li>
 		<li><?php 
 		if (($condicionp == 0)) {
 		echo $this->Html->link(__('Inscripción grupo'), array('controller' => 'Groups', 'action' => 'addresp')); 

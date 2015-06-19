@@ -383,7 +383,6 @@ class WorkshopsController extends AppController {
     	us.id_user=gs.user_id AND
 		gs.user_id= $iduser");
 		$this->set(compact('groups'));
-		debug($groups);
 		
 	}
 	
