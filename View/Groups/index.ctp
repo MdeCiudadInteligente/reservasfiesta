@@ -32,7 +32,7 @@
 			<?php echo $this->Html->link($group['User']['name'], array('controller' => 'users', 'action' => 'view', $group['User']['id_user'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $group['Group']['id_group'])); ?>
+			<?php echo $this->Html->link(__('View'), array('controller' => 'Workshop','action' => 'view_inscription', $group['Group']['id_group'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $group['Group']['id_group'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $group['Group']['id_group']), null, __('Are you sure you want to delete # %s?', $group['Group']['id_group'])); ?>
 		</td>

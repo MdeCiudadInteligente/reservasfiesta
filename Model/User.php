@@ -115,7 +115,7 @@ class User extends AppModel {
 		)
 	);*/
 	
-	/*public $hasAndBelongsToMany = array(
+	public $hasAndBelongsToMany = array(
 	'Institution' => array(
 					'className' => 'Institution',
 					'joinTable' => 'institution_user',
@@ -129,7 +129,7 @@ class User extends AppModel {
 					'offset' => '',
 					'finderQuery' => '',
 		),
-	);*/
+	);
 	
 	
 	public $hasMany = array(

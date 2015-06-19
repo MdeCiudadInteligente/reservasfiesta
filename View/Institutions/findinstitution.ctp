@@ -7,7 +7,7 @@
 			<span><?php echo $this->Html->link(__('Registrar Institución Educativa ó Independiente'), array('controller' => 'institutions', 'action' => 'add')); ?></span>
 			para registrarla.</p></span>
 			<br>
-			<?php echo $this->Form->input('id_institution',array('id' => 'lista-responsable','empty' => 'Seleccione la Institución','options' => $institutions,'label' => 'Buscar Institución Educativa ó Independiente'));?>	
+			<?php echo $this->Form->input('id_institution',array('id' => 'lista-responsable', 'name' =>'data[Institution][Institution][]','empty' => 'Seleccione la Institución','options' => $institutions,'label' => 'Buscar Institución Educativa ó Independiente'));?>	
 			<div class="desplegable hidden_lista">
 				<?php //echo $this->Form->submit(__('Continuar'), array('id' => 'boton-responsable'))?>
 				<input type="button" value="Continuar" id="boton-responsable" class="submit"/>
