@@ -65,6 +65,45 @@ class GroupsController extends AppController {
 		$options = array('conditions' => array('Group.' . $this->Group->primaryKey => $id));
 		$this->set('group', $this->Group->find('first', $options));
 	}
+	
+	public function view_admin($idgro = null) {
+		$iduser = $this->Session->read('Auth.User.id_user');
+		$this->set('iduser',$iduser);
+		$this->set('idgro',$idgro);
+		$groups=$this->Group->query("SELECT
+				gs.id_group,
+				gs.name,
+				gs.members_number,
+				pt.name,
+				wp.name,
+				ws.workshop_day,
+				ws.workshop_time,
+				ws.travel_time,
+				us.name,
+				(SELECT GROUP_CONCAT(CONCAT(' ', name, ' '))
+				FROM
+				group_specific_condition gsc,
+				specific_condition sc
+				WHERE
+				gs.id_group= gsc.group_id and
+				gsc.specific_condition_id= sc.id_specific_condition) AS specific_conditions
+		
+				FROM
+				workshop_session ws,
+				groups gs,
+				public_type pt,
+				user us,
+				workshop wp
+		
+				WHERE
+				wp.id_workshop=ws.workshop_id AND
+				gs.id_group=ws.group_id AND
+				pt.id_public_type=gs.public_type_id AND
+				us.id_user=gs.user_id AND
+				gs.user_id= $iduser");
+		$this->set(compact('groups'));
+	}
+	
 
 	public function addresp() { //$id_user=null
 		if ($this->request->is('post')) {	

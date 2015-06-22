@@ -241,6 +241,8 @@ class WorkshopsController extends AppController {
 		//$condicion=$this->Workshop->query("select workshop_session.group_id from workshop_session inner join groups on workshop_session.group_id = groups.id_group where workshop_session.group_id = $groupidp");
 		$condicion=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $groupidp");
 		
+		debug($condicion);
+		
 		//$condicion=";
 		//$condicion="select user.institution_id from user inner join (institution inner join workshop_session on institution.id_institution = workshop_session.institution_id) on user.institution_id = institution.id_institution where user.username = $usuario";
 		//$queryid="select distinct workshop.id_workshop from specific_condition inner join (specific_condition_workshop inner join (public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id) on specific_condition_workshop.workshop_id = workshop.id_workshop) on  specific_condition.id_specific_condition = specific_condition_workshop.specific_condition_id where workshop_session.workshop_day = '$datework' and public_type.name = '$public_typep' and specific_condition.name = ";

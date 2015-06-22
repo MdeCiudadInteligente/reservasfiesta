@@ -3,13 +3,14 @@
 	<fieldset>
 		<legend><?php echo __('Edit Group'); ?></legend>
 	<?php
+		echo $this->Form->input('id_group');
 		echo $this->Form->input('name');
 		echo $this->Form->input('members_number');
 		//echo $this->Form->input('public_type_id');
 		echo $this->Form->input('public_type_id',array('empty'=>'Seleccione el rango de edad','options' => $publictype,'label'=>'Rango de Edad'));
 		echo $this->Form->input('SpecificCondition', array('type' => 'select', 'multiple' => 'checkbox'));
 		//echo $this->Form->input('specific_condition_id');
-		echo $this->Form->input('responsible_id', array('options' => array ('1'=>'En Curso','2'=>'Finalizada')));
+	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
