@@ -53,7 +53,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code');
+		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code','find_username');
 	}
 	
 	public function findinstitution($institutioname=null,$institutionid= null){
@@ -111,6 +111,31 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		$this->set('_serialize', array('data')); // Let the JsonView class know what variable to use
 	}
 	
+	public function find_username()
+	{
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+	
+		$nameuser = $this->request->data['string'];
+		$data=$this->request->data;
+		$data['debug']['POST']=$nameuser;
+		$data['debug']['POSTCOMPLETE']=$this->request->data;
+		$verificar_username=$this->User->query("select distinct username from user where username = '$nameuser'");
+		//$this->set('verificar_code',$verificar_code);
+		$this->set("message", "You are good");
+		if(!$verificar_username == array())
+		{
+			$data['existe']=true;
+			$data['response']='<div style="color:#FF0000">El nombre de usuario ya existe intente con uno nuevo ó regrese a la página anterior.</div>';
+	
+		}
+		else{
+			$data['existe']=false;
+			$data['response']='<div style="color:#088A29">El nombre de usuario esta disponible, por favor continué.</div>';
+		}
+	
+		$this->set(compact('data'));
+		$this->set('_serialize', array('data')); // Let the JsonView class know what variable to use
+	}
 	
 	public function index() {
 		$usuario_level= $this->Session->read('Auth.User.permission_level');

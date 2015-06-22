@@ -107,7 +107,7 @@ window.print();
 		
 		<li><?php 
 		if (($condicionp != 0)) {
-		echo $this->Html->link(__('Workshop Cancel'), array('controller' => 'Workshops', 'action' => 'workshop_cancel')); 		
+		echo $this->Html->Link(__('Workshop Cancel'), array('controller' => 'Workshops', 'action' => 'workshop_cancel'), null, __('¿Está seguro que desea cancelar la carpa?, Recuerde que al cancelar deberá registrar nuevamente su grupo y el taller.')); 		
 		}
 		?></li>
 		<li><?php echo $this->Html->link(__('Editar datos responsable'), array('controller' => 'responsibles','action' => 'edit',$rcedula)); ?> </li>

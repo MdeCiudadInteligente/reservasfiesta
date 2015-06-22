@@ -1,6 +1,7 @@
 ﻿<?php
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
+App::import('Controller', 'Groups');
 /**
  * Workshops Controller
  *
@@ -392,21 +393,23 @@ class WorkshopsController extends AppController {
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		
-		$institutionid=$this->Workshop->query("select institution.id_institution from institution inner join user on institution.id_institution = user.institution_id  where user.username = '$usuario'");
-		foreach ($institutionid as $institutionid):
-		$institutionidp=$institutionid['institution']['id_institution'];
+		$Groups = new GroupsController();
+		
+		$groupid=$this->Workshop->query("select groups.id_group from groups inner join user on user.id_user = groups.user_id  where user.username = '$usuario'");
+		foreach ($groupid as $groupid):
+		$groupidp=$groupid['groups']['id_group'];
 		
 		endforeach;
 
-		$this->set('institutionidp',$institutionidp);		
+		$this->set('groupidp',$groupidp);		
 		
 		//---Registro de inscripciones
-		$condicionn=$this->Workshop->query("select institution_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where institution_id = $institutionidp");
+		$condicionn=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $groupidp");
 		
 		$this->set('condicionn',$condicionn);
 		$condicionnp='';
 		foreach ($condicionn as $condicionnes):
-		$condicionnp=$condicionnes['workshop_session']['institution_id'];
+		$condicionnp=$condicionnes['workshop_session']['group_id'];
 		
 		endforeach;
 		$this->set('condicionnp',$condicionnp);
@@ -446,15 +449,30 @@ class WorkshopsController extends AppController {
 				
 		//-----------------------------		
 
-		$this->set('institutionidp',$institutionidp);
+		$this->set('groupidp',$groupidp);
 
-		$queryupdate="update workshop_session SET institution_id = '0' where workshop_session.institution_id = '$institutionidp'";
-		$tallerupdate=$this->Workshop->query($queryupdate);
-		$this->set(compact('tallerupdate'));
+		$queryupdate=$this->Workshop->query("update workshop_session SET group_id = '0' where workshop_session.group_id = '$groupidp'");
+		//$tallerupdate=$this->Workshop->query($queryupdate);
+		//debug($queryupdate);		
+		$this->set(compact('queryupdate'));
 		
-		return $this->redirect(array('controller' => 'workshops','action' => 'index_inscription'));
-	}
-	
+		$Groups = new GroupsController;
+		
+		if($queryupdate == array())
+		{
+			$Groups_response = $Groups->delete($groupidp);	
+			if (!$Groups_response['success']){
+				$this->Session->setFlash(__($Groups_response['message']));
+			}
+			else{
+				$this->Session->setFlash(__('El grupo ha sido eliminado.'));
+			}
+		}
+		else {
+			$this->Session->setFlash(__('El grupo no pudó ser eliminado. Por favor, Intenta de nuevo.'));
+		}
+		return $this->redirect(array('action' => 'index_inscription'));
+	}	
 	
 	public function register(){
 	if ($this->request->is('post')) {
