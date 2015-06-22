@@ -38,10 +38,10 @@ function goBack()
          return true;
       }
 </script>
-<div class="responsibles form">
-<?php echo $this->Form->create('Responsible'); ?>
+<div class="users form">
+<?php echo $this->Form->create('User'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Responsible'); ?></legend>
+		<legend><?php echo __('Add User'); ?></legend>
 	<?php
 
 	    echo $this->Form->input('institution_id');
@@ -58,7 +58,7 @@ function goBack()
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Responsibles'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Usuarios'), array('action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Educational Institutions'), array('controller' => 'educational_institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Educational Institution'), array('controller' => 'educational_institutions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
