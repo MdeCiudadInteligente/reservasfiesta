@@ -145,16 +145,14 @@ class GroupsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($id = null) {
-		$this->Group->id = $id;
-		if (!$this->Group->exists()) {
-			throw new NotFoundException(__('Invalid group'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Group->delete()) {
-			$this->Session->setFlash(__('The group has been deleted.'));
+	public function delete($groupidp = null) {
+		if ($this->Group->delete($groupidp)) {		
+			$response['success']=true;
+		    
 		} else {
-			$this->Session->setFlash(__('The group could not be deleted. Please, try again.'));
+			$response['success']=false;
+			$response['message']='El Grupo no pudó ser eliminado';
 		}
-		return $this->redirect(array('action' => 'index'));
+		
+		return $response;
 	}}

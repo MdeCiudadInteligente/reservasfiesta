@@ -1,6 +1,7 @@
 ﻿<?php
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
+App::import('Controller', 'Groups');
 /**
  * Workshops Controller
  *
@@ -390,6 +391,8 @@ class WorkshopsController extends AppController {
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		
+		$Groups = new GroupsController();
+		
 		$groupid=$this->Workshop->query("select groups.id_group from groups inner join user on user.id_user = groups.user_id  where user.username = '$usuario'");
 		foreach ($groupid as $groupid):
 		$groupidp=$groupid['groups']['id_group'];
@@ -446,13 +449,28 @@ class WorkshopsController extends AppController {
 
 		$this->set('groupidp',$groupidp);
 
-		$queryupdate="update workshop_session SET group_id = '0' where workshop_session.group_id = '$groupidp'";
-		$tallerupdate=$this->Workshop->query($queryupdate);
-		$this->set(compact('tallerupdate'));
+		$queryupdate=$this->Workshop->query("update workshop_session SET group_id = '0' where workshop_session.group_id = '$groupidp'");
+		//$tallerupdate=$this->Workshop->query($queryupdate);
+		//debug($queryupdate);		
+		$this->set(compact('queryupdate'));
 		
-		return $this->redirect(array('controller' => 'workshops','action' => 'index_inscription'));
-	}
-	
+		$Groups = new GroupsController;
+		
+		if($queryupdate == array())
+		{
+			$Groups_response = $Groups->delete($groupidp);	
+			if (!$Groups_response['success']){
+				$this->Session->setFlash(__($Groups_response['message']));
+			}
+			else{
+				$this->Session->setFlash(__('El grupo ha sido eliminado.'));
+			}
+		}
+		else {
+			$this->Session->setFlash(__('El grupo no pudó ser eliminado. Por favor, Intenta de nuevo.'));
+		}
+		return $this->redirect(array('action' => 'index_inscription'));
+	}	
 	
 	public function register(){
 	if ($this->request->is('post')) {
