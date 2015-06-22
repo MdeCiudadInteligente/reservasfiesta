@@ -53,7 +53,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code');
+		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code','find_username');
 	}
 	
 	public function findinstitution($institutioname=null,$institutionid= null){

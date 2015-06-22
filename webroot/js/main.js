@@ -34,8 +34,8 @@ App.prototype.bind=function(){
 	
 	$(document).on('change','#username',function(){
 		$('#Infouser').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
- 		var username = $(this).val();		
- 		var dataString =username;
+ 		var usern = $(this).val();		
+ 		var dataString =usern;
  		
  		$.ajax({
              type: "POST",
