@@ -184,8 +184,8 @@ class GroupsController extends AppController {
  * @param string $id
  * @return void
  */
-	public function delete($groupidp = null) {
-		if ($this->Group->delete($groupidp)) {		
+	public function delete($id_group = null) {
+		if ($this->Group->delete($id_group)) {		
 			$response['success']=true;
 		    
 		} else {
