@@ -87,10 +87,10 @@
 	</fieldset>
 <?php echo $this->Form->end(); ?>
 </div>
-<!-- <div class="actions">
+ <div class="actions">
 	<h3><?php //echo __('Opciones'); ?></h3>
 	<ul>		
 		<li><?php //echo $this->Html->link(__('Regresar'), array('controller' => 'workshopSessions', 'action' => 'addworkshop')); ?> </li>
-		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
-</div> -->
+</div> 

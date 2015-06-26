@@ -1,5 +1,5 @@
-<div class="publicTypes index">
-<?php $this->set('title_for_layout' , 'Lista tipo de p�blico' );?>
+﻿<div class="publicTypes index">
+<?php $this->set('title_for_layout' , 'Lista tipo de público' );?>
 	<h2><?php echo __('Public Types'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -14,7 +14,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $publicType['PublicType']['id_public_type'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $publicType['PublicType']['id_public_type'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $publicType['PublicType']['id_public_type']), null, __('Are you sure you want to delete # %s?', $publicType['PublicType']['id_public_type'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $publicType['PublicType']['id_public_type']), null, __('Está seguro que desea Eliminar # %s?', $publicType['PublicType']['id_public_type'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -41,8 +41,8 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Public Type'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Workshops'), array('controller' => 'workshops', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Workshop'), array('controller' => 'workshops', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Workshops'), array('controller' => 'workshops', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Workshop'), array('controller' => 'workshops', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

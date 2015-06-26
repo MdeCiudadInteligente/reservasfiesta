@@ -1,4 +1,15 @@
-﻿<div class="users form">
+﻿<script type="text/javascript">
+
+      function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+ 
+         return true;
+      }
+</script>
+<div class="users form">
 	<?php echo $this->Form->create('User'); ?>
 	<div class="Buscar lista">
 		<fieldset>
@@ -26,8 +37,8 @@
 			<input name="data[User][permission_level]" value="2" id="UserPermissionLevel" type="hidden"/>
 			<?php 
 				echo $this->Form->input('name');
-				echo $this->Form->input('identity',array('label'=>'Documento de Identidad'));
-				echo $this->Form->input('celular');
+				echo $this->Form->input('identity',array('label'=>'Documento de Identidad','onkeypress'=>'return isNumberKey(event)'));
+				echo $this->Form->input('celular',array('onkeypress'=>'return isNumberKey(event)'));
 				echo $this->Form->input('mail');
 			?>
 			
@@ -35,9 +46,10 @@
 	<?php echo $this->Form->end(__('Submit')); ?>
 </div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
+<!-- <div class="actions"> 
+	<h3>?php //echo __('Actions'); ?></h3>
+	<ul>-->
+<!-- 		<li>?php //echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li> 
 	</ul>
-</div>		
+</div>	
+-->

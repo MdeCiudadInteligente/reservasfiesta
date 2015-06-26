@@ -106,16 +106,32 @@ msgid "New Workshop Session"
 msgstr "Nueva sesión de la carpa"
 
 msgid "New Specific Condition"
-msgstr "Nueva condición específica"
+msgstr "Nueva Condición Específica"
 
 msgid "Mail"
 msgstr "Correo"
+
+msgid "Identity"
+msgstr "Documento Identidad"
+
 
 msgid "Address"
 msgstr "Dirección:"
 
 msgid "Comune"
 msgstr "Comuna:"
+
+msgid "Edit Group"
+msgstr "Editar Grupo"
+
+msgid "Group"
+msgstr "Grupo"
+
+msgid "Delete Public Types"
+msgstr "Eliminar Tipo Público"
+
+msgid "List Groups"
+msgstr "Lista Grupos"
 
 msgid "City"
 msgstr "Ciudad:"
@@ -163,7 +179,7 @@ msgid "Add Institution"
 msgstr "Añadir Grupo"
 
 msgid "List Responsibles"
-msgstr "Lista Responsables"
+msgstr "Lista Usuarios"
 
 msgid "List Educational Institutions"
 msgstr "Lista Instituciones Educativas"
@@ -172,10 +188,10 @@ msgid "New Educational Institution"
 msgstr "Nueva Institución Educativa"
 
 msgid "Add Responsible"
-msgstr "Añadir Responsable"
+msgstr "Agregar Usuario"
 
 msgid "Id Responsible"
-msgstr "Id Responsable"
+msgstr "Id Usuario"
 
 msgid "List Public Types"
 msgstr "Lista Tipo Público"
@@ -566,10 +582,25 @@ msgid "Add Educational Institution"
 msgstr "Añadir información de la Institución Educativa."
 
 msgid "The responsible has been saved."
-msgstr "El responsable ha sido guardado."
+msgstr "El usuario ha sido guardado."
 
 msgid "The responsible has been deleted."
-msgstr "El responsable ha sido elimindo."
+msgstr "El usuario ha sido elimindo."
+
+msgid "Groups"
+msgstr "Grupos"
+
+msgid "New Group"
+msgstr "Nuevo Grupo"
+
+msgid "Add Group"
+msgstr "Agregar Grupo"
+
+msgid "Add user"
+msgstr "Agregar Usuario"
+
+msgid "The group has been saved."
+msgstr "El grupo ha sido guardado."
 
 msgid "The workshop session has been saved."
 msgstr "La Sesión de la carpa ha sido guardada."
@@ -632,16 +663,16 @@ msgid "Add Public Type"
 msgstr "Añadir tipo de público"
 
 msgid "Responsible"
-msgstr "Responsable"
+msgstr "Usuario"
 
 msgid "Responsibles"
-msgstr "Responsables"
+msgstr "Usuarios"
 
 msgid "Edit Responsible"
-msgstr "Editar Responsable"
+msgstr "Editar Usuario"
 
 msgid "New Responsible"
-msgstr "Nuevo Responsable"
+msgstr "Nuevo Usuario"
 
 msgid "User"
 msgstr "Usuario"

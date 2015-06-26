@@ -181,6 +181,7 @@ div.actions {
 	float:left;
 	width:18%;
 	padding:10px 1.5%;
+	
 }
 div.actions h3 {
 	padding-top:0;
@@ -843,10 +844,8 @@ div.educationalInstitutions.form span{
 div.workshops.form span{
 	font-size: 18px;
 }
-<<<<<<< HEAD
+
 
 div.checkbox{
 	font-weight: normal!important;
 }
-=======
->>>>>>> 2839113523023cbfbfe311f9f1e1fcf2b32bd034

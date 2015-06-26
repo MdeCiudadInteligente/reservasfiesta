@@ -1,4 +1,4 @@
-<div class="Users form">
+﻿<div class="Users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
 		<legend><?php echo __('Add user'); ?></legend>
@@ -12,7 +12,7 @@
 				<td><?php echo h($allusers['user']['username']); ?>&nbsp;</td>
 				<td class="actions">
 				<?php $userupd=$allusers['user']['username']; ?>
-					<?php echo $this->Html->link(__('cambiar contrasena'), array('controller' => 'users','action' => 'enviarcorreo',$userupd,$cedresponsable)); ?>			
+					<?php echo $this->Html->link(__('cambiar contraseña'), array('controller' => 'users','action' => 'enviarcorreo',$userupd,$cedresponsable)); ?>			
 				</td>
 			</tr>
 		<?php endforeach;?>	

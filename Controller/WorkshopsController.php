@@ -181,7 +181,7 @@ class WorkshopsController extends AppController {
 		$this->Register->create();
 		$this->Register->set(array(
 				'date' => $fecha,
-				'user' => $usuario,
+				'username' => $usuario,
 				'estado' => $estado,
 				'workshop' => $condicionnomb
 		));
@@ -201,25 +201,25 @@ class WorkshopsController extends AppController {
 	}
 	
 	public function view_inscription($id_group=null)  {
-
+	
 	
 		//$this->set('institution',$institution);
 		//debug($institution);
 		$this->set('id_group',$id_group);
-		
+	
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
-		
+	
 		$groupid=$this->Workshop->query("select groups.id_group,groups.name,groups.members_number,groups.user_id from groups inner join user on groups.user_id = user.id_user  where user.username = '$usuario' and groups.id_group = '$id_group' ");
 		//debug($institutionid);
-		
-		foreach ($groupid as $groupid):		
+	
+		foreach ($groupid as $groupid):
 		$groupidp=$groupid['groups']['id_group'];
 		$groupname=$groupid['groups']['name'];
 		$groupnumber=$groupid['groups']['members_number'];
 		$groupuser=$groupid['groups']['user_id'];
 		//debug($institutionname);
-		
+	
 		endforeach;
 		$this->set('groupidp',$groupidp);
 		$this->set('groupname',$groupname);
@@ -229,43 +229,43 @@ class WorkshopsController extends AppController {
 		$responsibles=$this->User->find('all', array('conditions'=>array('id_user'=>$groupuser),'fields'=>array('name','celular','id_user')));
 		$rname=null;
 		$rcelular=null;
-		$rcedula=null;
+		$ruser=null;
 		foreach ($responsibles as $responsible){
-				$rname=$responsible['User']['name'];
-				$rcelular=$responsible['User']['celular'];	
-				$rcedula=$responsible['User']['id_user'];
+			$rname=$responsible['User']['name'];
+			$rcelular=$responsible['User']['celular'];
+			$ruser=$responsible['User']['id_user'];
 		}
 		$this->set('rname',$rname);
 		$this->set('rcelular',$rcelular);
-		$this->set('rcedula',$rcedula);
+		$this->set('ruser',$ruser);
 		//fin
 		//$condicion=$this->Workshop->query("select workshop_session.group_id from workshop_session inner join groups on workshop_session.group_id = groups.id_group where workshop_session.group_id = $groupidp");
 		$condicion=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $groupidp");
+	
 		//$condicion=";
 		//$condicion="select user.institution_id from user inner join (institution inner join workshop_session on institution.id_institution = workshop_session.institution_id) on user.institution_id = institution.id_institution where user.username = $usuario";
 		//$queryid="select distinct workshop.id_workshop from specific_condition inner join (specific_condition_workshop inner join (public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id) on specific_condition_workshop.workshop_id = workshop.id_workshop) on  specific_condition.id_specific_condition = specific_condition_workshop.specific_condition_id where workshop_session.workshop_day = '$datework' and public_type.name = '$public_typep' and specific_condition.name = ";
 		//$condicion=$this->Workshop->query($condicion);
 		//$this->set(compact('tallerday'));
-		
-		$institutionid=$this->Workshop->query("select institution_id from institution_user where user_id='$rcedula' group by institution_id limit 1");
+	
+		$institutionid=$this->Workshop->query("select institution_id from institution_user where user_id='$ruser' group by institution_id limit 1");
 		foreach ($institutionid as $institutionid):
 		$institutionidn=$institutionid['institution_user']['institution_id'];
-		
-		endforeach;
-
-		
+	
+		endforeach;	
+	
 		$this->set('condicion',$condicion);
 		$condicionp='';
 		foreach ($condicion as $condiciones):
-		$condicionp=$condiciones['workshop_session']['group_id'];		
-		
+		$condicionp=$condiciones['workshop_session']['group_id'];
+	
 		endforeach;
-		$this->set('condicionp',$condicionp);		
-		
-		
+		$this->set('condicionp',$condicionp);
+	
+	
 		if ($condicionp != 0)
 		{
-			
+				
 			foreach ($condicion as $condiciones):
 			$condicionid=$condiciones['workshop_session']['workshop_id'];
 			$condiciond=$condiciones['workshop_session']['workshop_day'];
@@ -276,13 +276,13 @@ class WorkshopsController extends AppController {
 			$this->set('condiciont',$condiciont);
 			$this->set('condiciontra',$condiciontra);
 			$this->set('condicionid',$condicionid);
-			
+				
 			$condicioname=$this->Workshop->query("select name from workshop where id_workshop = $condicionid");
 			foreach ($condicioname as $condicionm):
 			$condicionnom=$condicionm['workshop']['name'];
 			endforeach;
 			$this->set('condicionnom',$condicionnom);
-			
+				
 			//$correoi=$this->User->query("select distinct mail from responsible inner join (insitution inner join user on institution.id_institution=user.institution_id)on responsible.institution_id=institution.id_institution where id_responsible = '$crcedula'");
 			$correoi=$this->User->find('all', array('conditions'=>array('id_user'=>$groupuser)));
 			$correoi2=$this->Institution->find('all', array('conditions'=>array('id_institution'=>$institutionidn)));
@@ -291,28 +291,28 @@ class WorkshopsController extends AppController {
 			$Email = new CakeEmail('gmail');
 			$Email->from(array('publicos@fiestadellibroylacultura.com' => 'Fiesta del Libro y la Cultura'));
 			foreach ($correoi as $correoi):
-			$email_c = $correoi['User']['mail'];			
+			$email_c = $correoi['User']['mail'];
 			endforeach;
-			foreach ($correoi2 as $correoi2):			
+			foreach ($correoi2 as $correoi2):
 			$email_c2 = $correoi2['Institution']['mail'];
 			endforeach;
 			$Email->to($email_c);
 			$Email->cc($email_c2);
 			$Email->subject('Inscripción exitosa!!!');
 			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
-			$mensaje1="\n\n¡Qué bien! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes "; 
+			$mensaje1="\n\n¡Qué bien! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes ";
 			$mensaje12="hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (si no tienes disponible impresora en el momento, puedes volver a ingresar en cualquier momento con tu usuario y contraseña para imprimirla, además te llegará una copia a tu correo electrónico) \n\n";
-			$mensaje11="El Día: ";			
-			$mensaje2="\nNombre Taller: ";			
-			$mensaje3="\nHora Taller: ";		
+			$mensaje11="El Día: ";
+			$mensaje2="\nNombre Taller: ";
+			$mensaje3="\nHora Taller: ";
 			$mensaje4="\nHora Recorrido: ";
 			$mensaje5="\nNombre del Encargado: ";
 			$mensaje6="\nCelular del Encargado: ";
 			$mensaje7="\nCantidad de Inscritos: ";
 			$recomendaciones="\n\nRecomendaciones:";
-			$recomendacion10="\n\n • Todos los talleres se realizan en el Jardín Botánico de Medellín."; 
-			$recomendacion1="\n\n• El ingreso de los grupos será por la entrada peatonal del Jardín Botánico. (Cerca de la estación Universidad del Metro, Calle 73)"; 
-			$recomendacion11="\n\n • Es necesario que su grupo llegue con 30 minutos de antelación para hacer el registro y que no se retrase la actividad."; 
+			$recomendacion10="\n\n • Todos los talleres se realizan en el Jardín Botánico de Medellín.";
+			$recomendacion1="\n\n• El ingreso de los grupos será por la entrada peatonal del Jardín Botánico. (Cerca de la estación Universidad del Metro, Calle 73)";
+			$recomendacion11="\n\n • Es necesario que su grupo llegue con 30 minutos de antelación para hacer el registro y que no se retrase la actividad.";
 			$recomendacion12="\n\n • Recuerde que la duración  de la actividad es de dos (2) horas para cada uno de los grupos, es importante tener en cuenta que esta programación se hace con el fin de atender a todo el público que quiera asistir a la Fiesta, por lo tanto es indispensable respetar las actividades programadas para los demás grupos y no ingresar a las carpas de promoción de lectura sin autorización.";
 			$recomendacion21="\n\n• Durante la actividad el grupo contará con el acompañamiento de un guía, pero es indispensable que el responsable del grupo esté permanentemente.";
 			$recomendacion32="\n\n• Su institución es responsable del transporte y la alimentación de los grupos. Se puede ingresar alimentos a las instalaciones del Jardín Botánico.";
@@ -338,15 +338,16 @@ class WorkshopsController extends AppController {
 			$hora_taller= date('h i a', strtotime($condiciont));
 			$hora_recorrido= date('h i a', strtotime($condiciontra));
 			$Email->send($mensaje1.$mensaje12.$mensaje11.$dia_taller.
-			$mensaje2.$condicionnom.$mensaje3.$hora_taller.$mensaje4.
-			$hora_recorrido.$mensaje5.$rname.$mensaje6.$rcelular.$mensaje7.
-			$groupnumber.$recomendaciones.$recomendacion10.$recomendacion1.$recomendacion11.$recomendacion12.$recomendacion21.
-			$recomendacion32.$recomendacion41.$recomendacion42.$recomendacion43.$recomendacion44.$recomendacion45.$recomendacion46.
-			$recomendacion47.$recomendacion48.$recomendacion49.$recomendacion40.$recomendacion50.$recomendacion51.$recomendacion52.
-			$recomendacion53.$recomendacion54.$recomendacion55.$recomendacion56.$norespuesta);
-
+					$mensaje2.$condicionnom.$mensaje3.$hora_taller.$mensaje4.
+					$hora_recorrido.$mensaje5.$rname.$mensaje6.$rcelular.$mensaje7.
+					$groupnumber.$recomendaciones.$recomendacion10.$recomendacion1.$recomendacion11.$recomendacion12.$recomendacion21.
+					$recomendacion32.$recomendacion41.$recomendacion42.$recomendacion43.$recomendacion44.$recomendacion45.$recomendacion46.
+					$recomendacion47.$recomendacion48.$recomendacion49.$recomendacion40.$recomendacion50.$recomendacion51.$recomendacion52.
+					$recomendacion53.$recomendacion54.$recomendacion55.$recomendacion56.$norespuesta);
+	
 		}
-	}
+	}	
+	
 	public function index_inscription($pass=null)  {
 		$iduser = $this->Session->read('Auth.User.id_user');
 		$this->set('iduser',$iduser);
@@ -386,22 +387,25 @@ class WorkshopsController extends AppController {
 		
 	}
 	
-	public function workshop_cancel() {
+	public function workshop_cancel($id_group=null) {
+		
 		$usuario = $this->Session->read('Auth.User.username');
 		$this->set('usuario',$usuario);
 		
+		$this->set('id_group',$id_group);
+		
 		$Groups = new GroupsController();
 		
-		$groupid=$this->Workshop->query("select groups.id_group from groups inner join user on user.id_user = groups.user_id  where user.username = '$usuario'");
+		/*$groupid=$this->Workshop->query("select groups.id_group from groups inner join user on user.id_user = groups.user_id  where user.username = '$usuario'");
 		foreach ($groupid as $groupid):
 		$groupidp=$groupid['groups']['id_group'];
 		
 		endforeach;
-
-		$this->set('groupidp',$groupidp);		
+		
+		$this->set('groupidp',$groupidp);*/
 		
 		//---Registro de inscripciones
-		$condicionn=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $groupidp");
+		$condicionn=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $id_group");
 		
 		$this->set('condicionn',$condicionn);
 		$condicionnp='';
@@ -438,50 +442,108 @@ class WorkshopsController extends AppController {
 		$this->Register->create();
 		$this->Register->set(array(
 				'date' => $fecha,
-				'user' => $usuario,
+				'username' => $usuario,
 				'estado' => $estado,
 				'workshop' => $condicionnomb
 		));
 		$this->Register->save();
-				
-		//-----------------------------		
-
+		
+		//Envió de Correo...
+		
+		$groupid=$this->Workshop->query("select groups.id_group,groups.name,groups.members_number,groups.user_id from groups inner join user on groups.user_id = user.id_user  where user.username = '$usuario' and groups.id_group = '$id_group' ");
+		
+		foreach ($groupid as $groupid):
+		$groupidp=$groupid['groups']['id_group'];
+		$groupname=$groupid['groups']['name'];
+		$groupmember=$groupid['groups']['members_number'];
+		$groupuser=$groupid['groups']['user_id'];
+			
+		endforeach;
 		$this->set('groupidp',$groupidp);
-
-		$queryupdate=$this->Workshop->query("update workshop_session SET group_id = '0' where workshop_session.group_id = '$groupidp'");
-		//$tallerupdate=$this->Workshop->query($queryupdate);
-		//debug($queryupdate);		
+		$this->set('groupname',$groupname);
+		$this->set('groupmember',$groupmember);
+		$this->set('groupuser',$groupuser);
+		
+		//Fin envio correo....
+		
+		//-----------------------------		
+		$queryupdate=$this->Workshop->query("update workshop_session SET group_id = '0' where workshop_session.group_id = '$id_group'");
 		$this->set(compact('queryupdate'));
 		
 		$Groups = new GroupsController;
 		
 		if($queryupdate == array())
 		{
-			$Groups_response = $Groups->delete($groupidp);	
+			$Groups_response = $Groups->delete($id_group);
+			
+			//Envió de Correo...
+			
+			$user_canc=$this->User->find('all', array('conditions'=>array('id_user'=>$groupuser),'fields'=>array('id_user')));
+			$ruser=null;
+			
+			foreach ($user_canc as $user_cancl)
+			{
+				$ruser=$user_cancl['User']['id_user'];
+			}
+			$this->set('ruser',$ruser);
+			
+			$institutionid=$this->Workshop->query("select institution_id from institution_user where user_id='$ruser' group by institution_id limit 1");
+			foreach ($institutionid as $institutionid):
+			$institutionidn=$institutionid['institution_user']['institution_id'];
+			endforeach;
+			
+			$this->set('institutionidn',$institutionidn);			
+				
+			//$correoi=$this->User->query("select distinct mail from responsible inner join (insitution inner join user on institution.id_institution=user.institution_id)on responsible.institution_id=institution.id_institution where id_responsible = '$crcedula'");
+			$correoi=$this->User->find('all', array('conditions'=>array('id_user'=>$groupuser)));
+			$correoi2=$this->Institution->find('all', array('conditions'=>array('id_institution'=>$institutionidn)));
+			$this->set('correoi',$correoi);
+			$this->set('correoi2',$correoi2);
+			$Email = new CakeEmail('gmail');
+			$Email->from(array('publicos@fiestadellibroylacultura.com' => 'Fiesta del Libro y la Cultura'));
+			foreach ($correoi as $correoi):
+			$email_c = $correoi['User']['mail'];
+			endforeach;
+			foreach ($correoi2 as $correoi2):
+			$email_c2 = $correoi2['Institution']['mail'];
+			endforeach;
+			$Email->to($email_c);
+			$Email->cc($email_c2);
+			$Email->subject('Cancelación exitosa!!!');
+			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
+			$mensaje1="\n\n¡Atención! Usted ha cancelado su inscripción a una de las carpas para su grupo, ";
+			$mensaje2="\n\n Por lo tanto su grupo ha sido eliminado, si desea inscribir de nuevo una carpa a su grupo";
+			$mensaje3="\n\n debe registrar de nuevo el grupo y el taller al que desea inscribirlo.";
+			$mensaje4="\n\n  Este correo es informativo, favor no responder a esta dirección de correo, ya que no se encuentra habilitada para recibir mensajes.";
+				
+			$Email->send($mensaje1.$mensaje2.$mensaje3.$mensaje4);		
+			
+			//Fin envió de correo...		
+			
 			if (!$Groups_response['success']){
 				$this->Session->setFlash(__($Groups_response['message']));
 			}
-			else{
+			else{				
 				$this->Session->setFlash(__('El grupo ha sido eliminado.'));
 			}
 		}
 		else {
 			$this->Session->setFlash(__('El grupo no pudó ser eliminado. Por favor, Intenta de nuevo.'));
 		}
-		return $this->redirect(array('action' => 'index_inscription'));
+		return $this->redirect(array('action' => 'index_inscription'));							
 	}	
 	
 	public function register(){
 	if ($this->request->is('post')) {
 		//$datework= $this->request->data['WorkshopSession']['workshop_day'];
-		$datos= $this->request->data['Workshops']['user'];
+		$datos= $this->request->data['User']['username'];
 		return $this->redirect(array('controller' => 'workshops', 'action' => 'listado',$datos));
 		}
 	}
 	
 	public function listado($datos=null){
 		$this->set('datos',$datos);
-		$datos_list=$this->Register->query("select date,user,estado,workshop from register where user = '$datos'");
+		$datos_list=$this->Register->query("select date,estado,workshop,username from register where username = '$datos'");
 		$this->set('datos_list',$datos_list);	
 		$this->Register->recursive = 0;
 		$this->set('registers', $this->Paginator->paginate('Register'));

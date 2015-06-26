@@ -64,17 +64,18 @@
 <div class="actions">
 	<h3><?php echo __('Opciones'); ?></h3>
 	<ul>		
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Institution'), array('action' => 'add')); ?></li>		
-		<li><?php echo $this->Html->link(__('Lista Institución Educativa'), array('controller' => 'educational_institutions','action' => 'index')); ?></li>		
-		<li><?php echo $this->Html->link(__('Nueva Entidad'), array('controller' => 'entities','action' => 'add')); ?></li>	
-		<li><?php echo $this->Html->link(__('Lista Responsables'), array('controller' => 'responsibles','action' => 'index')); ?></li>	
-		<li><?php //echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>			
-		<li><?php echo $this->Html->link(__('New Public Type'), array('controller' => 'public_types', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Specific Condition'), array('controller' => 'specific_conditions', 'action' => 'add')); ?> </li>	
-		<li><?php echo $this->Html->link(__('Nueva Carpa'), array('controller' => 'workshops','action' => 'add')); ?></li>		
-		<li><?php echo $this->Html->link(__('New Workshop Session'), array('controller' => 'workshop_sessions', 'action' => 'add')); ?> </li>	
-		<li><?php echo $this->Html->link(__('Cargar Archivo de Horarios'), array('controller' => 'workshop_sessions', 'action' => 'cargarchivo')); ?> </li>	
+		<li><?php //echo $this->Html->link(__('Lista Institución Educativa'), array('controller' => 'educational_institutions','action' => 'index')); ?></li>		
+		<li><?php echo $this->Html->link(__('List Entities'), array('controller' => 'entities','action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Usuarios'), array('controller' => 'users','action' => 'index')); ?></li>	
+		<li><?php //echo $this->Html->link(__('New Group'), array('controller'=>'groups','action' => 'add')); ?></li>	
+		<li><?php //echo $this->Html->link(__('Lista Grupos'), array('controller'=>'groups','action' => 'index')); ?></li>		
+		<li><?php echo $this->Html->link(__('List Public Types'), array('controller' => 'PublicTypes','action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Specific Conditions'), array('controller' => 'SpecificConditions','action' => 'index')); ?></li>	
+		<li><?php echo $this->Html->link(__('List Workshops'), array('controller' => 'Workshops','action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Workshop Sessions'), array('controller' => 'WorkshopSessions','action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Cargar Archivo de Horarios'), array('controller' => 'WorkshopSessions', 'action' => 'cargarchivo')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Listado de Registros'), array('controller' => 'workshops', 'action' => 'listado')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>

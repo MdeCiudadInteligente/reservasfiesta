@@ -41,17 +41,22 @@ function goBack()
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
-		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-
-	    echo $this->Form->input('institution_id');
-		echo $this->Form->input('identity',array('type'=>'text','label'=>'Cédula Responsable','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('name',array('label'=>'Nombre Responsable','maxLength'=>'256'));
-		echo $this->Form->input('celular',array('label'=>'Celular Responsable','maxLength'=>'10','onkeypress'=>'return isNumberKey(event)'));
-		echo $this->Form->input('mail',array('label'=>'Correo Responsable','onchange'=>'validarEmail(this.value)'));
+		<fieldset>
+			<legend><?php echo __('Add User'); ?></legend>
+			<?php
+				echo $this->Form->input('username');
+			?>
+			<div id="Infouser"></div>
+			<?php
+				echo $this->Form->input('password');	
+			 	echo $this->Form->input('permission_level',array('type'=>'text','onkeypress'=>'return isNumberKey(event)'));
+				echo $this->Form->input('name');
+				echo $this->Form->input('identity',array('label'=>'Documento de Identidad','onkeypress'=>'return isNumberKey(event)'));
+				echo $this->Form->input('celular',array('onkeypress'=>'return isNumberKey(event)'));
+				echo $this->Form->input('mail');
+			?>
 			
-	?>
-	</fieldset>
+		</fieldset>
 <?php echo $this->Form->end(__('Continuar')); ?>
 </div>
 <div class="actions">
@@ -59,8 +64,8 @@ function goBack()
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Lista Usuarios'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Educational Institutions'), array('controller' => 'educational_institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Educational Institution'), array('controller' => 'educational_institutions', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Educational Institutions'), array('controller' => 'educational_institutions', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Educational Institution'), array('controller' => 'educational_institutions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

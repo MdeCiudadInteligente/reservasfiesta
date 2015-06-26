@@ -11,14 +11,34 @@
 			<?php echo h($user['User']['username']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Contraseña:'); ?></dt>
+		<dt><?php //echo __('Contraseña:'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['password']); ?>
+			<?php //echo h($user['User']['password']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Nivel Permiso:'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['permission_level']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Nombre:'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['name']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Documento Identidad:'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['identity']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Celular:'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['celular']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Correo:'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['mail']); ?>
 			&nbsp;
 		</dd>
 	</dl>

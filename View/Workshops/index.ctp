@@ -20,7 +20,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $workshopp['Workshop']['id_workshop'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $workshopp['Workshop']['id_workshop'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $workshopp['Workshop']['id_workshop']), null, __('Are you sure you want to delete # %s?', $workshopp['Workshop']['id_workshop'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $workshopp['Workshop']['id_workshop']), null, __('Está seguro que desea Eliminar # %s?', $workshopp['Workshop']['id_workshop'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -47,8 +47,8 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Workshop'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Entities'), array('controller' => 'entities', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Entity'), array('controller' => 'entities', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Entities'), array('controller' => 'entities', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Entity'), array('controller' => 'entities', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 		
 	</ul>

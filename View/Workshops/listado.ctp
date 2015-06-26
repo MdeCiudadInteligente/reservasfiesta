@@ -15,29 +15,18 @@
 		<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php //echo $this->Paginator->sort('id_institution'); ?></th>
-			<th><?php echo $this->Paginator->sort('Fecha'); ?></th>
-			<th><?php echo $this->Paginator->sort('Usuario'); ?></th>
-			<th><?php //echo $this->Paginator->sort('address'); ?></th>
-			<th><?php //echo $this->Paginator->sort('phone'); ?></th>
-			<th><?php //echo $this->Paginator->sort('neighborhood'); ?></th>
+			<th><?php echo $this->Paginator->sort('Fecha'); ?></th>			
 			<th><?php echo $this->Paginator->sort('Estado'); ?></th>
-			<th><?php //echo $this->Paginator->sort('city'); ?></th>
 			<th><?php echo $this->Paginator->sort('Carpa'); ?></th>
-			<th><?php //echo $this->Paginator->sort('age_range'); ?></th>			
-			<!--  <th><?php //echo $this->Paginator->sort('workshop_session_id'); ?></th>-->
+			<th><?php echo $this->Paginator->sort('Usuario'); ?></th>
 	</tr>
 	<?php foreach ($registers as $register): ?>
 	<tr>
 		<td><?php //echo h($institution['Institution']['id_institution']); ?>&nbsp;</td>
-		<td><?php echo h($register['Register']['date']); ?>&nbsp;</td>
-		<td><?php echo h($register['Register']['user']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['address']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['phone']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['neighborhood']); ?>&nbsp;</td>
-		<td><?php echo h($register['Register']['estado']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['city']); ?>&nbsp;</td>
-		<td><?php echo h($register['Register']['workshop']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['age_range']); ?>&nbsp;</td>		
+		<td><?php echo h($register['Register']['date']); ?>&nbsp;</td>	
+		<td><?php echo h($register['Register']['estado']); ?>&nbsp;</td>		
+		<td><?php echo h($register['Register']['workshop']); ?>&nbsp;</td>	
+			<td><?php echo h($register['Register']['username']); ?>&nbsp;</td>		
 	</tr>
 <?php endforeach; ?>
 	</table>

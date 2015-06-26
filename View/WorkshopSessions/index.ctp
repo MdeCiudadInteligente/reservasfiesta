@@ -9,7 +9,7 @@
 			<th><?php echo $this->Paginator->sort('travel_time'); ?></th>
 			<th><?php //echo $this->Paginator->sort('state'); ?></th>
 			<th><?php //echo $this->Paginator->sort('workshop_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('institution_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('group_id'); ?></th>
 			<th class="actions"><?php echo __('Opciones'); ?></th>
 			
 	</tr>
@@ -23,12 +23,12 @@
 		<td><?php //echo $this->Html->link($workshopSession['Workshop']['name'], array('controller' => 'workshops', 'action' => 'view', $workshopSession['Workshop']['id_workshop'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($workshopSession['Institution']['name'], array('controller' => 'institutions', 'action' => 'view', $workshopSession['Institution']['id_institution'])); ?>
+			<?php echo $this->Html->link($workshopSession['Group']['name'], array('controller' => 'Groups', 'action' => 'view', $workshopSession['Group']['id_group'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $workshopSession['WorkshopSession']['id_workshop_session'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $workshopSession['WorkshopSession']['id_workshop_session'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $workshopSession['WorkshopSession']['id_workshop_session']), null, __('Are you sure you want to delete # %s?', $workshopSession['WorkshopSession']['id_workshop_session'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $workshopSession['WorkshopSession']['id_workshop_session']), null, __('Está seguro que desea Eliminar # %s?', $workshopSession['WorkshopSession']['id_workshop_session'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -55,10 +55,10 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>	
 		<li><?php echo $this->Html->link(__('New Workshop Session'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Workshops'), array('controller' => 'workshops', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Workshop'), array('controller' => 'workshops', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Institutions'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Institution'), array('controller' => 'institutions', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Workshops'), array('controller' => 'workshops', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Workshop'), array('controller' => 'workshops', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Institutions'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Institution'), array('controller' => 'institutions', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

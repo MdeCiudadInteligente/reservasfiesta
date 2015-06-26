@@ -402,7 +402,7 @@ class WorkshopSessionsController extends AppController {
 		}
 		
 		$workshops = $this->WorkshopSession->Workshop->find('list');
-		$institutions= $this->WorkshopSession->Institution->find('list');
+		$institutions= $this->WorkshopSession->Group->find('list'); //$institutions=groups
 		//$this->set(compact('workshops'));
 		$this->set(compact('workshops','institutions'));
 	}
@@ -434,7 +434,7 @@ class WorkshopSessionsController extends AppController {
 			$this->request->data = $this->WorkshopSession->find('first', $options);
 		}
 		$workshops = $this->WorkshopSession->Workshop->find('list');
-		$institutions= $this->WorkshopSession->Institution->find('list');
+		$institutions= $this->WorkshopSession->Group->find('list'); //$institutions=group
 		//$this->set(compact('workshops'));
 		$this->set(compact('workshops','institutions'));
 	}

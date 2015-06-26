@@ -25,7 +25,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view_user', $user['User']['id_user'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit_user', $user['User']['id_user'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id_user']), null, __('Está seguro que desea eliminar # %s?', $user['User']['id_user'])); ?>
+			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id_user']), null, __('Está seguro que desea eliminar # %s?', $user['User']['id_user'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -47,6 +47,8 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Nuevo Usuario'), array('action' => 'addus')); ?></li>
+		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nuevo Usuario'), array('controller' => 'users', 'action' => 'addresp')); ?> </li>
+		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

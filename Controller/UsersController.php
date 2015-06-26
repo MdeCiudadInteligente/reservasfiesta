@@ -66,7 +66,7 @@ class UsersController extends AppController {
 				$usuario_level= $this->Session->read('Auth.User.permission_level');
 				if($usuario_level=='1'){
 						
-					return $this->redirect(array('controller' => 'Groups', 'action' => 'index'));
+					return $this->redirect(array('controller' => 'Institutions', 'action' => 'index'));
 				}
 				
 				return $this->redirect(array('controller' => 'Workshops', 'action' => 'index_inscription'));
@@ -125,7 +125,8 @@ class UsersController extends AppController {
 			endforeach;
 			$Email->to($email_c);
 			$Email->subject('Link para recuperación de contraseña');
-				$link='http://aplicaciones.medellin.co/reservasfiestadellibro/users/updateuserlogin/'.$userupd;
+			$link='http://http://localhost/reservasfiesta/users/updateuserlogin/'.$userupd;
+				//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/users/updateuserlogin/'.$userupd;
 				$mensaje= "\n\nBIENVENIDO A LA INSCRIPCIÓN DE VISITAS GUIADAS PARA LA FIESTA DEL LIBRO Y LA CULTURA 
 		\nJardín Lectura Viva es una estrategia de divulgación artística, académica y cultural que tiene en su corazón la promoción de lectura entre el público más joven. Aquí, instituciones educativas, fundaciones y corporaciones que trabajan por el fomento de la literatura se reúnen para acoger a toda la ciudadanía con actividades que incluyen la música, la pintura y la ciencia como recursos para dar a conocer libros y escritores de todas las culturas y regiones. 
 		\nPor medio de esta herramienta usted asegurará la participación de sus grupos en una visita guiada a la Fiesta del Libro y la Cultura que contiene un recorrido  y un taller de promoción de lectura en Jardín Lectura Viva. Usted mismo podrá decidir la fecha, la hora y el taller en el que participará. Para iniciar el proceso debes registrarte y  crear un usuario. Si ya lo creaste, ingresa tus datos y separe su participación.";
@@ -330,22 +331,15 @@ class UsersController extends AppController {
 	}
 	
 	
-	public function addresp() {
+	public function addresp() { //Este es el que se esta usando como add de administrador...
 		if ($this->request->is('post')) {
 			$this->User->create();
-			//$id_responsable = $this->request->data['Responsible']['id_responsible'];
-			//$responsable_id = $this->Responsible->find('first', array('conditions'=>array('Responsible.id_responsible' => $id_responsable)));
-			//if($responsable_id != array())
-			//{
-				//$this->Session->setFlash(__('El documento ya existe.Ingrese uno nuevo por favor!'));
-			//}
-			//else 
 			if ($this->User->save($this->request->data)) {			
-				$this->Session->setFlash(__('El responsable ha sido guardado.'));
+				$this->Session->setFlash(__('El usuario ha sido guardado.'));
 				
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+				$this->Session->setFlash(__('El usuario no pudó ser guardado. Por favor, inténtelo de nuevo.'));
 			}
 		}
 		$institutions = $this->User->Institution->find('list');
@@ -361,15 +355,16 @@ class UsersController extends AppController {
  */
 	public function edit($id = null) {
 		$usuario_level= $this->Session->read('Auth.User.permission_level');
-		/*if($usuario_level=='2'){
-			return $this->redirect(array('controller' => 'users', 'action' => 'login'));
-		}*/
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid responsible'));
+		
+		if (!$this->User->exists($id)) 
+		{
+			throw new NotFoundException(__('Invalid user'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The responsible has been saved.'));
+		if ($this->request->is(array('post', 'put'))) 
+		{
+			if ($this->User->save($this->request->data)) 
+			{
+				$this->Session->setFlash(__('The user has been saved.'));
 				if($usuario_level=='1')
 				{
 					return $this->redirect(array('action' => 'index'));
@@ -379,7 +374,7 @@ class UsersController extends AppController {
 					return $this->redirect(array('controller'=>'workshops','action' => 'index_inscription'));
 				}
 			} else {
-				$this->Session->setFlash(__('The responsible could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		} else {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));

@@ -1,5 +1,5 @@
-<div class="specificConditions index">
-<?php $this->set('title_for_layout' , 'Lista condici�n espec�fica' );?>
+﻿<div class="specificConditions index">
+<?php $this->set('title_for_layout' , 'Lista condición específica' );?>
 	<h2><?php echo __('Specific Conditions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
@@ -14,7 +14,7 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $specificCondition['SpecificCondition']['id_specific_condition'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $specificCondition['SpecificCondition']['id_specific_condition'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $specificCondition['SpecificCondition']['id_specific_condition']), null, __('Are you sure you want to delete # %s?', $specificCondition['SpecificCondition']['id_specific_condition'])); ?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $specificCondition['SpecificCondition']['id_specific_condition']), null, __('Está seguro que  desea Eliminar # %s?', $specificCondition['SpecificCondition']['id_specific_condition'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -42,8 +42,8 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Specific Condition'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Workshops'), array('controller' => 'workshops', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Workshop'), array('controller' => 'workshops', 'action' => 'add')); ?> </li>
+		<li><?php //echo $this->Html->link(__('List Workshops'), array('controller' => 'workshops', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('New Workshop'), array('controller' => 'workshops', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

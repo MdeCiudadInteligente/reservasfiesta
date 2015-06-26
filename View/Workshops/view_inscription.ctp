@@ -98,7 +98,7 @@ window.print();
 <div class="actions">
 	<h3><?php echo __('Opciones'); ?></h3>
 	<ul>	
-		<li><?php echo $this->Html->link(__('Menú Principal'), array('controller' => 'workshops', 'action' => 'index_inscription')); ?> </li>
+		<li><?php echo $this->Html->link(__('Lista Grupos'), array('controller' => 'workshops', 'action' => 'index_inscription')); ?> </li>
 		<li><?php 
 		if (($condicionp == 0)) {
 		echo $this->Html->link(__('Inscripción grupo'), array('controller' => 'Groups', 'action' => 'addresp')); 
@@ -107,10 +107,10 @@ window.print();
 		
 		<li><?php 
 		if (($condicionp != 0)) {
-		echo $this->Html->Link(__('Workshop Cancel'), array('controller' => 'Workshops', 'action' => 'workshop_cancel'), null, __('¿Está seguro que desea cancelar la carpa?, Recuerde que al cancelar deberá registrar nuevamente su grupo y el taller.')); 		
+		echo $this->Html->Link(__('Workshop Cancel'), array('controller' => 'Workshops', 'action' => 'workshop_cancel',$id_group), null, __('¿Está seguro que desea cancelar la carpa?, Recuerde que al cancelar deberá registrar nuevamente su grupo y el taller.')); 		
 		}
 		?></li>
-		<li><?php echo $this->Html->link(__('Editar datos usuario'), array('controller' => 'Users','action' => 'edit',$rcedula)); ?> </li>
+		<li><?php echo $this->Html->link(__('Editar datos usuario'), array('controller' => 'Users','action' => 'edit',$ruser)); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

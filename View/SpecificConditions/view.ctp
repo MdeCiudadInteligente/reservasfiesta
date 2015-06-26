@@ -1,5 +1,5 @@
-<div class="specificConditions view">
-<?php $this->set('title_for_layout' , 'Ver condici�n espec�fica' );?>
+﻿<div class="specificConditions view">
+<?php $this->set('title_for_layout' , 'Ver condición específica' );?>
 <h2><?php echo __('Specific Condition'); ?></h2>
 	<dl>
 		<dt><?php //echo __('Id Specific Condition'); ?></dt>
@@ -19,10 +19,10 @@
 	<ul>
 	<li>	
 		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit Specific Condition'), array('action' => 'edit', $specificCondition['SpecificCondition']['id_specific_condition'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Specific Condition'), array('action' => 'delete', $specificCondition['SpecificCondition']['id_specific_condition']), null, __('Are you sure you want to delete # %s?', $specificCondition['SpecificCondition']['id_specific_condition'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Specific Conditions'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Specific Condition'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Specific Condition'), array('action' => 'edit', $specificCondition['SpecificCondition']['id_specific_condition'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Specific Condition'), array('action' => 'delete', $specificCondition['SpecificCondition']['id_specific_condition']), null, __('Está seguro que desea Eliminar # %s?', $specificCondition['SpecificCondition']['id_specific_condition'])); ?> </li>
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
