@@ -69,6 +69,7 @@
 		<li><?php //echo $this->Html->link(__('Lista Institución Educativa'), array('controller' => 'educational_institutions','action' => 'index')); ?></li>		
 		<li><?php echo $this->Html->link(__('List Entities'), array('controller' => 'entities','action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('Lista Usuarios'), array('controller' => 'users','action' => 'index')); ?></li>	
+		<li><?php echo $this->Html->link(__('Lista Grupos'), array('controller' => 'groups','action' => 'index')); ?></li>	
 		<li><?php //echo $this->Html->link(__('New Group'), array('controller'=>'groups','action' => 'add')); ?></li>	
 		<li><?php //echo $this->Html->link(__('Lista Grupos'), array('controller'=>'groups','action' => 'index')); ?></li>		
 		<li><?php echo $this->Html->link(__('List Public Types'), array('controller' => 'PublicTypes','action' => 'index')); ?></li>
