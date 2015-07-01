@@ -10,6 +10,19 @@ body.reservas-fiesta .hidden_lista{
 	display:none;
 }
 
+body.reservas-fiesta .hidden_completed{
+	display:none;
+}
+
+body.reservas-fiesta .hidden_texto{
+	display:none;
+}
+
+body.reservas-fiesta .hidden_texto2{
+	display:none;
+}
+
+
 #boton-responsable{
 
 	-webkit-border-radius: 4px;

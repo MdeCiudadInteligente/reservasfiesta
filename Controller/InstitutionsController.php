@@ -29,7 +29,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','RequestHandler');
 
 /**
  * index method
@@ -53,7 +53,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code','find_username');
+		$this->Auth->allow('add','getbycity','findinstitution','getbytype','find_code','find_username','getInstitution','addresp');
 	}
 	
 	public function findinstitution($institutioname=null,$institutionid= null){
@@ -210,7 +210,9 @@ public function add() {
 				//$institutionid= $this->request->data['Institution']['id_institution'];				
 				//$institutiontype= $this->request->data['Institution']['institution_type'];
 				
-				return $this->redirect(array('action' => 'findinstitution'/*,$institutioname,$institutionid*/));
+				//return $this->redirect(array('action' => 'findinstitution'/*,$institutioname,$institutionid*/));
+				
+				return $this->redirect(array('controller'=>'Users','action' => 'addresp'));
 				
 			} else {
 				$this->Session->setFlash(__('The institution could not be saved. Please, try again.'));
@@ -296,4 +298,32 @@ public function add() {
 			$this->Session->setFlash(__('The institution could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+	//servicio autocompleted...
+	public function getInstitution() {
+		$this->request->onlyAllow('ajax'); // No direct access via browser URL - Note for Cake2.5: allowMethod()
+		$queryString=$_GET['q'];
+		$condition=array('OR' => array(
+				array('Institution.code_education LIKE' => '%'.$queryString.'%'),
+				array('Institution.name LIKE' => '%'.$queryString.'%')
+		));
+	
+		$institution=$this->Institution->find('list',array('fields'=>array('Institution.id_institution','Institution.name','Institution.code_education'),'order' => array('Institution.name' => 'ASC'),'conditions' => $condition));
+	
+		foreach ($institution as $cod => $dataInstitution) {
+			$json_data = array();
+			$json_data['code_education']=$cod;
+			$array_keys=array_keys($dataInstitution);
+			$json_data['id_institution']=$array_keys[0];
+			$json_data['name']=$dataInstitution[$array_keys[0]];
+			$data[]=$json_data;
+		}
+	
+		$this->set(compact('data')); // Pass $data to the view
+		$this->set('_serialize', 'data'); // Let the JsonView class know what variable to use
+	
+	}
+
+
+}

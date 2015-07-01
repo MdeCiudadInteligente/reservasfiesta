@@ -127,6 +127,9 @@ msgstr "Editar Grupo"
 msgid "Group"
 msgstr "Grupo"
 
+msgid "Passwords do not match , please enter them again"
+msgstr "Las contraseñas no coinciden, por favor ingreselas nuevamente."
+
 msgid "Delete Public Types"
 msgstr "Eliminar Tipo Público"
 
@@ -425,8 +428,11 @@ msgid "Accompaniment Date"
 msgstr "Fecha de Acompañamiento"
 
 
-msgid "Add User"
-msgstr "Añadir usuario"
+msgid "Add user"
+msgstr "Cambiar Contraseña Responsable"
+
+msgid "The password has been successfully modified"
+msgstr "La contraseña ha sido modificada exitosamente."
 
 msgid "Id Person"
 msgstr "Documento Persona"
@@ -595,9 +601,6 @@ msgstr "Nuevo Grupo"
 
 msgid "Add Group"
 msgstr "Agregar Grupo"
-
-msgid "Add user"
-msgstr "Agregar Usuario"
 
 msgid "The group has been saved."
 msgstr "El grupo ha sido guardado."

@@ -35,7 +35,13 @@ $cakeDescription = __d('cake_dev','');
 		echo $this->fetch('script');
 		
 		echo $this->Html->script('jquery-1.8.2.min');
+		echo $this->Html->script('jquery.autoSuggest');
 	?>
+	<script type="text/javascript">
+		<?php echo "var absPath='".Router::url( '/', true )."';"; ?>
+	</script>
+	
+	
 </head>
 <body class="reservas-fiesta">
 	<div id="container">

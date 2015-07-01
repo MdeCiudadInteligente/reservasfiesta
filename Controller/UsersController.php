@@ -25,7 +25,7 @@ class UsersController extends AppController {
 	public function beforeFilter() {
 		//parent::beforeFilter();
 		// Allow users to register and logout.
-		$this->Auth->allow('adduser','finduser','userlist','updateuserlogin','login','enviarcorreo','adduseresp');
+		$this->Auth->allow('adduser','finduser','userlist','updateuserlogin','login','enviarcorreo','adduseresp','addresp');
 	
 	}
 	
@@ -124,7 +124,7 @@ class UsersController extends AppController {
 			$email_c = $correo['user']['mail'];
 			endforeach;
 			$Email->to($email_c);
-			$Email->subject('Link para recuperación de contraseña');
+			$Email->subject('Link para recuperaciÃ³n de contraseÃ±a');
 			$link='http://http://localhost/reservasfiesta/users/updateuserlogin/'.$userupd;
 				//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/users/updateuserlogin/'.$userupd;
 				$mensaje= "\n\nBIENVENIDO A LA INSCRIPCIÓN DE VISITAS GUIADAS PARA LA FIESTA DEL LIBRO Y LA CULTURA 
@@ -154,11 +154,11 @@ class UsersController extends AppController {
 				$update_usuarios=$this->User->query("UPDATE user SET password = '$clavencriptada' where username = '$userupd'");
 				$this->set(compact('update_usuarios'));
 					
-				$this->Session->setFlash(__('La contraseña se ha modificado exitosamente'));
+				$this->Session->setFlash(__('The password has been successfully modified'));
 				return $this->redirect(array('controller' => 'Users','action' => 'login'));
 			}
 			else{
-				$this->Session->setFlash(__('Las contraseñas no coinciden, por favor ingreselas nuevamente'));
+				$this->Session->setFlash(__('Passwords do not match , please enter them again'));
 				return $this->redirect(array('controller' => 'Users', 'action' => 'updateuserlogin',$userupd));
 			}
 		}
@@ -334,12 +334,13 @@ class UsersController extends AppController {
 	public function addresp() { //Este es el que se esta usando como add de administrador...
 		if ($this->request->is('post')) {
 			$this->User->create();
+			
 			if ($this->User->save($this->request->data)) {			
-				$this->Session->setFlash(__('El usuario ha sido guardado.'));
+				$this->Session->setFlash(__('El responsable ha sido guardado.'));
 				
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 			} else {
-				$this->Session->setFlash(__('El usuario no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+				$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
 			}
 		}
 		$institutions = $this->User->Institution->find('list');
