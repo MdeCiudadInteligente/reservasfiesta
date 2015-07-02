@@ -2,9 +2,9 @@
  //Se crea la linea de encabezado
  //Se obtienen los nombres que están dentro del array de Institución
  //$line= $institutions[0]['Institution'];
- $line=(array('id_institution'=>"",'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'members_number'=>"",'institution_type'=>"",'creation_timestamp'=>""));
+ $line=(array('id_institution'=>"",'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'code_education'=>"",'inst_type'=>"",'educational_inst_type'=>"",'modification_timestamp'=>""));
  //Se mezclan los encabezados obtenidos más otros adicionales.
- $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'identity'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
+ $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'name'=>"",'description'=>"",'username'=>"",'name'=>"",'identity'=>"",'celular'=>"",'mail'=>"",'name'=>"",'name'=>"",'name'=>"",'members_number'=>"",'name'=>"",'description'=>""));
  //Se adiciona la linea de encabezados.
  $this->Csv->addRow(array_keys($line));
  
@@ -23,9 +23,10 @@
 	  $neighborhood=$institution['Institution']['neighborhood'];
 	  $comune=$institution['Institution']['comune'];
 	  $city=$institution['Institution']['city'];
-	  $members_number=$institution['Institution']['members_number'];
-	  $institution_type=$institution['Institution']['institution_type'];
-	  $creation_timestamp=$institution['Institution']['creation_timestamp'];
+	  $code_education=$institution['Institution']['code_education'];
+	  $institution_type=$institution['Institution']['inst_type'];
+	  $educational_type=$institution['Institution']['educational_inst_type'];
+	  $modification_timestamp=$institution['Institution']['modification_timestamp'];
 	  
 	  
 	  $line['id_institution']=$id_institution;
@@ -36,25 +37,37 @@
       $line['neighborhood']=$neighborhood;
       $line['comune']=$comune;
       $line['city']=$city;
-	  $line['members_number']=$members_number;
-      $line['institution_type']=$institution_type;
-      $line['creation_timestamp']=$creation_timestamp;
+	  $line['code_education']=$code_education;
+      $line['inst_type']=$institution_type;
+      $line['educational_inst_type']=$educational_type;
+      $line['modification_timestamp']=$modification_timestamp;
 	  
 	  
  	  //Se mezcla el array obtenido anteriormente con un nuevo array que contiene los demás campos, los cuales por ahora se ponen vacios.
-      $line = array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'Public_Type_name'=>"",'code'=>"",'type'=>"",'grade'=>"",'identity'=>"",'responsible_name'=>"",'responsible_celular'=>"",'responsible_mail'=>"",'specific_conditioninstitution'=>""));
+      $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'name'=>"",'description'=>"",'username'=>"",'name'=>"",'identity'=>"",'celular'=>"",'mail'=>"",'name'=>"",'name'=>"",'name'=>"",'members_number'=>"",'name'=>"",'description'=>""));
       
       $public_type_name=$institution['PublicType']['name'];
-      
-   
-      
       $line['Public_Type_name']=$public_type_name;
     
       //debug($workshopSessions);
       
+      foreach ($groups as $group){      	
+      		$workshop_day=$workshopSession['WorkshopSession']['workshop_day'];
+      		$workshop_time=$workshopSession['WorkshopSession']['workshop_time'];
+      		$travel_time=$workshopSession['WorkshopSession']['travel_time'];
+      		$workshop_name=$workshopSession['Workshop']['name'];
+      		//debug($workshopSession);
+      		 
+      		$line['workshop_day']=$workshop_day;
+      		$line['workshop_time']=$workshop_time;
+      		$line['travel_time']=$travel_time;
+      		$line['workshop_name']=$workshop_name;
+      	
+      }
+      
       //Se busca la información de la Sesión de Taller correspondiente a la institución actual 
        foreach ($workshopSessions as $workshopSession){
-      	if ($workshopSession['WorkshopSession']['institution_id']==$institution['Institution']['id_institution']){ 
+      	if ($workshopSession['WorkshopSession']['institution_id'] == $institution['Institution']['id_institution']){ 
       	$workshop_day=$workshopSession['WorkshopSession']['workshop_day'];
       	$workshop_time=$workshopSession['WorkshopSession']['workshop_time'];
       	$travel_time=$workshopSession['WorkshopSession']['travel_time'];

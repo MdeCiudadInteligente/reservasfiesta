@@ -184,6 +184,21 @@ class GroupsController extends AppController {
  * @param string $id
  * @return void
  */
+	public function download()
+	{
+		$this->Group->recursive = 0;
+		$this->set('groups',$this->Group->find('all'));
+		//$this->set('institutions', $this->Institution->find('all'));
+		$this->set('workshopSessions',$this->WorkshopSession->find('all'));
+		$this->set('users',$this->User->find('all'));
+		$this->set('institutionUsers',$this->InstitutionUser->find('all'));		
+		$this->set('groupSpecificConditions',$this->GroupSpecificCondition->find('all'));
+		$this->set('specificConditions',$this->SpecificCondition->find('all'));
+		$this->layout = null;
+		//$this->autoLayout = false;
+		//Configure::write('debug', '0');
+	}
+	
 	public function delete($id_group = null) {
 		if ($this->Group->delete($id_group)) {		
 			$response['success']=true;
