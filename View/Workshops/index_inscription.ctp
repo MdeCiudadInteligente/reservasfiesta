@@ -25,7 +25,7 @@
 		<td><?php echo h($group['ws']['workshop_time']); ?>&nbsp;</td>
 		<td><?php echo h($group['ws']['travel_time']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view_inscription', $group['gs']['id_group'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view_inscript', $group['gs']['id_group'])); ?>
 			<?php //echo $this->Html->link(__('Edit'), array('action' => 'edit', $group['gs']['id_group'])); ?>
 			<?php //echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $group['gs']['id_group']), null, __('Are you sure you want to delete # %s?', $group['gs']['id_group'])); ?>
 		</td>

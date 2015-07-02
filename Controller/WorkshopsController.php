@@ -346,7 +346,95 @@ class WorkshopsController extends AppController {
 					$recomendacion53.$recomendacion54.$recomendacion55.$recomendacion56.$norespuesta);
 	
 		}
-	}	
+	}
+
+	
+	public function view_inscript($id_group=null)  {
+	
+	
+		//$this->set('institution',$institution);
+		//debug($institution);
+		$this->set('id_group',$id_group);
+	
+		$usuario = $this->Session->read('Auth.User.username');
+		$this->set('usuario',$usuario);
+	
+		$groupid=$this->Workshop->query("select groups.id_group,groups.name,groups.members_number,groups.user_id from groups inner join user on groups.user_id = user.id_user  where user.username = '$usuario' and groups.id_group = '$id_group' ");
+		//debug($institutionid);
+	
+		foreach ($groupid as $groupid):
+		$groupidp=$groupid['groups']['id_group'];
+		$groupname=$groupid['groups']['name'];
+		$groupnumber=$groupid['groups']['members_number'];
+		$groupuser=$groupid['groups']['user_id'];
+		//debug($institutionname);
+	
+		endforeach;
+		$this->set('groupidp',$groupidp);
+		$this->set('groupname',$groupname);
+		$this->set('groupnumber',$groupnumber);
+		$this->set('groupuser',$groupuser);
+		//Nombre y Celular del Responsable o Encargado...
+		$responsibles=$this->User->find('all', array('conditions'=>array('id_user'=>$groupuser),'fields'=>array('name','celular','id_user')));
+		$rname=null;
+		$rcelular=null;
+		$ruser=null;
+		foreach ($responsibles as $responsible){
+			$rname=$responsible['User']['name'];
+			$rcelular=$responsible['User']['celular'];
+			$ruser=$responsible['User']['id_user'];
+		}
+		$this->set('rname',$rname);
+		$this->set('rcelular',$rcelular);
+		$this->set('ruser',$ruser);
+		//fin
+		//$condicion=$this->Workshop->query("select workshop_session.group_id from workshop_session inner join groups on workshop_session.group_id = groups.id_group where workshop_session.group_id = $groupidp");
+		$condicion=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $groupidp");
+	
+		//$condicion=";
+		//$condicion="select user.institution_id from user inner join (institution inner join workshop_session on institution.id_institution = workshop_session.institution_id) on user.institution_id = institution.id_institution where user.username = $usuario";
+		//$queryid="select distinct workshop.id_workshop from specific_condition inner join (specific_condition_workshop inner join (public_type inner join (public_type_workshop inner join (workshop inner join workshop_session on workshop.id_workshop = workshop_session.workshop_id) on public_type_workshop.workshop_id = workshop.id_workshop) on public_type.id_public_type = public_type_workshop.public_type_id) on specific_condition_workshop.workshop_id = workshop.id_workshop) on  specific_condition.id_specific_condition = specific_condition_workshop.specific_condition_id where workshop_session.workshop_day = '$datework' and public_type.name = '$public_typep' and specific_condition.name = ";
+		//$condicion=$this->Workshop->query($condicion);
+		//$this->set(compact('tallerday'));
+	
+		$institutionid=$this->Workshop->query("select institution_id from institution_user where user_id='$ruser' group by institution_id limit 1");
+		foreach ($institutionid as $institutionid):
+		$institutionidn=$institutionid['institution_user']['institution_id'];
+	
+		endforeach;
+	
+		$this->set('condicion',$condicion);
+		$condicionp='';
+		foreach ($condicion as $condiciones):
+		$condicionp=$condiciones['workshop_session']['group_id'];
+	
+		endforeach;
+		$this->set('condicionp',$condicionp);
+	
+	
+		if ($condicionp != 0)
+		{
+	
+			foreach ($condicion as $condiciones):
+			$condicionid=$condiciones['workshop_session']['workshop_id'];
+			$condiciond=$condiciones['workshop_session']['workshop_day'];
+			$condiciont=$condiciones['workshop_session']['workshop_time'];
+			$condiciontra=$condiciones['workshop_session']['travel_time'];
+			endforeach;
+			$this->set('condiciond',$condiciond);
+			$this->set('condiciont',$condiciont);
+			$this->set('condiciontra',$condiciontra);
+			$this->set('condicionid',$condicionid);
+	
+			$condicioname=$this->Workshop->query("select name from workshop where id_workshop = $condicionid");
+			foreach ($condicioname as $condicionm):
+			$condicionnom=$condicionm['workshop']['name'];
+			endforeach;
+			$this->set('condicionnom',$condicionnom);
+	
+	
+		}
+	}
 	
 	public function index_inscription($pass=null)  {
 		$iduser = $this->Session->read('Auth.User.id_user');
