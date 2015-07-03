@@ -2,111 +2,90 @@
  //Se crea la linea de encabezado
  //Se obtienen los nombres que están dentro del array de groups
  //$line= $groups[0]['Group'];
- $line=(array('id_group'=>"",'name_grupo'=>"",'members_number'=>""));
+
+ $line=(array('name_grupo'=>"",'members_number'=>"",'specific_condition'=>"",'workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'workshop_name'=>"",'description_workshop'=>"",'entity_name'=>"",'entity_description'=>"",'username'=>"",'name_user'=>"",'identity'=>"",'celular_user'=>"",'mail_user'=>"",'name_specicondition'=>"",'Public_Type_name'=>"",'name_institution'=>"",'mail_inst'=>"",'address_inst'=>"",'phone_inst'=>"",'neighborhood_inst'=>"",'comune_inst'=>"",'city_inst'=>"",'code_education_inst'=>"",'inst_type_inst'=>"",'educational_inst_type_inst'=>"",'modification_timestamp_inst'=>"",'specific_conditioninstitution'=>""));
  //Se mezclan los encabezados obtenidos más otros adicionales.
- $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'name'=>"",'description'=>"",'username'=>"",'name_user'=>"",'identity'=>"",'celular'=>"",'mail'=>"",'name'=>"",'name'=>"",'name'=>"",'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'code_education'=>"",'inst_type'=>"",'educational_inst_type'=>"",'modification_timestamp'=>"",'name'=>"",'description'=>"",'specific_conditioninstitution'=>""));
+ //$line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'name_workshop'=>"",'description'=>"",'username'=>"",'name_user'=>"",'identity'=>"",'celular_user'=>"",'mail_user'=>"",'name_specicondition'=>"",'Public_Type_name'=>"",'name_institution'=>"",'mail_inst'=>"",'address_inst'=>"",'phone_inst'=>"",'neighborhood_inst'=>"",'comune_inst'=>"",'city_inst'=>"",'code_education_inst'=>"",'inst_type_inst'=>"",'educational_inst_type_inst'=>"",'modification_timestamp_inst'=>"",'specific_conditioninstitution'=>""));
  //Se adiciona la linea de encabezados.
- $this->Csv->addRow(array_keys($line));
+ 
+	  //$line['id_group']='Id Grupo';
+	  $line['name_grupo']='Nombre Grupo';
+	  $line['members_number']='Numero Integrantes Grupo';
+	  $line['specific_condition']='Condiciones Específicas Grupo';
+	  $line['Public_Type_name']='Tipo Público Grupo';
+	  $line['workshop_day']='Día Taller';
+	  $line['workshop_time']='Hora Taller';
+	  $line['travel_time']='Hora Recorrido';
+	  $line['workshop_name']='Nombre Taller';
+	  $line['description_workshop']='Descripción Taller';
+	  $line['entity_name']='Nombre Entidad';
+	  $line['entity_description']='Descripción Entidad';
+	  $line['username']='Usuario';
+	  $line['name_user']='Nombre Responsable';
+	  $line['identity']='Cédula Responsable';
+	  $line['celular_user']='Celular Responsable';
+	  $line['mail_user']='Correo Responsable';
+	  $line['name_institution']='Nombre Institución';
+	  $line['mail_inst']='Correo Institución';
+	  $line['address_inst']='Dirección Institución';
+	  $line['phone_inst']='Teléfono Institución';
+	  $line['neighborhood_inst']='Barrio Institución';
+	  $line['comune_inst']='Comuna Institución';
+	  $line['city_inst']='Ciudad Institución';
+	  $line['code_education_inst']='Código Institución';
+	  $line['inst_type_inst']='Tipo Institución';
+	  $line['educational_inst_type_inst']='Tipo Institución Educativa';
+	  $line['modification_timestamp_inst']='Fecha de modificación';
+ 
+ 
+ 
+ 
+ $this->Csv->addRow($line);
+ 
+ 
+ 
+
  
  //debug($groups);
  
  //Por cada groups se obtienen todos los datos
- foreach ($groups as $group)
+ foreach ($informe as $infor)
  {
 	  //Se define la linea que se creará creando primero el array con los datos de la isntitución de la iteración actual
  	  //$line = $institution['Institution'];
-	  $line['id_group']=$group['Group']['id_group'];
-	  $line['name_grupo']=$group['Group']['name'];
-	  $line['members_number']=$group['Group']['members_number'];	  
-	 
+	 // $line['id_group']=$infor['g']['id_grupo'];
+	  $line['name_grupo']=$infor['g']['nombre_grupo'];
+	  $line['members_number']=$infor['g']['numero_integrantes'];
+	  $line['specific_condition']=$infor['0']['Codiciones_especificas'];
+	  $line['Public_Type_name']=$infor['p']['tipo_publico'];
+	  $line['workshop_day']=$infor['ws']['dia_taller'];
+	  $line['workshop_time']=$infor['ws']['hora_taller'];
+	  $line['travel_time']=$infor['ws']['hora_recorrido'];
+	  $line['workshop_name']=$infor['w']['nombre_taller'];
+	  $line['description_workshop']=$infor['w']['descripcion_taller'];
+	  $line['entity_name']=$infor['e']['nombre_entidad'];
+	  $line['entity_description']=$infor['e']['descripcion_entidad'];
+	  $line['username']=$infor['u']['usuario'];
+	  $line['name_user']=$infor['u']['nombre_responsable'];
+	  $line['identity']=$infor['u']['cedula'];
+	  $line['celular_user']=$infor['u']['celular'];
+	  $line['mail_user']=$infor['u']['correo'];
+	  $line['name_institution']=$infor['i']['nombre_institucion'];
+	  $line['mail_inst']=$infor['i']['correo_institucion'];
+	  $line['address_inst']=$infor['i']['direccion_institucion'];
+	  $line['phone_inst']=$infor['i']['telefono_institucion'];
+	  $line['neighborhood_inst']=$infor['i']['barrio_institucion'];
+	  $line['comune_inst']=$infor['i']['comuna_institucion'];
+	  $line['city_inst']=$infor['i']['ciudad_institucion'];
+	  $line['code_education_inst']=$infor['i']['codigo_institucion'];
+	  $line['inst_type_inst']=$infor['i']['tipo_institucion'];
+	  $line['educational_inst_type_inst']=$infor['i']['tipo_institucion_educativa'];
+	  $line['modification_timestamp_inst']=$infor['i']['modificacion'];
+	  
+	  
  	  //Se mezcla el array obtenido anteriormente con un nuevo array que contiene los demás campos, los cuales por ahora se ponen vacios.
-      $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'name'=>"",'description'=>"",'username'=>"",'name'=>"",'identity'=>"",'celular'=>"",'mail'=>"",'name'=>"",'name'=>"",'name'=>"",'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'code_education'=>"",'inst_type'=>"",'educational_inst_type'=>"",'modification_timestamp'=>"",'name'=>"",'description'=>""));
+     // $line= array_merge($line, array('workshop_day'=>"",'workshop_time'=>"",'travel_time'=>"",'name_workshop'=>"",'description'=>"",'username'=>"",'name_user'=>"",'identity'=>"",'celular_user'=>"",'mail_user'=>"",'name_specicondition'=>"",'Public_Type_name'=>"",'name'=>"",'name'=>"",'mail'=>"",'address'=>"",'phone'=>"",'neighborhood'=>"",'comune'=>"",'city'=>"",'code_education'=>"",'inst_type'=>"",'educational_inst_type'=>"",'modification_timestamp'=>"",'name'=>"",'description'=>""));
       
-      $public_type_name=$group['PublicType']['name'];
-      $line['Public_Type_name']=$public_type_name;
-    
-      //debug($workshopSessions);
-      
-      //Se busca la información de la Sesión de Taller correspondiente a el grupo actual 
-       foreach ($workshopSessions as $workshopSession){
-      	if ($workshopSession['WorkshopSession']['group_id'] == $group['Group']['id_group']){ 
-      	$line['workshop_day']=$workshopSession['WorkshopSession']['workshop_day'];
-      	$line['workshop_time']=$workshopSession['WorkshopSession']['workshop_time'];
-      	$line['travel_time']=$workshopSession['WorkshopSession']['travel_time'];
-      	$line['workshop_name']=$workshopSession['Workshop']['name'];
-      	//debug($workshopSession);
-      	}
-      }
-      //usuarios asociados con la institucion.
-      foreach ($users as $user){
-	      	if ($user['User']['id_user']==$group['Group']['user_id']){
-	      		$line['username']=$user['User']['username'];
-	      		$line['name_user']=$user['User']['name'];
-	      		$line['identity']=$user['User']['identity'];
-	      		$line['celular']=$user['User']['celular'];
-	      		$line['mail']=$user['User']['mail'];	      		
-	      	}
-	      	
-	      	foreach ($institutionUsers as $institutionUser){
-	      		if ($institutionUser['InstitutionUser']['user_id']==$user['User']['id_user']){
-	      			$institution_user=$institutionUser['InstitutionUser']['user_id'];
-	      			$institution_iddd=$institutionUser['InstitutionUser']['institution_id'];
-	      		}
-	      	}
-	      		foreach ($institutions as $institution){
-			      		if ($institution['Institution']['id_institution']==$institution_iddd){
-			      			$institution_name=$institution['Institution']['name'];
-			      			$institution_mail=$institution['Institution']['mail'];
-			      			$institution_address=$institution['Institution']['address'];
-			      			$institution_phone=$institution['Institution']['phone'];
-			      			$institution_neighborhood=$institution['Institution']['neighborhood'];
-			      			$institution_comune=$institution['Institution']['comune'];
-			      			$institution_city=$institution['Institution']['city'];
-			      			$institution_code_education=$institution['Institution']['code_education'];
-			      			$institution_inst_type=$institution['Institution']['inst_type'];
-			      			$institution_educational_inst_type=$institution['Institution']['educational_inst_type'];
-			      			$institution_modification_timestamp=$institution['Institution']['modification_timestamp'];
-			      	
-			      			$line['name']=$institution_name;
-			      			$line['mail']=$institution_mail;
-			      			$line['address']=$institution_address;
-			      			$line['phone']=$institution_phone;
-			      			$line['neighborhood']=$institution_neighborhood;
-			      			$line['comune']=$institution_comune;
-			      			$line['city']=$institution_city;
-			      			$line['code_education']=$institution_code_education;
-			      			$line['inst_type']=$institution_inst_type;			      			
-			      			$line['educational_inst_type']=$institution_educational_inst_type;
-			      			$line['modification_timestamp']=$institution_modification_timestamp;
-	      				}
-	      
-	      			}	
-      			
-	     	}
-      	
-      
-      
-      //Se buscan las condición especificas asociadas a la institución de la iteración actual.
-      $grouppecificCondname='';
-      $specificConditioninsfinal='';
-      foreach ($groupSpecificConditions as $groupSpecificCondition){
-      	if ($groupSpecificCondition['GroupSpecificCondition']['group_id']==$group['Group']['id_group']){
-      		$groupspecificCond=$groupSpecificCondition['GroupSpecificCondition']['specific_condition_id'];
-      		foreach ($specificConditions as $specificCondition){
-      			
-      			if ($specificCondition['SpecificCondition']['id_specific_condition']==$groupspecificCond){
-      				$grouppecificCondname=$specificCondition['SpecificCondition']['name'];
-      				$specificConditioninsfinal=$specificConditioninsfinal.''.$grouppecificCondname.',';
-      			}
-      			
-      		}
-      		
-      		//$specificConditionins=$this->Institution->find('all', array('conditions'=>array('id_specific_condition'=>$institutionspecificCondition)));
-      		//$specificConditioninsfinal=$specificConditioninsfinal+$specificConditionins;
-      		$line['specific_conditioninstitution']=$specificConditioninsfinal;
-      	}
-
-      }
       
       
       //debug($line);
