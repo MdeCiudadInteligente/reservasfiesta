@@ -105,6 +105,22 @@ class Group extends AppModel {
 		)
 	);
 	
+	public $hasMany = array(
+			'WorkshopSession' => array(
+					'className' => 'WorkshopSession',
+					'foreignKey' => 'group_id',
+					'dependent' => false,
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'limit' => '',
+					'offset' => '',
+					'exclusive' => '',
+					'finderQuery' => '',
+					'counterQuery' => ''
+			)
+	);
+	
 	public $hasAndBelongsToMany = array(
 			'SpecificCondition' => array(
 					'className' => 'SpecificCondition',

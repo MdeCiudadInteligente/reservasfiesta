@@ -8,6 +8,8 @@ App::uses('AppController', 'Controller');
  */
 class GroupsController extends AppController {
 
+	var $uses = array('Group','Institution','WorkshopSession','User','InstitutionUser','GroupSpecificCondition','SpecificCondition');
+	var $helpers = array('Html','Form','Csv','Js');	
 /**
  * Components
  *
@@ -188,7 +190,7 @@ class GroupsController extends AppController {
 	{
 		$this->Group->recursive = 0;
 		$this->set('groups',$this->Group->find('all'));
-		//$this->set('institutions', $this->Institution->find('all'));
+		$this->set('institutions', $this->Institution->find('all'));
 		$this->set('workshopSessions',$this->WorkshopSession->find('all'));
 		$this->set('users',$this->User->find('all'));
 		$this->set('institutionUsers',$this->InstitutionUser->find('all'));		
