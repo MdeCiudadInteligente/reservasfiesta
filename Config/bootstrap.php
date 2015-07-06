@@ -60,8 +60,9 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
-CakePlugin::load('DebugKit');
+CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
 CakePlugin::load('MeioUpload');
+
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter . By default CakePHP bundles two filters:
  *
@@ -97,3 +98,16 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+
+
+
+// Custom global functions
+
+function concatIndex($data,$indexKey){
+		$concat="";
+		foreach ($data as $key => $value) {
+			$concat.=$value[$indexKey]." , ";
+		}
+		return substr($concat, 0, -2);
+}

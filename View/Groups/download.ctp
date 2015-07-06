@@ -39,7 +39,7 @@
  
  
  
- 
+
  $this->Csv->addRow($line);
  
  
@@ -91,6 +91,7 @@
       //debug($line);
       
       //Se adiciona la linea que resulta de la iteración actual
+	   $line=recursiveSanitize($line);
        $this->Csv->addRow($line);
        //debug($inscription);
  }
