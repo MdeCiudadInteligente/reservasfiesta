@@ -1,4 +1,4 @@
-﻿<div class="workshopSessions form">
+﻿<div class="workshopSessions form mde-form">
 <?php $this->set('title_for_layout' , 'Editar sessión de carpa' );?>
 <?php echo $this->Form->create('WorkshopSession'); ?>
 	<fieldset>

@@ -179,7 +179,7 @@ msgid "New Workshop"
 msgstr "Nueva Carpa"
 
 msgid "Add Institution"
-msgstr "Añadir Grupo"
+msgstr "Agregar Grupo"
 
 msgid "List Responsibles"
 msgstr "Lista Usuarios"
@@ -242,7 +242,7 @@ msgid "New Entity"
 msgstr "Nueva Entidad"
 
 msgid "Add Workshop"
-msgstr "Añadir Carpa"
+msgstr "Agregar Carpa"
 
 msgid "Public Types"
 msgstr "Tipo Público"
@@ -255,9 +255,6 @@ msgstr "Condiciones Especificas"
 
 msgid "Id Specific Condition"
 msgstr "Id Condición Especifica"
-
-msgid "Add Entity"
-msgstr "Añadir Entidad"
 
 msgid "Entities"
 msgstr "Entidades"
@@ -682,6 +679,9 @@ msgstr "Usuario"
 
 msgid "Entity"
 msgstr "Entidad"
+
+msgid "Add Entity"
+msgstr "Agregar Entidad"
 
 msgid "The specific condition has been saved."
 msgstr "La condición especifica ha sido guardada"

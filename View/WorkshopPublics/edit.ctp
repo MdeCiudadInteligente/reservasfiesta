@@ -1,4 +1,4 @@
-<div class="workshopPublics form">
+<div class="workshopPublics form mde-form">
 <?php echo $this->Form->create('WorkshopPublic'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Workshop Public'); ?></legend>

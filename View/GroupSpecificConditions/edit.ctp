@@ -1,4 +1,4 @@
-<div class="groupSpecificConditions form">
+<div class="groupSpecificConditions form mde-form">
 <?php echo $this->Form->create('GroupSpecificCondition'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Group Specific Condition'); ?></legend>

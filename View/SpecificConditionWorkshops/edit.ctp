@@ -1,4 +1,4 @@
-<div class="specificConditionWorkshops form">
+<div class="specificConditionWorkshops form mde-form">
 <?php echo $this->Form->create('SpecificConditionWorkshop'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Specific Condition Workshop'); ?></legend>

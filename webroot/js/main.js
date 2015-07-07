@@ -33,19 +33,19 @@ App.prototype.bind=function(){
      });    
 	
 	$(document).on('change','#username',function(){
-		$('#Infouser').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
  		var usern = $(this).val();		
  		var dataString =usern;
- 		
  		$.ajax({
              type: "POST",
              url: absPath+"Institutions/find_username.json",
              dataType:'json',
              data: {string:dataString},
              success: function(data) {
-            	 console.log(data.data.response);
-            	 console.log(data);
  				 $('#Infouser').fadeIn(1000).html(data.data.response);
+                 console.log(data.data.existe);
+                 if(data.data.existe){
+                    $('#username').val(''); 
+                 }
              }
          });
      });    
@@ -64,9 +64,6 @@ App.prototype.bind=function(){
 		$('.autocompleted').fadeIn();
 	});	
 	
-	$('#completed-institution').on('change',function(){
-		$('.boton').fadeIn();
-	});	
 	
 	$('#boton-responsable').on('click',function(){
 		$('.responsable').fadeIn();
@@ -104,14 +101,16 @@ App.prototype.bindAutocompleteInstitutions=function(selector){
                     var data_name=$('.results-input').data('input-name');
                     var elementID='val-input-'+id;
                     $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                    
                 },selectionRemoved: function(elem){
                     var prop_data=elem.data('prop-data');
                     var cod=prop_data['id_institution'];
                     var elementID='val-input-'+cod;
                     $('#'+elementID).remove();
                     elem.remove();
+                    $('.boton').hide();
                 },selectionAdded:function(elem){
-
+                    $('.boton').fadeIn();
                 }
         });    
     

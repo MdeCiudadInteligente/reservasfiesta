@@ -2,11 +2,6 @@
 <?php $this->set('title_for_layout' , 'Ver sessión de carpa' );?>
 <h2><?php echo __('Workshop Session'); ?></h2>
 	<dl>
-		<dt><?php //echo __('Id Carpa Sesión:'); ?></dt>
-		<dd>
-			<?php //echo h($workshopSession['WorkshopSession']['id_workshop_session']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Día de la reserva:'); ?></dt>
 		<dd>
 			<?php echo h($workshopSession['WorkshopSession']['workshop_day']); ?>
@@ -20,16 +15,6 @@
 		<dt><?php echo __('Hora del Recorrido:'); ?></dt>
 		<dd>
 			<?php echo h($workshopSession['WorkshopSession']['travel_time']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php //echo __('State'); ?></dt>
-		<dd>
-			<?php //echo h($workshopSession['WorkshopSession']['state']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php //echo __('Carpa:'); ?></dt>
-		<dd>
-			<?php //echo $this->Html->link($workshopSession['Workshop']['name'], array('controller' => 'workshops', 'action' => 'view', $workshopSession['Workshop']['id_workshop'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Grupo:'); ?></dt>

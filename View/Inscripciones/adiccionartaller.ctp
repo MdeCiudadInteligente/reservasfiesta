@@ -1,4 +1,4 @@
-<div class="responsibles form">
+<div class="responsibles form mde-form">
 <?php echo $this->Form->create('Responsible'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Workshop'); ?></legend>

@@ -1,4 +1,4 @@
-<div class="specificConditions form">
+<div class="specificConditions form mde-form">
 <?php $this->set('title_for_layout' , 'Editar condición específica' );?>
 <?php echo $this->Form->create('SpecificCondition'); ?>
 	<fieldset>

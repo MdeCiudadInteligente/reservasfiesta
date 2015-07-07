@@ -2,11 +2,6 @@
 <?php $this->set('title_for_layout' , 'Ver carpa' );?>
 <h2><?php echo __('Workshop'); ?></h2>
 	<dl>
-		<dt><?php //echo __('Id Workshop'); ?></dt>
-		<dd>
-			<?php //echo h($workshop['Workshop']['id_workshop']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($workshop['Workshop']['name']); ?>

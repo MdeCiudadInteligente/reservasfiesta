@@ -13,9 +13,12 @@ $cakeDescription = __d('cake_dev','');
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
+	<meta name="viewport" content="initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo 'Fiesta del libro';?>-<?php echo $title_for_layout; ?>
+		<?php $title_for_layout='Fiesta del Libro';?>
+		<?php echo $cakeDescription ?>
+		<?php echo $title_for_layout; ?>
 	</title>
 	<?php 
 	/*function titulos(){
@@ -23,20 +26,24 @@ $cakeDescription = __d('cake_dev','');
 		$this->set('$title_for_layout','prueba');
 	} */
 	?>
-	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/fiesta.css" />
+	<link rel="stylesheet" href="<?php echo Router::url( '/', true );?>/webroot/css/fiesta.css" /> 
 	<?php
 		echo $this->Html->meta('icon');
 	    //echo $html->meta('icon', $html->url('/favicon.ico'));//icono  
 
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('fiesta');
+		echo $this->Html->css('main');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 		
-		echo $this->Html->script('jquery-1.8.2.min');
+		echo $this->Html->script('jquery-1.11.1.min');
 		echo $this->Html->script('jquery.autoSuggest');
 	?>
+	<?php echo $this->Html->script('jquery-ui.min');?>
+	<?php $body_class=( Configure::read('debug')>0)?'debugging':'production';?>
+	
 	<script type="text/javascript">
 		<?php echo "var absPath='".Router::url( '/', true )."';"; ?>
 	</script>
@@ -44,22 +51,16 @@ $cakeDescription = __d('cake_dev','');
 	
 </head>
 <body class="reservas-fiesta">
-	<div id="container">
-		<div id="containerheader">
-			<div id="pruebafdl">
-			</div>
-			<div id="pruebitafdl">
-			</div>
-		</div>
+	<div id="container" class="app-container">
+	
 		<div id="header">
-				<h1><?php echo $this->Html->link($cakeDescription, 'http://localhost/fiestadellibro/'); ?></h1>
-			</div>
+		</div>		
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
-		</div>
+		</div>		
 		<div id="footer">
 			<?php echo $this->Html->link(
 					$this->Html->image('patadelogos.png', array('alt' => $cakeDescription, 'border' => '0')),
@@ -74,6 +75,8 @@ $cakeDescription = __d('cake_dev','');
 	<?php echo $this->Js->writeBuffer();?>
 </body>
 <footer>
- <?php echo $this->Html->script('main');?>
+		<?php echo $this->Html->script('main');?>
+		<?php echo $this->Html->script('bootstrap.min');?>
 </footer>
+
 </html>

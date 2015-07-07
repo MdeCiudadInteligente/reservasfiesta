@@ -1,4 +1,4 @@
-ï»¿<?php
+<?php
 App::uses('AppController', 'Controller');
 /**
  * Institutions Controller
@@ -74,7 +74,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 				} 
 				else 
 				{
-					$this->Session->setFlash(__('El responsable no pudÃ³ ser guardado. Por favor, intÃ©ntelo de nuevo.'));
+					$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
 				}
 					
 		}
@@ -99,12 +99,12 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		if(!$verificar_code == array())
 		{
 				$data['existe']=true;
-				$data['response']='<div style="color:#FF0000">El cÃ³digo ya existe intente con uno nuevo Ã³ regrese a la pÃ¡gina anterior.</div>';
+				$data['response']='<div style="color:#FF0000">El código ya existe intente con uno nuevo ó regrese a la página anterior.</div>';
 			
 		}		
 		else{
 			$data['existe']=false;
-			$data['response']='<div style="color:#088A29">El cÃ³digo esta disponible, por favor continuÃ©.</div>';
+			$data['response']='<div style="color:#088A29">El código esta disponible, por favor continué.</div>';
 		}	
 		
 		$this->set(compact('data'));
@@ -124,15 +124,16 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		$this->set("message", "You are good");
 		if(!$verificar_username == array())
 		{
+			$message=mb_convert_encoding('El nombre de usuario ya existe intente con uno nuevo ó regrese a la página anterior.', "UTF-8", "Windows-1252");
 			$data['existe']=true;
-			$data['response']='<div style="color:#FF0000">El nombre de usuario ya existe intente con uno nuevo Ã³ regrese a la pÃ¡gina anterior.</div>';
+			$data['response']='<div style="color:#FF0000">'.$message.'</div>';
 	
 		}
 		else{
+			$message=mb_convert_encoding('El nombre de usuario esta disponible, por favor continué.', "UTF-8", "Windows-1252");
 			$data['existe']=false;
-			$data['response']='<div style="color:#088A29">El nombre de usuario esta disponible, por favor continuÃ©.</div>';
+			$data['response']='<div style="color:#088A29">'.$message.'</div>';
 		}
-	
 		$this->set(compact('data'));
 		$this->set('_serialize', array('data')); // Let the JsonView class know what variable to use
 	}
@@ -183,7 +184,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 		$options = array('conditions' => array('Institution.' . $this->Institution->primaryKey => $id));
 		$this->set('institution', $this->Institution->find('first', $options));
 		
-		//Visualizar la sesiÃ²n de la carpa en la que estÃ  inscrito el grupo cuando la da clic a ver grupo.
+		//Visualizar la sesiòn de la carpa en la que està inscrito el grupo cuando la da clic a ver grupo.
 		//$this->WorkshopSession->recursive = 0;
 		//$this->set('WorkshopSession', $this->Paginator->paginate());
 		//$groups = $this->Workshop->WorkshopSession->Institution->find('all', array('conditions'=>array('WorkshopSession.workshop_id'=>$id)));
@@ -287,11 +288,11 @@ public function add() {
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Institution->delete()) {
 			$this->Session->setFlash(__('The institution has been deleted.'));
-			//actulizaciÃ³n session de la carpa cuando se elimina un grupo o instituciÃ³n.
+			//actulización session de la carpa cuando se elimina un grupo o institución.
 			$queryupdate="update workshop_session SET institution_id = '0' where workshop_session.institution_id = '$id'";
 			$tallerupdate=$this->Workshop->query($queryupdate);
 			$this->set(compact('tallerupdate'));
-			//fin de actualizaciÃ³n.
+			//fin de actualización.
 			
 			
 		} else {

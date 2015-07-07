@@ -1,19 +1,9 @@
 <div class="users view">
 <h2><?php echo __('User'); ?></h2>
 	<dl>
-		<dt><?php //echo __('Id User'); ?></dt>
-		<dd>
-			<?php //echo h($user['User']['id_user']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Nombre Usuario:'); ?></dt>
 		<dd>
 			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php //echo __('Contraseña:'); ?></dt>
-		<dd>
-			<?php //echo h($user['User']['password']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Nivel Permiso:'); ?></dt>

@@ -2,11 +2,6 @@
 <?php $this->set('title_for_layout' , 'Ver Institución' );?>
 <h2><?php echo __('Institution'); ?></h2>
 	<dl>
-		<dt><?php //echo __('Id Institution'); ?></dt>
-		<dd>
-			<?php //echo h($institution['Institution']['id_institution']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($institution['Institution']['name']); ?>

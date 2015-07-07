@@ -1,13 +1,13 @@
-﻿<div class="workshops form">
+﻿<div class="workshops form mde-form">
 <?php $this->set('title_for_layout' , 'Agregar carpa' );?>
 <?php echo $this->Form->create('Workshop'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Workshop'); ?></legend>
+		<legend><?php echo __('Agregar Carpa'); ?></legend>
 	<?php
 		echo $this->Form->input('entity_id');
 		echo $this->Form->input('name',array('maxLength'=>'256'));
 		echo $this->Form->input('description',array('type'=>'text'));?>
-	<b><?php echo $this->Form->input('PublicType',array('type' => 'select', 'multiple' => 'checkbox'));?></b>
+	<b><?php echo $this->Form->input('PublicType',array('type' => 'select', 'multiple' => 'checkbox', 'required' => 'required'));?></b>
 	<b><?php	echo $this->Form->input('SpecificCondition', array('type' => 'select', 'multiple' => 'checkbox'));?></b>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -105,7 +105,7 @@ function validar() {
   
 }
  </script> 
-<div class="responsibles form">
+<div class="responsibles form mde-form">
 <?php echo $this->Form->create('Responsible'); ?>
 	<fieldset>
 	<span>Ingresa los datos de la persona que acompañará al grupo en la visita.</span>

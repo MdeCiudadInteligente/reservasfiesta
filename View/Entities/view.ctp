@@ -2,25 +2,15 @@
 <?php $this->set('title_for_layout' , 'Ver entidad' );?>
 <h2><?php echo __('Entity'); ?></h2>
 	<dl>
-		<dt><?php //echo __('Id Entity'); ?></dt>
-		<dd>
-			<?php //echo h($entity['Entity']['id_entity']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Nombre:'); ?></dt>
+		<dt><?php echo __('Nombre'); ?></dt>
 		<dd>
 			<?php echo h($entity['Entity']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('URL de la Entidad: '); ?></dt>
+		<dt><?php echo __('URL de la Entidad '); ?></dt>
 		<dd>
-			<?php //echo h($entity['Entity']['description']); ?>
-			
 			<?php $link='http://'.$urls;?>
 			<?php echo $this->Html->link($urls,$link,array('target' => '_blank', 'escape' => false)); ?>
-
-			&nbsp;
-			
 		</dd>
 	</dl>
 </div>
