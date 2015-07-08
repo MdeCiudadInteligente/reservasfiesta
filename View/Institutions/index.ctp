@@ -75,7 +75,7 @@
 		<li><?php echo $this->Html->link(__('List Public Types'), array('controller' => 'PublicTypes','action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('List Specific Conditions'), array('controller' => 'SpecificConditions','action' => 'index')); ?></li>	
 		<li><?php echo $this->Html->link(__('List Workshops'), array('controller' => 'Workshops','action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Workshop Sessions'), array('controller' => 'WorkshopSessions','action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('Lista Sesión Carpa'), array('controller' => 'WorkshopSessions','action' => 'index')); ?></li>
 		<li><?php echo $this->Html->link(__('Cargar Archivo de Horarios'), array('controller' => 'WorkshopSessions', 'action' => 'cargarchivo')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Listado de Registros'), array('controller' => 'workshops', 'action' => 'listado')); ?> </li>	
 		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>

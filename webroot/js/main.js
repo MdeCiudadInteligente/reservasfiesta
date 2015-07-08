@@ -14,8 +14,7 @@ var App = function(){
 
 App.prototype.bind=function(){
 
-	$(document).on('change','#Institutioncode_education',function(){
-		$('#Info').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
+	$(document).on('change','#Institutioncode_education',function(){		
  		var code = $(this).val();		
  		var dataString =code;
  		
@@ -28,6 +27,9 @@ App.prototype.bind=function(){
             	 console.log(data.data.response);
             	 console.log(data);
  				 $('#Info').fadeIn(1000).html(data.data.response);
+                 if(data.data.existe){
+                    $('#Institutioncode_education').val(''); 
+                 }
              }
          });
      });    
@@ -41,8 +43,7 @@ App.prototype.bind=function(){
              dataType:'json',
              data: {string:dataString},
              success: function(data) {
- 				 $('#Infouser').fadeIn(1000).html(data.data.response);
-                 console.log(data.data.existe);
+ 				 $('#Infouser').fadeIn(1000).html(data.data.response);                 
                  if(data.data.existe){
                     $('#username').val(''); 
                  }
@@ -88,7 +89,7 @@ App.prototype.bindAutocompleteInstitutions=function(selector){
                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Código DANE:</b> '+data.code_education+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div></div>');
                 return new_elem;
                 },
-                emptyText:'No se encontro la institución por favor ingresala por medio del enlace que se encuentra en la parte de arriba.</a> ',
+                emptyText:'<div style="color:#FF0000"><font size=3><strong>No se encontro la institución por favor ingresela por medio del enlace que se encuentra en la parte de arriba.</strong></font></div> ',
                 selectedItemProp: 'name',
                 selectedValuesProp:'code_education',
                 searchObjProps: 'code_education,name',

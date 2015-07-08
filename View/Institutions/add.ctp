@@ -1,5 +1,5 @@
 ﻿<script type="text/javascript">
-<?php $this->set('title_for_layout' , 'Agregar grupo' );?>
+<?php $this->set('title_for_layout' , 'Agregar Institución' );?>
 function goBack()
   {
   		window.history.back()
@@ -65,10 +65,10 @@ function checkSubmit()
 </script>
 <div class="descripcion-formularios">Al diligenciar este formulario  recibirás un</span><span> usuario y una contraseña que te permitirá administrar y modificar la información de tu grupo.  Te pedimos que ingreses los datos completos de tu entidad o institución educativa. Por favor ingresa el nombre exacto.  Ejemplo: Institución Educativa Benedikta Zur Nieden – Fundación Taller de Letras Jordi Sierra i Fabra
 </div>
-<div class="institutions form mde-form">
+<div class="institutions form mde-form forminstitution">
 <?php echo $this->Form->create('Institution',array('onsubmit'=>'return checkSubmit()')); ?>
 	<fieldset>
-		<legend><?php echo __('Add Institution'); ?></legend>
+		<div class="mde-form legendinsitution"><?php echo __('Agregar Institución'); ?></div>
 	<?php
 		//echo $this->Form->input('id_institution',array('type'=>'text'));
 		echo $this->Form->input('name',array('label'=>'Nombre Institución','maxLength'=>'256'));
@@ -108,12 +108,12 @@ $usuario_level= $this->Session->read('Auth.User.permission_level');
 if ($usuario_level == '1'){?>
 
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
+	<h3><?php //echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Main Menu'), array('controller' => 'institutions', 'action' => 'index')); ?> </li>
 		<li><?php //echo $this->Html->link(__('List Institutions'), array('action' => 'index')); ?></li>		
 		<li><?php //echo $this->Html->link(__('New Workshop Session'), array('controller' => 'workshop_sessions', 'action' => 'add')); ?> </li>		
-		<li><?php echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>
 <?php }?>

@@ -38,10 +38,10 @@ function goBack()
          return true;
       }
 </script>
-<div class="users form mde-form">
+<div class="users form mde-form forminstitution">
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
-				<legend><?php echo __('Add User'); ?></legend>
+				<legend><?php echo __('Agregar Usuario'); ?></legend>
 				<?php
 					echo $this->Form->input('username',array('id'=>'username'));
 				?>

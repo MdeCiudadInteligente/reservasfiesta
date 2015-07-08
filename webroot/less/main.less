@@ -444,7 +444,7 @@ body{
 					float: right;
 					margin: auto;
 					margin-top: 80px;
-					max-width: 968px;
+					max-width: 968px;					
 					form{
 						width: 100%;
 						position: relative;
@@ -455,7 +455,7 @@ body{
 							.reg-data{
 								display: none;
 							}
-						}
+						}						
 						legend{
 							    background-color: #258A7C;
 							    border-radius: 2px 2px 0 0;
@@ -485,9 +485,10 @@ body{
 						}
 						div{
 							clear: unset;
+							margin-bottom: -3px;
 							&.input{
 								background-color: @mdeColorFormFirst;
-								margin-bottom: 1px;
+								margin-bottom: 0px;
 							    padding-bottom: 15px;
 							    padding-top: 5px;	
 							    font-size: 12px;							
@@ -574,13 +575,81 @@ body{
 					  margin: -11px auto auto;
 					  max-width: 968px;
 					}
+					&.forminstitution{
+						font-family: 'din_mediumregular';
+						font-weight: 300;
+						padding: 0;
+						position: relative;
+						border-left: 0;	
+						float: none;									
+						margin: auto !important;
+						max-width: 968px;
+					}
+					&.legendinsitution{		
+							  background-color: #258A7C;
+							  border-radius: 2px 2px 0 0;
+							  color: #FFF;
+							  font-weight: 600;
+							  font-size: 18px;
+							  height: 28px;
+							  padding-top: 5px;
+							  font-style: italic;
+							  font-family: din_lightregular;
+							  text-align: center;
+							  width: 100%;
+							  margin-top: -33px;						  					 
+								&:after{
+								    border-bottom: 20px solid transparent;
+								    border-right: 20px solid #373A47;
+								    border-top: 21px solid transparent;
+								    content: "";
+								    height: 0;
+								    left: -19px;
+								    position: absolute;
+								    top: -1px;
+								    width: 0;		
+								    display: none;		
+								}						    
+					}
+					&.legendtaller{		
+							  background-color: #258A7C;
+							  border-radius: 2px 2px 0 0;
+							  color: #FFF;
+							  font-weight: 600;
+							  font-size: 18px;
+							  height: 28px;
+							  padding-top: 5px;
+							  font-style: italic;
+							  font-family: din_lightregular;
+							  text-align: center;
+							  width: 100%;
+							  margin-top: -38px;						  					 
+								&:after{
+								    border-bottom: 20px solid transparent;
+								    border-right: 20px solid #373A47;
+								    border-top: 21px solid transparent;
+								    content: "";
+								    height: 0;
+								    left: -19px;
+								    position: absolute;
+								    top: -1px;
+								    width: 0;		
+								    display: none;		
+								}						    
+					}
+					&.mensaje-autocompleted{
+					 	display: none;
+						font-style: italic;
+						font-family: din_lightregular;	
+					}
 
 				}
 
 				div{
 					&.index{
 						table{
-							font-family: 'din_lightregular';
+							white-space: normal;
+							font-size: 14px;
 						    border-spacing: 2px;
 						    border-collapse: separate;								
 
@@ -611,7 +680,7 @@ body{
 							td{
 								text-align: center;
 								padding: 12px;
-								border-color:#9E9E9E; 
+								border-color:#FFFFFF; 
 								border-width: 1.5px;
 								&.actions{
 									a{
@@ -666,12 +735,12 @@ body{
 					    font-family:din_lightregular;
 					    position: relative;
 					    text-align: center;
-					    top: -39px;
+					    top: -24px;
 					    width: 98.6%;
 				    }
 				    dl{
 				    	width: 100%;
-				    	top: -46px;
+				    	top: -33px;
 				    	position: relative;
 				    	background: none repeat scroll 0 0 #e4e4e4;
 				        box-shadow: 0 1px 4px #888;
@@ -681,7 +750,7 @@ body{
 						    font-style: italic;
 						    font-weight: 300;
 						    vertical-align: top;
-				    		width: 264px;
+				    		width: 245px;
 				    		height: 99px;
 				    		display: inline-block;
 				    		margin: 0;
@@ -810,6 +879,16 @@ body{
 
 #Infouser{
 	display: none;
+	background-color: rgba(249, 249, 249, 1);
+	font-style: italic;
+	font-family: din_lightregular;	
+}
+
+#Info{
+	display: none;
+	background-color: rgba(249, 249, 249, 1);
+	font-style: italic;
+	font-family: din_lightregular;	
 }
 
 .grid_cont{

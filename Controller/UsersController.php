@@ -61,6 +61,7 @@ class UsersController extends AppController {
 			{
 		$this->Session->setFlash(__('La contraseña se ha modificado exitosamente'));
 		}*/
+
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				$usuario_level= $this->Session->read('Auth.User.permission_level');
