@@ -1,11 +1,11 @@
-<div class="publicTypes form">
+<div class="publicTypes form mde-form">
 <?php $this->set('title_for_layout' , 'Agregar tipo de público' );?>
 <?php echo $this->Form->create('PublicType'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Public Type'); ?></legend>
 	<?php
 		echo $this->Form->input('name',array('maxLength'=>'256'));
-		echo $this->Form->input('Workshop');
+		echo $this->Form->input('Workshop_id',array('required' => 'required'));
 		//echo $this->Form->input('Workshop', array('type' => 'select', 'multiple' => 'checkbox'));
 	?>
 	</fieldset>

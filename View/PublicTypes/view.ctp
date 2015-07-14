@@ -1,13 +1,7 @@
 ﻿<div class="publicTypes view">
 <?php $this->set('title_for_layout' , 'Ver tipo de público' );?>
 <h2><?php echo __('Public Type'); ?></h2>
-	<dl>
-		<dt><?php //echo __('Id Public Type'); ?></dt>
-		<dd>
-			<?php //echo h($publicType['PublicType']['id_public_type']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Nombre:'); ?></dt>
+	<dl>		<dt><?php echo __('Nombre:'); ?></dt>
 		<dd>
 			<?php echo h($publicType['PublicType']['name']); ?>
 			&nbsp;

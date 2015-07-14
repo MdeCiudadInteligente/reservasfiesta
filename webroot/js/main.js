@@ -14,8 +14,7 @@ var App = function(){
 
 App.prototype.bind=function(){
 
-	$(document).on('change','#Institutioncode_education',function(){
-		$('#Info').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
+	$(document).on('change','#Institutioncode_education',function(){		
  		var code = $(this).val();		
  		var dataString =code;
  		
@@ -28,24 +27,26 @@ App.prototype.bind=function(){
             	 console.log(data.data.response);
             	 console.log(data);
  				 $('#Info').fadeIn(1000).html(data.data.response);
+                 if(data.data.existe){
+                    $('#Institutioncode_education').val(''); 
+                 }
              }
          });
      });    
 	
 	$(document).on('change','#username',function(){
-		$('#Infouser').html('<img src="img/loader.gif" alt="" />').fadeOut(1000);
  		var usern = $(this).val();		
  		var dataString =usern;
- 		
  		$.ajax({
              type: "POST",
              url: absPath+"Institutions/find_username.json",
              dataType:'json',
              data: {string:dataString},
              success: function(data) {
-            	 console.log(data.data.response);
-            	 console.log(data);
- 				 $('#Infouser').fadeIn(1000).html(data.data.response);
+ 				 $('#Infouser').fadeIn(1000).html(data.data.response);                 
+                 if(data.data.existe){
+                    $('#username').val(''); 
+                 }
              }
          });
      });    
@@ -64,9 +65,6 @@ App.prototype.bind=function(){
 		$('.autocompleted').fadeIn();
 	});	
 	
-	$('#completed-institution').on('change',function(){
-		$('.boton').fadeIn();
-	});	
 	
 	$('#boton-responsable').on('click',function(){
 		$('.responsable').fadeIn();
@@ -91,7 +89,7 @@ App.prototype.bindAutocompleteInstitutions=function(selector){
                 var new_elem = elem.html('<div class="suggest-cont"><div class=\'suggest_info clearer_auto\'>  <b>Código DANE:</b> '+data.code_education+' </div><div class=\'suggest_info clearer_auto\'>  <b>Nombre:</b> '+data.name+' </div></div>');
                 return new_elem;
                 },
-                emptyText:'No se encontro la institución por favor ingresala por medio del enlace que se encuentra en la parte de arriba.</a> ',
+                emptyText:'<div style="color:#FF0000"><font size=3><strong>No se encontro la institución por favor ingresela por medio del enlace que se encuentra en la parte de arriba.</strong></font></div> ',
                 selectedItemProp: 'name',
                 selectedValuesProp:'code_education',
                 searchObjProps: 'code_education,name',
@@ -104,14 +102,16 @@ App.prototype.bindAutocompleteInstitutions=function(selector){
                     var data_name=$('.results-input').data('input-name');
                     var elementID='val-input-'+id;
                     $('.results-input').append('<input id="'+elementID+'" type="hidden" value="'+id+'" name="'+data_name+'">');
+                    
                 },selectionRemoved: function(elem){
                     var prop_data=elem.data('prop-data');
                     var cod=prop_data['id_institution'];
                     var elementID='val-input-'+cod;
                     $('#'+elementID).remove();
                     elem.remove();
+                    $('.boton').hide();
                 },selectionAdded:function(elem){
-
+                    $('.boton').fadeIn();
                 }
         });    
     

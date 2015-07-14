@@ -1,4 +1,4 @@
-﻿<div class="groups form">
+﻿<div class="groups form mde-form">
 <?php echo $this->Form->create('Group'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Group'); ?></legend>

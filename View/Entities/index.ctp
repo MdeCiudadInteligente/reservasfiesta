@@ -3,14 +3,11 @@
 	<h2><?php echo __('Entities'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php //echo $this->Paginator->sort('id_entity'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php //echo $this->Paginator->sort('description'); ?></th>		
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($entities as $entity): ?>
 	<tr>
-		<td><?php //echo h($entity['Entity']['id_entity']); ?>&nbsp;</td>
 		<td><?php echo h($entity['Entity']['name']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $entity['Entity']['id_entity'])); ?>

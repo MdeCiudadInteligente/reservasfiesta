@@ -1,4 +1,4 @@
-<div class="institutionSpecificConditions form">
+<div class="institutionSpecificConditions form mde-form">
 <?php echo $this->Form->create('InstitutionSpecificCondition'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Institution Specific Condition'); ?></legend>

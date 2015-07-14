@@ -1,15 +1,11 @@
 ﻿<?php $this->set('title_for_layout' , 'Ver horarios' );?>
+<div class="descripcion-formularios">Si este taller es de tu agrado, haz click en hacer inscripción. Si quieres más opciones por favor vuelve atrás.</div>
 <div class="workshops view">
 <?php echo $this->Form->create('Workshop'); ?>
-<h2><?php echo __('Workshop'); ?></h2>
-<span>Si este taller es de tu agrado, haz click en hacer inscripción. Si quieres más opciones por favor vuelve atrás.</span>
+<div class="mde-form legendtaller"><?php echo __('Taller'); ?></div>	
+
 </br></br>
 	<dl>
-		<!--  <dt><?php //echo __('Id Workshop'); ?></dt>-->
-		<dd>
-			<?php //echo h($taller['Workshop']['id_workshop']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($taller['Workshop']['name']); ?>
@@ -38,12 +34,14 @@
 		<?php //echo $institutionidp; ?>
 		</dd>
 	</dl>
+
 	<?php echo $this->Form->end(__('Hacer Inscripción')); ?>
+		
 </div>
 <div class="actions">
 	<h3><?php //echo __('Opciones'); ?></h3>
 	<ul>		
-		<li><?php //echo $this->Html->link(__('Main Menu'), array('controller' => 'workshops', 'action' => 'index_inscription')); ?> </li>
+		<li><?php //echo $this->Html->link(__('Regresar'), array('controller' => 'WorkshopSessions', 'action' => 'addworkshop')); ?> </li>
 		<li><?php //echo $this->Html->link(__('Close Section'), array('controller' => 'users', 'action' => 'logout')); ?> </li>
 	</ul>
 </div>

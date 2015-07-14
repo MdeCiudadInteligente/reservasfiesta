@@ -1,11 +1,11 @@
-<div class="specificConditions form">
+<div class="specificConditions form mde-form">
 <?php $this->set('title_for_layout' , 'Agregar condición específica' );?>
 <?php echo $this->Form->create('SpecificCondition'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Specific Condition'); ?></legend>
 	<?php
 		echo $this->Form->input('name',array('maxLength'=>'256'));
-		echo $this->Form->input('Workshop');
+		echo $this->Form->input('Workshop_id',array('required' => 'required'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

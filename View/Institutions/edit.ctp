@@ -1,4 +1,4 @@
-﻿<div class="institutions form">
+﻿<div class="institutions form mde-form">
 <?php $this->set('title_for_layout' , 'Editar Institución');?>
 <?php echo $this->Form->create('Institution'); ?>
 	<fieldset>

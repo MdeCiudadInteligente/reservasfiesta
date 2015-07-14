@@ -1,4 +1,4 @@
-<div class="publicTypes form">
+<div class="publicTypes form mde-form">
 <?php $this->set('title_for_layout' , 'Editar tipo de público' );?>
 <?php echo $this->Form->create('PublicType'); ?>
 	<fieldset>

@@ -1,4 +1,4 @@
-﻿<div class="educationalInstitutions form">
+﻿<div class="educationalInstitutions form mde-form">
 <?php echo $this->Form->create('EducationalInstitution'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Educational Institution'); ?></legend>

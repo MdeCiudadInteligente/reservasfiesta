@@ -2,10 +2,7 @@
 	<h2><?php echo __('Usuarios'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php //echo $this->Paginator->sort('id_user'); ?></th>
 			<th><?php echo $this->Paginator->sort('username'); ?></th>
-			<th><?php //echo $this->Paginator->sort('password'); ?></th>
-			<th><?php //echo $this->Paginator->sort('permission_level'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('identity'); ?></th>
 			<th><?php echo $this->Paginator->sort('celular'); ?></th>
@@ -14,10 +11,7 @@
 	</tr>
 	<?php foreach ($users as $user): ?>
 	<tr>
-		<td><?php //echo h($user['User']['id_user']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
-		<td><?php //echo h($user['User']['password']); ?>&nbsp;</td>
-		<td><?php //echo h($user['User']['permission_level']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['identity']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['celular']); ?>&nbsp;</td>

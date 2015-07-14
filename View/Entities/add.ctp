@@ -1,8 +1,8 @@
-﻿<div class="entities form">
+﻿<div class="entities form mde-form">
 <?php $this->set('title_for_layout' , 'Agregar entidad' );?>
 <?php echo $this->Form->create('Entity'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Entity'); ?></legend>
+		<legend><?php echo __('Agregar Entidad'); ?></legend>
 	<?php
 		echo $this->Form->input('name',array('maxLength'=>'256'));
 		echo $this->Form->input('description',array('label'=>'URL de la Entidad','maxLength'=>'256'));

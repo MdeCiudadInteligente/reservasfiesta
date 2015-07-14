@@ -1,11 +1,6 @@
 ﻿<div class="groups view">
 <h2><?php echo __('Group'); ?></h2>
 	<dl>
-		<dt><?php //echo __('Id Group'); ?></dt>
-		<dd>
-			<?php //echo h($group['Group']['id_group']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Nombre Grupo'); ?></dt>
 		<dd>
 			<?php echo h($groups[$idgro]['gs']['name']); ?>
