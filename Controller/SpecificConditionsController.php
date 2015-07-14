@@ -69,7 +69,7 @@ class SpecificConditionsController extends AppController {
 				$this->Session->setFlash(__('The specific condition could not be saved. Please, try again.'));
 			}
 		}
-		$workshops = $this->SpecificCondition->Workshop->find('list');
+		$workshops = $this->SpecificCondition->Workshop->find('list', array('order'=>array('Workshop.name ASC')));
 		$this->set(compact('workshops'));
 	}
 

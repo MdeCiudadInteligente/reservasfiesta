@@ -3,14 +3,10 @@
 	<h2><?php echo __('Institutions'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('Tipo Institución'); ?></th>		
-			<th><?php //echo $this->Paginator->sort('id_institution'); ?></th>
+			<th><?php echo $this->Paginator->sort('Tipo Institución'); ?></th>	
 			<th><?php echo $this->Paginator->sort('Nombre'); ?></th>
 			<th><?php echo $this->Paginator->sort('Código DANE'); ?></th>
 			<th><?php echo $this->Paginator->sort('Correo'); ?></th>
-			<th><?php //echo $this->Paginator->sort('address'); ?></th>
-			<th><?php //echo $this->Paginator->sort('phone'); ?></th>
-			<th><?php //echo $this->Paginator->sort('neighborhood'); ?></th>
 			<th><?php echo $this->Paginator->sort('Ciudad'); ?></th>
 			<th><?php echo $this->Paginator->sort('Comuna'); ?></th>		
 			
@@ -21,22 +17,14 @@
 	<tr>
 		<?php if($institution['Institution']['id_institution'] != '0'){?>		
 		<td><?php echo h($institution['Institution']['inst_type']); ?></td>
-		<td><?php //echo h($institution['Institution']['id_institution']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['name']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['code_education']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['mail']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['address']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['phone']); ?>&nbsp;</td>
-		<td><?php //echo h($institution['Institution']['neighborhood']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['city']); ?>&nbsp;</td>
 		<td><?php echo h($institution['Institution']['comune']); ?>&nbsp;</td>
-		<!-- <td>
-			<?php //echo $this->Html->link($institution['WorkshopSession']['id_workshop_session'], array('controller' => 'workshop_sessions', 'action' => 'view', $institution['WorkshopSession']['id_workshop_session'])); ?>
-		</td>-->
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $institution['Institution']['id_institution'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $institution['Institution']['id_institution'])); ?>
-			<?php //No se debe permitir borrar// echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $institution['Institution']['id_institution']), null, __('Are you sure you want to delete # %s?', $institution['Institution']['id_institution'])); ?>
 		</td>
 	</tr><?php }?>
 <?php endforeach; ?>

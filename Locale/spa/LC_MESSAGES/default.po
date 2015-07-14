@@ -99,6 +99,12 @@ msgstr "Instituciones Educativas ó Independientes"
 msgid "New Institution"
 msgstr "Nueva Institución"
 
+msgid "The institution and its users have been created, to register a group enters the system."
+msgstr "La institución y su usuario han sido creados, para registrar un grupo ingrese al sistema."
+
+msgid "The manager could not be saved . Please try again."
+msgstr "El responsable no pudó ser guardado. Por favor, inténtelo de nuevo."
+
 msgid "New Public Type"
 msgstr "Nuevo Tipo de Público"
 
@@ -218,7 +224,7 @@ msgid "List Specific Conditions"
 msgstr "Lista Condición Especifica"
 
 msgid "Add Specific Condition"
-msgstr "Añadir Condición Especifica"
+msgstr "Agregar Condición Especifica"
 
 msgid "Workshop Sessions"
 msgstr "Sesiones de la carpa"
@@ -660,7 +666,7 @@ msgid "The public type has been deleted."
 msgstr "El tipo de público ha sido eliminado"
 
 msgid "Add Public Type"
-msgstr "Añadir tipo de público"
+msgstr "Agregar tipo de público"
 
 msgid "Responsible"
 msgstr "Usuario"

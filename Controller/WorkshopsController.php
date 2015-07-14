@@ -298,10 +298,10 @@ class WorkshopsController extends AppController {
 			endforeach;
 			$Email->to($email_c);
 			$Email->cc($email_c2);
-			$Email->subject('Inscripción exitosa!!!');
+			$Email->subject('¡CONFIRMACIÓN DE VISITA A LA FIESTA DEL LIBRO Y LA CULTURA!');
 			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
-			$mensaje1="\n\n¡Qué bien! Estos son los datos del taller que inscribiste para tu grupo, recuerda que puedes ";
-			$mensaje12="hacer click en imprimir para generar la hoja de registro, y que debes presentar este documento en el ingreso el día que tengas tu visita. (si no tienes disponible impresora en el momento, puedes volver a ingresar en cualquier momento con tu usuario y contraseña para imprimirla, además te llegará una copia a tu correo electrónico) \n\n";
+			$mensaje1="\n\n¡Ya estás inscrito! Aquí está la información del taller en el que participará el grupo que inscribiste, recuerda que puedes hacer clic en imprimir para tenerlo en físico.";
+			$mensaje12="Recuerda presentarlo en el ingreso el día de tu visita. (Si no tienes disponible impresora en este momento puedes volver a ingresar con tu usuario y contraseña para imprimirlo). \n\n";
 			$mensaje11="El Día: ";
 			$mensaje2="\nNombre Taller: ";
 			$mensaje3="\nHora Taller: ";
@@ -309,30 +309,30 @@ class WorkshopsController extends AppController {
 			$mensaje5="\nNombre del Encargado: ";
 			$mensaje6="\nCelular del Encargado: ";
 			$mensaje7="\nCantidad de Inscritos: ";
-			$recomendaciones="\n\nRecomendaciones:";
+			$recomendaciones="\nPara tener en cuenta:";
 			$recomendacion10="\n\n • Todos los talleres se realizan en el Jardín Botánico de Medellín.";
-			$recomendacion1="\n\n• El ingreso de los grupos será por la entrada peatonal del Jardín Botánico. (Cerca de la estación Universidad del Metro, Calle 73)";
-			$recomendacion11="\n\n • Es necesario que su grupo llegue con 30 minutos de antelación para hacer el registro y que no se retrase la actividad.";
-			$recomendacion12="\n\n • Recuerde que la duración  de la actividad es de dos (2) horas para cada uno de los grupos, es importante tener en cuenta que esta programación se hace con el fin de atender a todo el público que quiera asistir a la Fiesta, por lo tanto es indispensable respetar las actividades programadas para los demás grupos y no ingresar a las carpas de promoción de lectura sin autorización.";
-			$recomendacion21="\n\n• Durante la actividad el grupo contará con el acompañamiento de un guía, pero es indispensable que el responsable del grupo esté permanentemente.";
-			$recomendacion32="\n\n• Su institución es responsable del transporte y la alimentación de los grupos. Se puede ingresar alimentos a las instalaciones del Jardín Botánico.";
-			$recomendacion41="\n\n• Es necesario que los grupos de primera infancia y hasta los 8 años estén identificados con escarapela.";
+			$recomendacion1="\n\n• El ingreso de los grupos es por la entrada peatonal del Jardín Botánico (cerca de la Estación Universidad del Metro, Calle 73). Este es el único acceso donde es posible validar la inscripción a la zona de Jardín Lectura Viva.";
+			$recomendacion11="\n\n • Es necesario que el grupo llegue con 30 minutos de anticipación para hacer el registro y no generar retrasos en la actividad.";
+			$recomendacion12="\n\n • La actividad tiene una duración de dos (2) horas por grupo, es importante tener en cuenta que esta programación se hace con el fin de atender a todo el público que quiera asistir a la Fiesta, por lo tanto es indispensable respetar las actividades programadas para los demás grupos y no ingresar a las carpas de promoción de lectura sin inscripción previa.";
+			$recomendacion21="\n\n• Durante la actividad el grupo contará con el acompañamiento de un guía, pero es indispensable que el responsable del grupo esté  permanentemente.";
+			$recomendacion32="\n\n• El Jardín Botánico no se hace responsable del transporte y la alimentación de los grupos, sin embargo está permitido ingresar alimentos a sus instalaciones.";
+			$recomendacion41="\n\n• Es necesario que los niños, de los grupos de primera infancia y  hasta los 8 años, estén identificados con escarapela.";
 			$recomendacion42="\n\n• Es importante llevar hidratación.";
 			$recomendacion43="\n\n• La entrada y participación en el evento no tienen costo, la ciudadanía de Medellín ya pagó con sus impuestos.";
-			$recomendacion44="\n\n Gracias por hacer parte de esta gran fiesta de ciudad que durante diez días nos recordará";
-			$recomendacion45="\n\n que Medellín es Lectura Viva";
+			$recomendacion44="\n\n Gracias por hacer parte de esta gran fiesta de ciudad que durante diez días nos recordará que";
+			$recomendacion45="\n\n Medellín es lectura viva";
 			$recomendacion46="\n\n ES INDISPENSABLE PRESENTAR ESTE FORMATO AL INGRESO DEL JARDÍN BOTÁNICO";
 			$recomendacion47="\n\n Mayores informes:";
-			$recomendacion48="\n\n Alejandra Gallo López";
-			$recomendacion49="\n\n Líder Jardín Lectura Viva";
+			$recomendacion48="\n\n Tatiana Sierra Velásquez";
+			$recomendacion49="\n\n Líder Convocatoria Instituciones Educativas";
 			$recomendacion40="\n\n 4448691 ext 111";
 			$recomendacion50="\n\n 3012169301";
-			$recomendacion51="\n\ninscripciones@fiestadellibroylacultura.com";
-			$recomendacion52="\n\n Pablo López Londoño";
-			$recomendacion53="\n\n Líder Públicos Dirigidos";
-			$recomendacion54="\n\n 4448691 ext 109";
-			$recomendacion55="\n\n 3147984567";
-			$recomendacion56="\n\n inscripcionespublicos@fiestadellibroylacultura.com";
+			$recomendacion51="\n\n inscripciones@fiestadellibroylacultura.com";
+			$recomendacion52="\n\n Carolina Cortés Duque";
+			$recomendacion53="\n\n Líder Convocatoria Públicos Dirigidos";
+			$recomendacion54="\n\n 4448691 ext 110";
+			$recomendacion55="\n\n 3052569184";
+			$recomendacion56="\n\n inscripcionespublicos@fiestadellibroylacultura.com";			
 			$norespuesta="\n\n Este correo es informativo, favor no responder a esta dirección de correo, ya que no se encuentra habilitada para recibir mensajes.";
 			$dia_taller= date('d M Y', strtotime($condiciond));
 			$hora_taller= date('h i a', strtotime($condiciont));
@@ -483,22 +483,47 @@ class WorkshopsController extends AppController {
 		$this->set('id_group',$id_group);
 		
 		$Groups = new GroupsController();
+
+		$groupid=$this->Workshop->query("select groups.id_group,groups.name,groups.members_number,groups.user_id from groups inner join user on groups.user_id = user.id_user  where user.username = '$usuario' and groups.id_group = '$id_group' ");
 		
-		/*$groupid=$this->Workshop->query("select groups.id_group from groups inner join user on user.id_user = groups.user_id  where user.username = '$usuario'");
+		$groupidp=null;
+		$groupname=null;
+		$groupnumber=null;
+		$groupuser=null;
 		foreach ($groupid as $groupid):
 		$groupidp=$groupid['groups']['id_group'];
+		$groupname=$groupid['groups']['name'];
+		$groupnumber=$groupid['groups']['members_number'];
+		$groupuser=$groupid['groups']['user_id'];
 		
+	
 		endforeach;
-		
-		$this->set('groupidp',$groupidp);*/
-		
+		$this->set('groupidp',$groupidp);
+		$this->set('groupname',$groupname);
+		$this->set('groupnumber',$groupnumber);
+		$this->set('groupuser',$groupuser);
+
 		//---Registro de inscripciones
+		$responsibles=$this->User->find('all', array('conditions'=>array('id_user'=>$groupuser),'fields'=>array('name','celular','id_user')));
+		$rname=null;
+		$rcelular=null;
+		$ruser=null;
+		foreach ($responsibles as $responsible){
+			$rname=$responsible['User']['name'];
+			$rcelular=$responsible['User']['celular'];
+			$ruser=$responsible['User']['id_user'];
+		}
+		$this->set('rname',$rname);
+		$this->set('rcelular',$rcelular);
+		$this->set('ruser',$ruser);
+
 		$condicionn=$this->Workshop->query("select group_id,workshop_id,workshop_day,workshop_time,travel_time from workshop_session where group_id = $id_group");
 		
 		$this->set('condicionn',$condicionn);
 		$condicionnp='';
 		foreach ($condicionn as $condicionnes):
 		$condicionnp=$condicionnes['workshop_session']['group_id'];
+
 		
 		endforeach;
 		$this->set('condicionnp',$condicionnp);
@@ -506,6 +531,9 @@ class WorkshopsController extends AppController {
 		$condicionnid='';
 		foreach ($condicionn as $condicionnes):
 		$condicionnid=$condicionnes['workshop_session']['workshop_id'];
+		$condicionday=$condicionnes['workshop_session']['workshop_day'];
+		$condiciontime=$condicionnes['workshop_session']['workshop_time'];
+		$condiciontravel=$condicionnes['workshop_session']['travel_time'];
 		
 		endforeach;
 		$this->set('$condicionnid',$condicionnid);
@@ -540,6 +568,11 @@ class WorkshopsController extends AppController {
 		
 		$groupid=$this->Workshop->query("select groups.id_group,groups.name,groups.members_number,groups.user_id from groups inner join user on groups.user_id = user.id_user  where user.username = '$usuario' and groups.id_group = '$id_group' ");
 		
+		$groupidp=null;
+		$groupname=null;
+		$groupmember=null;
+		$groupuser=null;
+
 		foreach ($groupid as $groupid):
 		$groupidp=$groupid['groups']['id_group'];
 		$groupname=$groupid['groups']['name'];
@@ -551,10 +584,7 @@ class WorkshopsController extends AppController {
 		$this->set('groupname',$groupname);
 		$this->set('groupmember',$groupmember);
 		$this->set('groupuser',$groupuser);
-		
-		//Fin envio correo....
-		
-		//-----------------------------		
+				
 		$queryupdate=$this->Workshop->query("update workshop_session SET group_id = '0' where workshop_session.group_id = '$id_group'");
 		$this->set(compact('queryupdate'));
 		
@@ -597,14 +627,29 @@ class WorkshopsController extends AppController {
 			endforeach;
 			$Email->to($email_c);
 			$Email->cc($email_c2);
-			$Email->subject('Cancelación exitosa!!!');
+			$Email->subject('¡CANCELACIÓN DE VISITA A LA FIESTA DEL LIBRO Y LA CULTURA!');
 			//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/workshops/index_inscription/'.$usuario;
-			$mensaje1="\n\n¡Atención! Usted ha cancelado su inscripción a una de las carpas para su grupo, ";
-			$mensaje2="\n\n Por lo tanto su grupo ha sido eliminado, si desea inscribir de nuevo una carpa a su grupo";
-			$mensaje3="\n\n debe registrar de nuevo el grupo y el taller al que desea inscribirlo.";
-			$mensaje4="\n\n  Este correo es informativo, favor no responder a esta dirección de correo, ya que no se encuentra habilitada para recibir mensajes.";
-				
-			$Email->send($mensaje1.$mensaje2.$mensaje3.$mensaje4);		
+			$mensaje1="\n\nHemos recibido la cancelación de la inscripción realizada para visitar la zona de Jardín ";
+			$mensaje12="\n\nLectura Viva en la Fiesta del Libro y la Cultura. La siguiente inscripción ha sido cancelada,";
+			$mensaje13="\n\npor lo tanto no estará este espacio disponible para tu grupo:";
+			$mensaje11="El Día: ";
+			$mensaje2="\nNombre Taller: ";
+			$mensaje3="\nHora Taller: ";
+			$mensaje4="\nHora Recorrido: ";
+			$mensaje5="\nNombre del Encargado: ";
+			$mensaje6="\nCelular del Encargado: ";
+			$mensaje7="\nCantidad de Inscritos: ";
+			$mensaje8="\n\nEste documento es la confirmación de la cancelación del taller, esperamos que te inscribas ";
+			$mensaje9="\nnuevamente en el horario que mejor se ajuste a tus necesidades para que no pierdas esta";
+			$mensaje10="\noportunidad.";
+			$dia_taller= date('d M Y', strtotime($condicionday));
+			$hora_taller= date('h i a', strtotime($condiciontime));
+			$hora_recorrido= date('h i a', strtotime($condiciontravel));
+			$Email->send($mensaje1.$mensaje12.$mensaje13.$mensaje11.$dia_taller.
+					$mensaje2.$condicionnomb.$mensaje3.$hora_taller.$mensaje4.
+					$hora_recorrido.$mensaje5.$rname.$mensaje6.$rcelular.$mensaje7.
+					$groupmember.$mensaje8.$mensaje9.$mensaje10);
+	
 			
 			//Fin envió de correo...		
 			

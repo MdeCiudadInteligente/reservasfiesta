@@ -3,13 +3,11 @@
 	<h2><?php echo __('Public Types'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php //echo $this->Paginator->sort('id_public_type'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th class="actions"><?php echo __('Opciones'); ?></th>
 	</tr>
 	<?php foreach ($publicTypes as $publicType): ?>
 	<tr>
-		<td><?php //echo h($publicType['PublicType']['id_public_type']); ?>&nbsp;</td>
 		<td><?php echo h($publicType['PublicType']['name']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $publicType['PublicType']['id_public_type'])); ?>

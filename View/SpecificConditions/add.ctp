@@ -5,7 +5,7 @@
 		<legend><?php echo __('Add Specific Condition'); ?></legend>
 	<?php
 		echo $this->Form->input('name',array('maxLength'=>'256'));
-		echo $this->Form->input('Workshop');
+		echo $this->Form->input('Workshop_id',array('required' => 'required'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

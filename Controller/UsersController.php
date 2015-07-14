@@ -126,7 +126,7 @@ class UsersController extends AppController {
 			endforeach;
 			$Email->to($email_c);
 			$Email->subject('Link para recuperaciÃ³n de contraseÃ±a');
-			$link='http://http://localhost/reservasfiesta/users/updateuserlogin/'.$userupd;
+			$link='http://localhost/reservasfiesta/users/updateuserlogin/'.$userupd;
 				//$link='http://aplicaciones.medellin.co/reservasfiestadellibro/users/updateuserlogin/'.$userupd;
 				$mensaje= "\n\nBIENVENIDO A LA INSCRIPCIÓN DE VISITAS GUIADAS PARA LA FIESTA DEL LIBRO Y LA CULTURA 
 		\nJardín Lectura Viva es una estrategia de divulgación artística, académica y cultural que tiene en su corazón la promoción de lectura entre el público más joven. Aquí, instituciones educativas, fundaciones y corporaciones que trabajan por el fomento de la literatura se reúnen para acoger a toda la ciudadanía con actividades que incluyen la música, la pintura y la ciencia como recursos para dar a conocer libros y escritores de todas las culturas y regiones. 
@@ -337,7 +337,7 @@ class UsersController extends AppController {
 			$this->User->create();
 			
 			if ($this->User->save($this->request->data)) {			
-				$this->Session->setFlash(__('El responsable ha sido guardado.'));
+				$this->Session->setFlash(__('La institución y su usuario han sido creados, para ingresar un grupo ingrese al sistema.'));
 				
 				return $this->redirect(array('controller' => 'Users', 'action' => 'login'));
 			} else {

@@ -5,7 +5,7 @@
 		<legend><?php echo __('Add Public Type'); ?></legend>
 	<?php
 		echo $this->Form->input('name',array('maxLength'=>'256'));
-		echo $this->Form->input('Workshop');
+		echo $this->Form->input('Workshop_id',array('required' => 'required'));
 		//echo $this->Form->input('Workshop', array('type' => 'select', 'multiple' => 'checkbox'));
 	?>
 	</fieldset>

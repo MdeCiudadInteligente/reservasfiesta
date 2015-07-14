@@ -2,17 +2,14 @@
 	<h2><?php echo __('Groups'); ?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php //echo $this->Paginator->sort('id_group'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('members_number'); ?></th>
 			<th><?php echo $this->Paginator->sort('public_type_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('specific_condition_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('responsible_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($groups as $group): ?>
 	<tr>
-		<td><?php //echo h($group['Group']['id_group']); ?>&nbsp;</td>
 		<td><?php echo h($group['Group']['name']); ?>&nbsp;</td>
 		<td><?php echo h($group['Group']['members_number']); ?>&nbsp;</td>
 		<td>
@@ -27,10 +24,7 @@
 			echo $tspecificcondition;
 			?>
 	
-		</td>
-		<td>
-			<?php echo $this->Html->link($group['User']['name'], array('controller' => 'users', 'action' => 'view', $group['User']['id_user'])); ?>
-		</td>
+		</td>		
 		<td class="actions">
 			<?php 
 			$idgro=$group['Group']['id_group'];

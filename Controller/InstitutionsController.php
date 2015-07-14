@@ -66,7 +66,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 				if ($this->User->save($data)) 
 				{
 				
-					$this->Session->setFlash(__('El responsable ha sido guardado.'));
+					$this->Session->setFlash(__('The institution and its users have been created, to enter a group enters the system.'));
 					$id_user = $this->User->id;
 					//return $this->redirect(array('action' => 'index'));
 					//return $this->redirect(array('controller' => 'users', 'action' => 'adduser',$institution,$institutionid));
@@ -74,7 +74,7 @@ var $uses = array('Workshop','User','Institution','WorkshopSession','GroupSpecif
 				} 
 				else 
 				{
-					$this->Session->setFlash(__('El responsable no pudó ser guardado. Por favor, inténtelo de nuevo.'));
+					$this->Session->setFlash(__('The manager could not be saved . Please try again.'));
 				}
 					
 		}
